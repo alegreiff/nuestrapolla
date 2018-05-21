@@ -26,8 +26,8 @@
                 <b-table-column label="Partido" centered>
                     {{ (props.row.local) }} vs {{ (props.row.visitante) }}
                 </b-table-column>
-                <b-table-column label="Exclusivo" centered sortable field="dtv">
-                    {{ props.row.dtv }}
+                <b-table-column label="TV" centered sortable field="dtv">
+                    {{ props.row.dtv===1 ? 'DirecTV' : 'Señal abierta'  }}
                 </b-table-column>
                 <b-table-column label="Procesado">
                     {{ miresultado(props.row.id) }}
