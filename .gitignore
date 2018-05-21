@@ -17,3 +17,5 @@ polla/*.md
 polla/*.html
 polla/*.log
 polla/*.lock
+*.7z
+.gitignore
