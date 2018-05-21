@@ -1,0 +1,410 @@
+<template>
+	<v-container fluid grid-list-md class="pollacontainer">
+		<v-layout row wrap>
+			<v-flex xs12 md6 lg3 class="text-xs-center">
+				<v-card color="grey lighten-4" light class="completacard">
+					<v-card-text>
+						<h3>Nuestra Polla</h3>
+						<img :src="'/assets/lp.png'" alt="Nuestra Polla" class="">
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg6>
+					<v-card color="pollarojo2" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<v-btn :to="{path: '/pronos'}"  block color="primary">Crear o modificar mis marcadores
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
+							<v-btn color="primary" dark @click.stop="dialog2 = true">Ayuda sobre marcadores</v-btn>
+							<!--<v-btn @click="pdftest()"  block color="terciary" v-if="(fasePolla.partidos - valore) === 0" >Mis pronósticos PDF<v-icon right dark>highlight</v-icon></v-btn>-->
+							<v-btn @click="pdftest()"  block color="terciary" v-if="(estatuspronos) === 0" >Descargar Mis pronósticos PDF
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
+							<p v-if="estatuspronos>0">Pronósticos que le faltan para la fase de grupos: {{ estatuspronos }}</p>
+							<p>Partidos para esta fase {{ fasePolla.partidos }}</p>
+							<p>Esta es una polla de 64 partidos. Única para todo el mundial</p>
+							
+							
+							
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollarojo2" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<p v-if="allpolleros" class="dato_size0">{{allpolleros.length}}</p>
+							<span>Polleros registrados</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<span>Tiempo restante para ingresar o modificar marcadores de la fase de grupos y para pagar la inscripción a su pollero amigo. </span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light class="completacard">
+						<v-card-text class="text-xs-center">
+							<span class="tempoprono"><TiempoRestante deadline="June 12, 2018 23:59"></TiempoRestante></span>
+							<span>Vence el martes 12 de junio a las 23:59</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							
+							<span>No es tu polla. No es mi polla. Es Nuestra Polla</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light class="completacard">
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(elplandepremios.cuota) }}</p>
+							<span>Valor inscripción</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(5) }}</p>
+							<span>Gran bote</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(0) }}</p>
+							<span>Primer puesto</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(1) }}</p>
+							<span>Segundo puesto</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(2) }}</p>
+							<span>Tercer puesto</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(3) }}</p>
+							<span>Para repartir entre los mejores polleros de cada pollero amigo</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light class="completacard">
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(4) }}</p>
+							<span>Para el pollero amigo del gran ganador</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(elplandepremios.cuota) }}</p>
+							<span>Valor inscripción</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size1" v-if="statistics.prom === statistics.prom">{{ (statistics.prom).toFixed(2) }}</p>
+							<span>Promedio de goles por partido</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size1">{{ statistics.partidos }}</p>
+							<span>Partidos</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size1">{{ statistics.goles }}</p>
+							<span>Goles</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size1">{{ statistics.victorias }}</p>
+							<span>Victorias</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+							<p class="dato_size1">{{ statistics.empates }}</p>
+							<span>Empates</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12 md6 lg3>
+					<v-card class="completacard">
+						<v-toolbar color="pollagris" dark>
+							<v-toolbar-title>Marcadores frecuentes</v-toolbar-title>
+						</v-toolbar>
+						<v-list>
+							<template v-if="index < 5" v-for="(item, index) in frecuentes">
+								<v-list-tile avatar ripple :key="item.key">
+									<v-list-tile-content>
+                {{ item.key }}
+              </v-list-tile-content>
+									<v-list-tile-action>
+										<v-list-tile-action-text>{{ item.value }}</v-list-tile-action-text>
+									</v-list-tile-action>
+								</v-list-tile>
+							</template>
+						</v-list>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card class="completacard">
+						<v-toolbar color="pollacrema" light>
+							<v-toolbar-title>Número de goles por partido</v-toolbar-title>
+						</v-toolbar>
+						<v-list>
+							<template v-if="index < 5" v-for="(item, index) in golesporpartido">
+								<v-list-tile avatar ripple :key="item.key">
+									<v-list-tile-content>
+                {{ item.key }}
+              </v-list-tile-content>
+									<v-list-tile-action>
+										<v-list-tile-action-text>{{ item.value }}</v-list-tile-action-text>
+									</v-list-tile-action>
+								</v-list-tile>
+							</template>
+						</v-list>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<p>Lista de confirmados</p>
+							<span>Polleros amigos</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light class="completacard">
+						<v-card-text class="text-xs-center">
+							<span>Polla</span>
+							<span>Nuestra</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
+					<v-card color="grey lighten-4" light>
+						<v-card-text class="text-xs-center">
+							<p class="textopeq">{{ item.pollero }}</p>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+          Nuestra Polla
+          </v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+          Nuestra Polla
+          </v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollacrema" light>
+						<v-card-text class="text-xs-center">
+          Nuestra Polla
+          </v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="pollagris" dark>
+						<v-card-text class="text-xs-center">
+          Nuestra Polla
+          </v-card-text>
+					</v-card>
+				</v-flex>
+			</v-layout>
+			<template>
+				<v-dialog v-model="dialog2" max-width="900px">
+        <v-card>
+          <v-card-title>
+            ¿Cómo crear o modificar marcadores ?
+          </v-card-title>
+          <v-card-text>
+            
+            <youtube video-id="bE66XPod_kM"></youtube>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="dialog2=false">Cerrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+			</template>
+		</v-container>
+</template>
+<script>
+
+
+import { mapState, mapGetters } from 'vuex'
+import TiempoRestante from './TiempoRestante.vue'
+export default {
+  data: () => ({
+		dialog2: false,
+    valore: null,
+    estatuspronos: null,
+
+	}),
+	    components: {
+      TiempoRestante
+	  },
+  methods:{
+    sortObject (obj) {
+        var arr = [];
+        var prop;
+        for (prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                arr.push({
+                    'key': prop,
+                    'value': obj[prop]
+                });
+            }
+        }
+        arr.sort(function(a, b) {
+            return b.value - a.value;
+        });
+        return arr; // returns array
+    },
+    formatPremio(value) {
+      var premio = 0;
+      if(this.allpolleros){
+        value < 10 ? premio = (((this.allpolleros.length) * (this.elplandepremios.cuota *((100 - this.elplandepremios.fee)/100))) *(this.elplandepremios.porcentajes[value]/100)): premio = value;
+      }
+        //this.porcentajes[value] * this.elplandepremios.cuota * 
+        //=(polleros * (cuota * ((100 - fee)/100))) * (E4 / 100)
+        let val = (premio/1).toFixed(0).replace('.', ',')
+        return '$' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
+    pdftest(){
+    if (this.polleroID) {
+      //axios.get(`/wp-json/generatepdf/v1/all/` + this.polleroID)
+      //https://gist.github.com/javilobo8/097c30a233786be52070986d8cdb1743 ENLACE MÁGICO
+      axios({
+  url: `/wp-json/generatepdfpollero/v1/all/` + this.polleroID,
+  method: 'GET',
+  responseType: 'blob', // important
+}).then(response => {
+        var str = 'FASE-'+this.fasePolla.fase+'-'+this.nombrePollero + '-pronos-nuestrapolla-' + this.eltiempo +'.pdf';
+        str = str.replace(/\s+/g, '-').toLowerCase();
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', str);
+        document.body.appendChild(link);
+        link.click();
+
+          //this.showFile(escape(response.data));
+          //console.log(response.data)
+          //window.open().document.write(response.data);
+          //window.open("data:application/pdf," + escape(response.data)); 
+          
+				})
+				.catch(e => {
+          //this.errors.push(e.message)
+          //console.log("Hay un error en pdftest Diariopolla.vue")
+				})
+		}else{
+			//console.log("pasa por main CREAR un PDF")
+		}
+    }
+  },
+  mounted() {
+    //console.log("///////////////")
+    this.estatuspronos = this.pronosPendientes;
+  },
+  watch: {
+    pronosticosPolleroActivo(val){
+      var nulos = _.filter(val, function(o) { if (isNaN(o.m_loc)) return o }).length;
+      //console.log("LOS NULOS SON: " + nulos)
+      this.valore = val.length - nulos;
+    },
+    pronosPendientes(val){
+      //console.log("Cambia")
+      this.estatuspronos = val;
+    }
+  },
+    computed: {
+    ...mapState(['horamostrable']),
+    ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios']),
+    pronosPendientes(){
+        if(this.fasePolla && this.pronosticosPolleroActivo){
+          var nulos = _.filter(this.pronosticosPolleroActivo, function(o) { if (isNaN(o.m_loc)) return o }).length;
+          return (parseInt(this.fasePolla.partidos) - (parseInt(this.pronosticosPolleroActivo.length))+ nulos);
+        }
+      },
+    frecuentes(){
+      if(this.statistics.grupo){
+        var sortable = this.sortObject(this.statistics.grupo)
+      }
+      return sortable
+    },
+    golesporpartido(){
+      if(this.statistics.sumagxp){
+        var sortable = this.sortObject(this.statistics.sumagxp)
+      }
+      return sortable
+    }
+
+    }
+  
+} 
+</script>
+<style>
+.textopeq{
+  font-size: 0.7em;
+}
+</style>
