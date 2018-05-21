@@ -193,6 +193,12 @@ export const datos = new Vuex.Store({
 	getters: {
 		allpolleros: (state) => {
 			_.each(state.allpolleros, item => item.id = parseInt(item.id))
+			_.each(state.allpolleros, item => item.pollero = item.pollero.toLowerCase())
+			_.each(state.allpolleros, item => item.pollero = item.pollero[0].toUpperCase() + item.pollero.slice(1)
+
+			
+
+
 			return state.allpolleros
 		},
 		valueequipos: (state) => {

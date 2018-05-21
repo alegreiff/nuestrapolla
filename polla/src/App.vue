@@ -37,7 +37,7 @@
     <v-footer  fixed color="pollarojo2" dark>
       <span><TiempoRestante deadline="June 14, 2018 10:00"></TiempoRestante></span>
       <button v-shortkey.once="['ctrl', 'h']" @shortkey="theAction()"></button> <span class="versionpolla">
-        v.0.86  modal video
+        v.0.88 Lower CASE
         </span>
     </v-footer>
     <template>
