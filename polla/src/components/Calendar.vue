@@ -26,6 +26,9 @@
                 <b-table-column label="Partido" centered>
                     {{ (props.row.local) }} vs {{ (props.row.visitante) }}
                 </b-table-column>
+                <b-table-column label="Exclusivo" centered sortable field="dtv">
+                    {{ props.row.dtv }}
+                </b-table-column>
                 <b-table-column label="Procesado">
                     {{ miresultado(props.row.id) }}
                 </b-table-column>

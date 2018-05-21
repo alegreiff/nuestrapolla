@@ -214,6 +214,7 @@ export const datos = new Vuex.Store({
 			_.each(state.calendario, item => item.vg = parseInt(item.vg))
 			_.each(state.calendario, item => item.procesado = parseInt(item.procesado))
 			_.each(state.calendario, item => item.locacion = parseInt(item.locacion))
+			_.each(state.calendario, item => item.dtv = parseInt(item.dtv))
 			return state.calendario
 
 		},

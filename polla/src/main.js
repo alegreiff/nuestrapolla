@@ -15,7 +15,7 @@ Vue.use(VueYouTubeEmbed)
 
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)
-Vue.config.devtools = false //producción false desarrollo true
+Vue.config.devtools = true //producción false desarrollo true
 
 Vue.use(Vuetify, {
 	theme: {

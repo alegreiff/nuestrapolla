@@ -6,6 +6,7 @@ import Calendar from './components/Calendar.vue'
 import Polleros from './components/Polleros.vue'
 import Misspronos from './components/Misspronos.vue'
 import Clasificador from './components/ClasificaPartidos.vue'
+import Reglamento from './components/Reglamento.vue'
 
 
 
@@ -18,6 +19,7 @@ export const routes = [
 	{path: '/posiciones', component: Polleros},
 	{path: '/mispronos', component: Misspronos},
 	{path: '/clasificador', component: Clasificador},
+	{path: '/reglamento', component: Reglamento},
 	{path: '/nouser',
     beforeEnter(to, from, next) {
         window.location = "../"
