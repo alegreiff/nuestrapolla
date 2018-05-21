@@ -1,0 +1,14 @@
+fuentes/
+images/
+js/
+languages/
+lib/
+vuelogic/
+xml/
+CHANGELOG.md
+polla/src/
+polla/node_modules/
+polla/*.7z
+polla/*.json
+polla/*.js
+polla/.babelrc

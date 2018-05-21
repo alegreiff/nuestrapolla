@@ -1,0 +1,1341 @@
+@rojoDown: rgba(255, 20, 20, 0.219);
+@verdeUp:  rgba(97, 179, 102, 0.36); 
+@verdeFuerte:  rgba(97, 179, 102, 0.8); 
+@blanco:  rgb(255, 255, 255);  
+
+@azulRusia: rgba(19, 138, 250, 0.712);
+@azulRusia_claro: lighten(@azulRusia, 10%);
+@dorado: #ffcc00;
+@doradoSuave: 	rgb(255, 200, 0, 0.10);
+@diario_estilo: rgb(37, 50, 87);
+//[v-cloak] {display: none}
+[v-cloak]::before { content: "loading…" }
+
+    /*PRONOS*/
+.pronos { 
+    display: grid; 
+    grid-template-columns: 7fr 3fr; 
+    /*grid-auto-rows: 100px; */
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    font-size: 16px;
+  } 
+  .partidos {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 0em;
+  }  
+  .comodin{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #fff;    
+  }
+  .tablagrupo{
+    
+    background: @blanco;
+    padding: 0.2em;
+  }
+  
+  
+  .np_partido{
+    /*background: rgb(255, 255, 255);*/
+    padding: 0.1em;
+    display: grid;
+    grid-template-columns: 121px 3fr 80px 25px 80px 3fr; 
+    
+  }
+  .npcom{
+  /*background-color: rgb(90, 78, 255); */
+  
+  /*color: @verdeUp;*/
+  
+  }
+  .np_check{
+    color: @verdeFuerte;
+    background-color: @blanco;
+  }
+  .np_comodo{
+    
+    border: 2px @dorado solid;
+  }
+  .npcom.vacio{
+    color: @dorado;
+    font-size: 0.8em;
+    font-weight: bolder;
+    text-transform: uppercase;
+    
+  }
+  input.np_textinput:disabled{
+    background-color: #fff !important;
+  }
+  
+  .marcador{
+    background-color: #fff;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+  }
+  span.np_pronocomodin::after{
+    display: block;
+    margin-top: -25px !important;
+    font-family: 'Material Icons';
+    content: "\E83A";
+    color: @dorado;
+    font-size: 4em;
+    font-weight: bolder;
+  }
+  .npcom.vacio::after{
+    font-family: 'Material Icons';
+    content: "\E83A";
+    color: @dorado;
+    font-size: 2em;
+    padding-left: 0.5em;
+    font-weight: bolder;
+  }
+  .equipo{
+  
+    /*background-color: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em !important;
+    
+  }
+  
+  .versus{
+    
+    /*background-color: #fff;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    
+  }
+  
+  
+  .pronos div{
+  /*  border-radius: 0.2em;
+    border: 2px red dotted;
+    background-color: rgb(223, 160, 160);*/
+  }
+  
+  .partidos div{
+    /*margin-left: 1em;
+    margin-right: 1em;*/
+  }
+  
+  .np_info{
+    grid-column-start: 1; 
+    grid-column-end: 3; 
+    /*background-color: lime !important;*/
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    grid-template-rows: 80px 80px 80px 80px;
+  }
+  
+  .np_info>div.binf{
+    
+    border-radius: 0.2em;
+    display: grid;
+    grid-template-columns:  45% 45%;
+    grid-template-rows: 95%;
+    
+    border: 1px rgba(177, 177, 177, 0.548) solid;
+    grid-gap: 0.5em;
+  }
+  
+  
+  .np_info>div.binf div{
+    display: grid;
+    grid-template-columns:  100%;
+    grid-template-rows: 50% 50%;
+    text-align: center;
+  }
+  
+  .np_info div.binf div img.np_miniflag_octavos{
+    margin: 0 auto;
+    padding-top: 0.8em;
+  }
+  .np_info div.binf div p{
+    border-radius: 0.5em;
+    font-size: 0.8em;
+    padding-top: 0.8em;
+  }
+  
+  /*FIN PRONOS */
+  
+  
+  .np_textinput{
+    max-width: 90px !important;
+  }
+  
+  #data-tables-view{
+    max-width: 1200px
+  }
+  
+  
+  .grid {
+      display:grid;
+  
+      grid-template-areas: "grupoa grupob grupoc grupod"
+                            "grupoe grupof grupog grupoh";
+      /*grid-column-gap: 100px;
+      grid-row-gap: 10px;*/
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      /*min-height: 100vh;*/
+      grid-gap: 1em 4em;
+    }
+    .a, .b, .c, .d, .e, .f, .g, .h{
+      padding: 0.5em;
+      border: 2px red solid;
+      border-radius: 0.235em;
+    }
+  
+    .a { grid-area:grupoa; background:rgb(197, 197, 238) }
+    .b { grid-area:grupob; background:rgb(197, 197, 238) }
+    .c { grid-area:grupoc; background:rgb(197, 197, 238) }
+    .d { grid-area:grupod; background:rgb(197, 197, 238) }
+    .e { grid-area:grupoe; background:rgb(197, 197, 238) }
+    .f { grid-area:grupof; background:rgb(197, 197, 238) }
+    .g { grid-area:grupog; background:rgb(197, 197, 238) }
+    .h { grid-area:grupoh; background:rgb(197, 197, 238) }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    .marcador {
+      position: relative;
+    }
+    
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button
+    {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    
+    input[type=number]
+    {
+      -moz-appearance: textfield;
+    }
+    
+    .qps_input{
+      display: inline !important;
+    }
+    .qps_input input{
+      font-weight: bolder;
+      max-width: 60px;
+      
+    }
+    .marcador input {
+      width: 80px;
+      height: 100%;
+      line-height: 1.65;
+      float: left;
+      display: block;
+      padding: 0;
+      margin: 0;
+      padding-left: 20px;
+      /*border: 1px solid rgb(27, 236, 19);*/
+      font-weight: bolder;
+      font-size: 1.7em;
+    }
+    
+    .marcador input:focus {
+      outline: 0;
+    }
+    
+    .quantity-nav {
+      float: left;
+      position: relative;
+      height: 42px;
+    }
+    
+    .quantity-button {
+      position: relative;
+      cursor: pointer;
+      border-left: 1px solid #eee;
+      width: 20px;
+      text-align: center;
+      color: #333;
+      font-size: 13px;
+      font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+      line-height: 1.7;
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+    
+    .quantity-button.quantity-up {
+      position: absolute;
+      height: 50%;
+      top: -3px;
+      border-bottom: 1px solid rgb(0, 0, 0);
+      font-weight: bolder;
+      font-size: 0.85em;
+    }
+    
+    .quantity-button.quantity-down {
+      position: absolute;
+      bottom: -1px;
+      height: 50%;
+      font-weight: bolder;
+      font-size: 0.85em;
+    }
+  
+  
+  
+    .np_empata{
+      /*color: rgb(163, 6, 4);
+      font-family: 'Material Icons';
+      content: "clear";*/
+      
+  
+      color: rgb(27, 27, 27);    
+      font-size: 2.4rem;       
+    }
+  
+    .np_empata::before {
+      font-family: FontAwesome;
+      content: "\f0c9";
+      color: rgb(158, 158, 158);    
+      font-size: 1.8rem;       
+      position: relative;
+      left: -20px;
+      }
+  
+  
+    .np_gana{
+      
+      font-weight: bolder;
+    }
+  
+    .np_gana::before {
+      font-family: 'Material Icons';
+      /*color: rgb(163, 6, 4);
+      font-family: 'Material Icons';
+      content: "clear";*/
+      
+      content: "\E8DC";
+      color: @verdeUp;
+      font-size: 2.4rem;   
+      /*color: rgb(38, 124, 2);
+      font-family: 'Material Icons';
+      content: "grade";*/
+      }
+  
+    /*.np_pierde{
+      
+    }*/
+  
+    .np_pierde::before {
+      font-family: 'Material Icons';
+      /*color: rgb(163, 6, 4);
+      font-family: 'Material Icons';
+      content: "clear";*/
+      
+      content: "\E8DB";
+      color: @rojoDown;
+      font-size: 2.4rem;    
+      }
+  
+  
+      table.tabla_np { 
+        border-collapse: separate; 
+        text-align: left; 
+        width: 100%;
+        background-color: @azulRusia;
+        border-top-left-radius: 0.2em;
+        border-top-right-radius: 0.2em;
+      } 
+      
+      
+      
+      table.tabla_np tbody{ 
+        background-color: @blanco;
+      }
+  
+      table.tabla_np td{
+        max-height: 20px !important;
+  
+      }
+  
+      table.tabla_np td, table.tabla_np th { 
+        padding: 1px 2px; 
+      }
+      table.tabla_np thead th {
+        
+        color: @blanco;
+        
+        font-size: 0.7em; 
+        font-weight: bold;
+        text-align: center;
+      } 
+      table.tabla_np thead th:first-child { 
+        border: none; 
+      }
+      table.tabla_np tbody td { 
+        color: rgb(80, 76, 76); 
+        border-bottom: 0.2em white solid;
+        font-size: 0.8em; 
+        font-weight: normal; 
+        text-align: center;
+        
+      }
+  
+      table.tabla_np tbody td:first-child { 
+        border-left: none; 
+      }
+      table.tabla_np tbody tr:last-child td { 
+        border-bottom: none; 
+      }
+  
+  
+  
+  .npcom{
+    font-size: 0.8em;
+    color: #fff;
+  }
+  .np_clasificado{
+    background-color: @verdeUp;
+   
+  }
+  .np_clasificado td:nth-child(2), .np_clasificado td:nth-child(10) {
+    font-weight: bold;
+   
+  }
+  
+  
+  .np_clasificado td:nth-child(1) {
+    /*background-color: white;*/
+  }
+  
+  .np_eliminado td:nth-child(1) {
+    /*background-color: white;*/
+  }
+  
+  .np_eliminado{
+    background-color: @rojoDown;
+  }
+  
+  .np_miniflag{
+    max-width: 32px;
+    margin-top: 0.5em;
+    text-align: left;
+  }
+  
+  .np_fondotabs{
+    background-color: @blanco !important;
+  }
+  .np_movil_fondotabs{
+    background-color: yellow !important;
+  }
+
+
+
+  .np_tabs{
+  background-color: @azulRusia;
+  }
+  .np_imagen_low{
+    opacity: 0.2;
+  }
+  .np_imagen_low + p{
+    opacity: 0.2;
+  }
+  .np_grupo_bold{
+    font-family: 'dusha';
+    padding-left: 0.5em;
+    font-size: 2.133em;
+    color: #fff;
+  }
+  .mov_np_grupo_bold{
+    font-family: 'dusha';
+    padding-left: 0.5em;
+    font-size: 1.2em;
+    color: #fff;
+    min-width: 100%;
+  }
+  .np_grupo_bold_gris{
+    font-family: 'dusha';
+    padding-left: 0.5em;
+    font-size: 2.133em;
+    color: rgb(48, 46, 46);  
+  }
+  .np_textodusha{
+    font-family: 'dusha'; 
+    text-transform: none;
+  }
+  .binf p{
+    font-family: 'dusha'; 
+  }
+.tabs__item--active{
+    background-color: @azulRusia_claro;
+    border: 1px @blanco solid;
+}
+li.white{
+    //background-color: @azulRusia_claro !important;
+   
+}
+
+.np_botonPrincipal{
+    background-color: @azulRusia_claro;
+}
+p.frasecula{
+    font-size: 0.7em;
+    line-height: 1.1em;
+    position: absolute;
+    bottom: 20px;
+}
+
+p.frasecula:before {
+    font-size: 0.9em;
+    font-weight: bolder;
+    content: open-quote;
+}
+p.frasecula:after {
+    font-size: 0.9em;
+    font-weight: bolder;
+    content: close-quote;
+}
+
+
+
+.green{
+ background-color: darken(@azulRusia, 5%) !important; 
+ border-color: @azulRusia !important;
+}
+.green.darken-4{
+  background-color: darken(@azulRusia, 10%) !important; 
+  font-weight: bolder !important;
+}
+.cal-header{
+  background: red !important;
+}
+
+
+/*TABLA DATE PICKER*/
+.np_datepicker table {
+  border-collapse: none;
+  	border-spacing: 0;
+	line-height: 1;
+	margin-bottom: 0px;
+	width: auto;
+	word-break: break-all;
+}
+
+td {
+	border-top: 1px solid #eee;
+	padding: 2px;
+}
+/*
+tbody {
+	border-bottom: 1px solid #eee;
+}
+
+td,
+th {
+	text-align: left;
+}
+
+
+
+th {
+	font-weight: 400;
+	padding: 0 6px;
+}
+
+td:first-child,
+th:first-child {
+	padding-left: 0;
+}*/
+/*FIN TABLA DATE PICKER*/
+
+
+
+
+.est1:before{
+    font-family: russia;
+    content: "\e900";
+  }
+
+  .est2:before{
+    font-family: russia;
+    content: "\e901";
+  }
+  .est3:before{
+    font-family: russia;
+    content: "\e902";
+  }
+  .est4:before{
+    font-family: russia;
+    content: "\e903";
+  }
+  .est5:before{
+    font-family: russia;
+    content: "\e904";
+  }
+  .est6:before{
+    font-family: russia;
+    content: "\e905";
+  }
+  .est7:before{
+    font-family: russia;
+    content: "\e906";
+  }
+  .est8:before{
+    font-family: russia;
+    content: "\e907";
+  }
+  .est9:before{
+    font-family: russia;
+    content: "\e908";
+  }
+  .est10:before{
+    font-family: russia;
+    content: "\e909";
+  }
+  .est11:before{
+    font-family: russia;
+    content: "\e90a";
+  }
+  .est12:before{
+    font-family: russia;
+    content: "\e90b";
+  }
+
+  
+/*Día a día pronos*/
+/*
+np_partido_dia
+  estadio_datos
+  equipo_local
+  equipo_visitante
+  comandos
+*/
+.np_partido_dia{
+  
+  background-image: url(polla.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  
+  padding: 0.2em;
+  border-top-right-radius: 0.8em;
+  border-bottom-left-radius: 0.4em;
+  margin-left: 1.2em;
+  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: 170px 1fr 90px 1fr;
+  grid-template-rows: 320px auto;
+  /*background-color: @azulRusia;*/
+}
+.np_partido_dia_proces{
+  background-color: rgba(128, 128, 128, 0.125);
+}
+.resultados{
+  /*max-height: 80%;*/
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /*grid-template-rows: 30% repeat(7, 10%);*/
+  grid-template-rows: 30% 5% 10% 5% 5% 10% 5% 30%;
+
+  
+}
+
+.np_estrella_dorada{
+  color: @dorado !important;
+}
+
+span.np_pronocomodin::after{
+  display: block;
+  margin-top: -32px !important;
+  font-family: 'Material Icons';
+  content: "\E83A";
+  color: @dorado;
+  font-size: 3.2em;
+  font-weight: bolder;
+
+}
+/*
+<div class="resultados">
+    <p class="res_superior"></p> 
+    <p class="res_pron">Pronóstico</p> 
+    <p class="res_pronlocal"> 0 </p> 
+    <p class="res_pronvis"> 2 </p> 
+    <p class="res_comodin"></p> 
+    <p class="res_marcador">Marcador</p> 
+    <p class="marcadorDef_loc">0</p> 
+    <p class="marcadorDef_vis">3</p> 
+    <p class="res_puntos">Puntos</p> 
+    <p class="res_pts">6</p>
+</div> 
+*/
+
+
+.res_superior{
+grid-column-start: 1;
+grid-column-end: 3;
+}
+.res_pron{
+grid-column-start: 1;
+grid-column-end: 3;
+font-size: 0.6em;
+vertical-align: bottom;
+  
+}
+.res_pronlocal{
+color: rgba(44, 42, 42, 0.904);
+font-weight: bold;
+}
+
+.res_pronvis{
+  color: rgba(44, 42, 42, 0.904);
+  font-weight: bold;
+}
+.res_comodin{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 0.6em;
+}
+
+.res_marcador{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 0.6em;
+  
+}
+.marcadorDef_loc{
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+ 
+.marcadorDef_vis{
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+.res_puntos{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 0.6em;
+}
+.res_pts{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  color: @azulRusia;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+
+/*
+            <p class="res_superior">superior</p>
+            <p class="res_pron">Pronóstico</p>
+            <p class="res_pronlocal"> {{ pronos_partido(partido.id).miloc}} </p>
+            
+            <p class="res_pronlocal"> {{ pronos_partido(partido.id).mivis}} </p>
+            <p class="res_comodin">Comodín</p>
+
+            <p class="res_marcador">Marcador</p>
+            <p class="marcadorDef_loc" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].lg}}</p>
+             
+            <p class="marcadorDef_vis" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].vg}}</p>
+            <p class="res_puntos">Puntos</p>
+            <p class="res_pts">6</p>
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+span.marcadorDef{
+  font-weight: 2em;
+  color: @azulRusia;
+}
+.estadio_datos{
+  
+ 
+  /*background-color: rgb(255, 255, 255);*/
+}
+.equipo_local,.equipo_visitante{
+    
+    color: rgb(109, 108, 108);
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+  .comandos{
+    border-radius: 0.66em;
+    background-color: rgba(51, 51, 51, 0.2);
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  .estadio_icono{
+    font-size: 5em;
+    text-align: center;
+    color: @diario_estilo;
+    display: block;
+    font-weight: lighter;
+    margin-bottom: -30px;
+    margin-top: -30px;
+  }
+.estadio_datos p{
+  font-family: 'dusha';
+  text-align: center;
+  font-size: 0.88em;
+  line-height: 1.2em;
+  
+
+}
+img.flags_diario{
+  display: block;
+  max-height: 120px;
+  margin: 0 auto;
+}
+img.flags_diario_mini{
+  display: block;
+  max-height: 120px;
+  margin: 0 auto;
+}
+
+
+span.horapartido{
+  margin-left: 0.5em;
+  margin-top: -20px;
+  display: block;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 0.2em;
+  font-family: 'dusha';
+  border-radius: 0.2em;
+  background-color: @doradoSuave;
+}
+
+
+@media only screen and (max-width: 860px) {
+  .np_partido_dia{
+    float: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    /*background-color: @azulRusia;*/
+  }  
+  .comandos{
+    border-radius: 0.66em;
+    background-color: rgba(51, 51, 51, 0.2);
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+}
+/*Fin pronos día a día*/
+
+
+
+
+
+.np_futer{
+  text-align: center !important;
+}
+
+.kook{
+  border-radius: 0.2em;
+  background-color: lime;
+  border: 2px red solid;
+  min-height: 200px;
+}
+
+.kook1{
+  border-radius: 0.2em;
+  background-color: red;
+  border: 2px lime solid;
+  min-height: 200px;
+}
+
+.np_pts_flashcard{
+  font-size: 14px;
+  display: block;
+  margin-top: -30px;
+  
+}
+
+
+
+
+.tabla_puntos_comodin_header::before{
+    font-family: 'Material Icons' !important;
+    content: "\E83A" !important;
+    color: @dorado !important;
+    
+    font-weight: bolder;
+}
+.tabla_puntos{
+  
+  font-weight: bolder !important;
+}
+
+span.np_manito{
+  cursor: pointer;
+}
+.good-table td, .good-table th{
+  text-align: center !important;
+}
+
+.np_pollero_tablapos{
+  cursor: pointer;
+  font-weight: 800 !important;
+}
+span.np_flashcard_posicion{
+  display: block;
+  font-size: 0.6em !important;
+}
+
+div.flipInX.flashcard{
+  min-height: 380px !important;
+}
+
+
+main#genesis-content{
+  /*background-color: red !important;*/
+  min-width: 100% !important;
+}
+.pollero_titulo_error{
+padding: 0.5em;
+background-color: red;
+}
+.pollero_titulo{
+  padding: 0.5em;
+  
+}
+
+.puntaje_pronos_partido{
+  font-weight: bolder;
+}
+td.wwww{
+  max-width: 30px;
+  padding: 0.3em;
+}
+
+
+table.pollk input{
+  max-width: 60px !important;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0!important;
+  margin: 0!important
+}
+
+/*MOBILE*/
+.np_movil_marcador{
+  display: block;
+  padding: 0.6em;
+  font-size: 26px;
+}
+
+.np_movil_marcadorfinal{
+color: @azulRusia !important;
+font-size: 2em;
+}
+.np_movil_puntos{
+  color: @azulRusia;
+  font-weight: bolder;
+  font-size: 2em;
+}
+p.np_movil_marcadorfinal_label{
+  font-size: 0.6em;
+  text-align: center;
+  text-transform: uppercase !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+p.np_movil_grupo{
+font-size: 1.2em;
+font-family: 'dusha';
+padding-left: 0.8em;
+}
+.np_movil_diario{
+  color: rgb(28, 29, 28) !important;
+}
+
+span.pospoll{
+  font-size: 1.8em;
+}
+span.pospoll_label{
+  display: block;
+  font-size: 0.6em;
+}
+div.__com{
+
+ max-width: 100% !important;
+}
+div.__mloc{
+  background-color: rgb(47, 185, 29);
+  max-width: 100% !important;
+}
+div.__mvis{
+  background-color: rgb(10, 21, 180);
+  max-width: 100% !important;
+}
+div.__loc{
+  font-size: 0.7em;
+  max-width: 100% !important;
+}
+div.__vis{
+  font-size: 0.7em;
+  max-width: 100% !important;
+}
+.mov_np_textinput{
+  max-width: 100% !important;
+  min-width: 100% !important;
+  font-size: 12px !important;
+  color: red !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.jefe{
+  z-index: 300002 !important;
+}
+
+
+@import "buefy.less";
+
+
+
+.qps_comodin::after{
+  display: block;
+  margin-top: -25px !important;
+  font-family: 'Material Icons';
+  content: "\E83A";
+  color: @dorado;
+  font-size: 4em;
+  font-weight: bolder;
+}
+/*LOGOS NUESTRA POLLA*/
+img.np_logo_superior{
+  margin-top: 50px;
+}
+img.bannerpolla{
+  max-height: 60px;
+}
+div.pagination-controls .info{
+  background-color: none !important;
+  background: none !important;
+}
+.np_textosmalltitulo{
+  font-size: 0.7em;
+  font-weight: bolder;
+}
+.dato_size3{
+  font-size: 1.2em;
+}
+.dato_size2{
+  font-size: 2.0em;
+}
+.dato_size1{
+  font-size: 3.22em;
+}
+.dato_size0{
+  font-size: 5.41em;
+}
+.pollacontainer {
+  margin-top: -30px !important;
+}
+.site-footer{
+  display: none;
+}
+.footer-widgets{
+  max-height: 50px !important;
+  /*background-color: lime;*/
+  
+}
+.completacard{
+  min-height: 100%;
+}
+.np_guardar_no{
+  background-color: lighten(@rojoDown, 22%);
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+span.tempoprono .vue-countdown {
+	padding: 0;
+	margin: 0;
+    color: rgb(231, 23, 23);
+}
+span.tempoprono .vue-countdown .digit {
+	font-size: 18px;
+	font-weight: 900;
+	line-height: 1.2;
+	margin-bottom: 0;
+}
+
+/*COuntDown*/
+.vue-countdown {
+	padding: 0;
+	margin: 0;
+    color: #fff;
+}
+
+.vue-countdown li {
+	display: inline-block;
+	margin: 0 8px;
+	text-align: center;
+	position: relative;
+}
+
+.vue-countdown li:after {
+	content: ':';
+	position: absolute;
+	top: 0;
+	right: -13px;
+	font-size: 20px;
+}
+
+.vue-countdown li:first-of-type {
+	margin-left: 0;
+}
+
+.vue-countdown li:last-of-type {
+	margin-right: 0;
+}
+
+.vue-countdown li:last-of-type:after {
+	content: '';
+}
+
+.vue-countdown .digit {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 0;
+}
+
+.vue-countdown .text {
+	text-transform: uppercase;
+	margin-bottom: 12px;
+	font-size: 12px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: pink;
+  font-size: 0.8em;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: pink;
+  font-size: 0.8em;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: pink;
+  font-size: 0.8em;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: pink;
+  font-size: 0.8em;
+}
+
+//Página REGISTRO QUITAR LOG IN INICIAR SESIÓN
+.paginaregistro .um-right{
+  display: none;
+}
+
+.winner{
+  background-color: yellow;
+}
+.bigstadium{
+  font-size: 9em !important;
+}
+//AVATAR IMAGEN
+img.np_avatar_mona{
+  max-width: 120px;
+  min-width: 120px;
+  border: 1px red solid;
+}
+
+////FICHA POLLERO
+
+
+
+div.np_perfilPollero{
+  border-bottom: 5px rgb(54, 67, 247) solid;
+  background-color: rgba(253, 11, 11, 0.767);
+}
+div.np_perfilPollera{
+  border-bottom: 5px rgb(252, 164, 164) solid;
+  background-color: rgba(247, 0, 255, 0.767);
+}
+
+
+
+
+
+
+.draggable-item{
+  height: 40px;
+  line-height: 50px;
+  text-align: center;
+  width : 100%;
+  display: block;
+  background-color: #fff;
+  outline: 0;
+  border: 1px solid rgba(0,0,0,.125);
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+.draggable-item-horizontal{
+    height: 300px;
+    padding: 10px;
+    line-height: 100px;
+    text-align: center;
+    /* width : 200px; */
+    display: block;
+    background-color: #fff;
+    outline: 0;
+    border: 1px solid rgba(0,0,0,.125);
+    margin-right: 4px;
+}
+
+
+.dragging {
+  background-color: yellow;
+}
+
+.card-scene{
+  padding: 50px;
+  /* background-color: #fff; */
+}
+
+.card-container{
+  width: 320px;
+  padding: 10px;
+  margin: 5px;
+  margin-right: 45px;
+  background-color: #f3f3f3;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+}
+
+.card{
+  margin: 5px;
+  /* border: 1px solid #ccc; */
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  padding: 10px;
+}
+
+.card-column-header{
+  font-size: 18px;
+}
+
+.column-drag-handle{
+  cursor: move;
+  padding: 5px; 
+}
+
+.card-ghost {
+  transition: transform 0.18s ease;
+  transform: rotateZ(5deg)
+}
+
+.card-ghost-drop{
+  transition: transform 0.18s ease-in-out;
+  transform: rotateZ(0deg)
+}
+
+.opacity-ghost {
+  transition: all .18s ease;
+  opacity: 0.8;
+  /* transform: rotateZ(5deg); */
+  background-color: cornflowerblue;
+  box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.3);
+}
+
+.opacity-ghost-drop {
+  opacity: 1;
+  /* transform: rotateZ(0deg); */
+  background-color: white;
+  box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.0);
+}
+//botones en clasificador
+
+span.clasificador_match{
+font-size: 0.8em;
+display: block;
+padding: 0;
+margin-top: -10px;
+}
+span.clasificador_fecha{
+  font-size: 0.6em;
+  display: block;
+  padding: 0;
+  margin-top: -35px;
+}
+div.clasificador_g1{
+  background-color: #C8E6C9;
+  cursor: pointer;
+}
+div.clasificador_g2{
+  background-color: #FFCC80;
+  cursor: pointer;
+}
+div.clasificador_g3{
+  background-color: #F8BBD0;
+  cursor: pointer;
+}
+div.clasificador_g4{
+  background-color: #CFD8DC;
+  cursor: pointer;
+}
+span.versionpolla{
+  font-size: 0.4em !important;
+  color: red;
+  margin-left: 150px;
+}
