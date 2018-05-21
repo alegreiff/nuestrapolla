@@ -12,3 +12,8 @@ polla/*.7z
 polla/*.json
 polla/*.js
 polla/.babelrc
+polla/dist/*.db
+polla/*.md
+polla/*.html
+polla/*.log
+polla/*.lock
