@@ -391,7 +391,10 @@ export const datos = new Vuex.Store({
 			return state.posiciones;
 		},
 		nombrePollero: (state) => {
-			return state.datosUsuarioWordpress.data[0]
+			var tempo = state.datosUsuarioWordpress.data[0]
+			tempo = tempo.toLowerCase()
+			tempo = tempo[0].toUpperCase() + tempo.slice(1)
+			return tempo
 		},
 		partidosProcesados: (state, getters) => {
 			var procesados = _.filter(getters.consolidadoPronos, {
