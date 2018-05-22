@@ -232,8 +232,8 @@
 			</v-layout>
 			<v-layout row wrap>
 				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
-					<v-chip :class="p_amigo(item.polleroamigo).col" text-color="white">
-            <v-avatar class="light-blue darken-2">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
+					<v-chip class="light-blue darken-2" text-color="white">
+            <v-avatar :class="p_amigo(item.polleroamigo).col">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
             {{ item.pollero }}
           </v-chip>
 				</v-flex>
