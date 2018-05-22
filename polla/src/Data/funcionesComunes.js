@@ -23,42 +23,58 @@ const FuncionesComunesPLG = {
 			methods: {
 				p_amigo(nombre){
 					var pa = '';
+					var colores = ['deep-purple darken-1','deep-purple darken-2','deep-purple darken-3','deep-purple darken-4','indigo darken-1','indigo darken-2','indigo darken-3','indigo darken-4','blue darken-3','blue darken-4','','','']
+					var color = ''
 					switch(nombre){
 						case 'Alfonso Acosta':
 							pa = 'AA'
+							color = colores[0]
 							break;
 						case 'Diego Urrutia':
 							pa = 'DU'
+							color = colores[1]
 							break;
 						case 'Esteban Muñoz':
 							pa = 'EM'
+							color = colores[2]
 							break;
 						case 'Federico Arango':
 							pa = 'FA'
+							color = colores[3]
 							break;
 						case 'Jaime de Greiff':
 							pa = 'JD'
+							color = colores[4]
 							break;
 						case 'Luis Carlos Urrutia':
 							pa = 'LU'
+							color = colores[5]
 							break;
 						case 'Luis Fernando Velasco':
 							pa = 'LV'
+							color = colores[6]
 							break;
 						case 'Miller Sánchez':
 							pa = 'MS'
+							color = colores[7]
 							break;
 						case 'Natalia Guerrero':
 							pa = 'NG'
+							color = colores[8]
 							break;
 						case 'Ricardo Ramírez':
 							pa = 'RR'
+							color = colores[9]
 							break;
 						default:
 							pa = '--';
+							color = colores[10]
 						
 					}
-					return pa;
+					var sale = new Array();
+					sale['pollero']= pa;
+					sale['col'] = color;
+					return sale;
 				},
 				diferencia (fin, inicio) {
 					var startTime = moment(inicio)
