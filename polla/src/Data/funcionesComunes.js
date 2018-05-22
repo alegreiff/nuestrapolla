@@ -21,6 +21,45 @@ const FuncionesComunesPLG = {
 			watch: {},
 			mounted () {},
 			methods: {
+				p_amigo(nombre){
+					var pa = '';
+					switch(nombre){
+						case 'Alfonso Acosta':
+							pa = 'AA'
+							break;
+						case 'Diego Urrutia':
+							pa = 'DU'
+							break;
+						case 'Esteban Muñoz':
+							pa = 'EM'
+							break;
+						case 'Federico Arango':
+							pa = 'FA'
+							break;
+						case 'Jaime de Greiff':
+							pa = 'JD'
+							break;
+						case 'Luis Carlos Urrutia':
+							pa = 'LU'
+							break;
+						case 'Luis Fernando Velasco':
+							pa = 'LV'
+							break;
+						case 'Miller Sánchez':
+							pa = 'MS'
+							break;
+						case 'Natalia Guerrero':
+							pa = 'NG'
+							break;
+						case 'Ricardo Ramírez':
+							pa = 'RR'
+							break;
+						default:
+							pa = '--';
+						
+					}
+					return pa;
+				},
 				diferencia (fin, inicio) {
 					var startTime = moment(inicio)
 					var endTime = moment(fin)

@@ -232,11 +232,10 @@
 			</v-layout>
 			<v-layout row wrap>
 				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
-					<v-card color="grey lighten-4" light>
-						<v-card-text class="text-xs-center">
-							<p class="textopeq">{{ item.pollero }}</p>
-						</v-card-text>
-					</v-card>
+					<v-chip>
+            <v-avatar class="teal">{{ p_amigo(item.polleroamigo)}}</v-avatar>
+            {{ item.pollero }}
+          </v-chip>
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
