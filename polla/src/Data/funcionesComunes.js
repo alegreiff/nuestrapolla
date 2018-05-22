@@ -23,7 +23,7 @@ const FuncionesComunesPLG = {
 			methods: {
 				p_amigo(nombre){
 					var pa = '';
-					var colores = ['deep-purple darken-1','deep-purple darken-2','deep-purple darken-3','deep-purple darken-4','indigo darken-1','indigo darken-2','indigo darken-3','indigo darken-4','blue darken-3','blue darken-4','red']
+					var colores = ['red darken-1','red darken-2','red darken-3','red darken-4','pink darken-1','pink darken-2','pink darken-3','pink darken-4','purple darken-1','purple darken-2','purple darken-3']
 					var color = ''
 					switch(nombre){
 						case 'Alfonso Acosta':
