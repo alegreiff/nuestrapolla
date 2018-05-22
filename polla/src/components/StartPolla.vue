@@ -57,9 +57,9 @@
 				</v-flex>
 				<v-flex xs12 md6 lg3>
 					<v-card color="pollagris" dark class="completacard">
-						<v-card-text class="text-xs-center">
+						<v-card-text class="text-xs-center np_frasepolla">
 							
-							<span>No es tu polla. No es mi polla. Es Nuestra Polla</span>
+							<span>{{lafrase()}}</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -215,9 +215,9 @@
 				</v-flex>
 				<v-flex xs12 md6 lg3>
 					<v-card color="pollagris" dark class="completacard">
-						<v-card-text class="text-xs-center">
-							<p>Lista de confirmados</p>
-							<span>Polleros amigos</span>
+						<v-card-text class="text-xs-center np_frasepolla">
+							
+							<span>{{lafrase()}}</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -302,6 +302,9 @@ export default {
       TiempoRestante
 	  },
   methods:{
+		lafrase () {
+			return this.frasesculas[Math.floor(Math.random() * this.frasesculas.length)]
+		},
     sortObject (obj) {
         var arr = [];
         var prop;
@@ -377,7 +380,7 @@ export default {
     }
   },
     computed: {
-    ...mapState(['horamostrable']),
+    ...mapState(['horamostrable', 'frasesculas']),
     ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
