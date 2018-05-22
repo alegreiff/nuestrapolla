@@ -23,7 +23,7 @@ const FuncionesComunesPLG = {
 			methods: {
 				p_amigo(nombre){
 					var pa = '';
-					var colores = ['deep-purple darken-1','deep-purple darken-2','deep-purple darken-3','deep-purple darken-4','indigo darken-1','indigo darken-2','indigo darken-3','indigo darken-4','blue darken-3','blue darken-4','','','']
+					var colores = ['deep-purple darken-1','deep-purple darken-2','deep-purple darken-3','deep-purple darken-4','indigo darken-1','indigo darken-2','indigo darken-3','indigo darken-4','blue darken-3','blue darken-4','red']
 					var color = ''
 					switch(nombre){
 						case 'Alfonso Acosta':
@@ -67,7 +67,7 @@ const FuncionesComunesPLG = {
 							color = colores[9]
 							break;
 						default:
-							pa = '--';
+							pa = '##';
 							color = colores[10]
 						
 					}
