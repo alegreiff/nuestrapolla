@@ -234,7 +234,7 @@
 				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
 					<v-chip class="light-blue darken-2" text-color="white">
             <v-avatar :class="p_amigo(item.polleroamigo).col">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
-            {{ item.pollero }}
+            {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
           </v-chip>
 				</v-flex>
 			</v-layout>
@@ -302,6 +302,10 @@ export default {
       TiempoRestante
 	  },
   methods:{
+		pronos_parciales_pollero(pollero){
+		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+		return tempo.length;
+		},
 		lafrase () {
 			return this.frasesculas[Math.floor(Math.random() * this.frasesculas.length)]
 		},
