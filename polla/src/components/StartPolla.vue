@@ -308,7 +308,7 @@ export default {
 			console.log("El PA es " + sale.sigla);
 			return sale.sigla;
 		},
-		es_pollero_amigo(id){
+		/*es_pollero_amigo(id){
 			var sale = _.find(this.pollerosamigos, { 'id': id});
 			if(sale){
 				return sale.id === id ? true: false
@@ -316,7 +316,7 @@ export default {
 				return false;
 			}
 			
-		},
+		},*/
 		pronos_parciales_pollero(pollero){
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
 		return tempo.length;
