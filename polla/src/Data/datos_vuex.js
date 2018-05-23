@@ -8,6 +8,20 @@ export const datos = new Vuex.Store({
 		posiciones: null,
 		lastmatch: null,
 		sedes: [],
+		
+		pollerosamigos: [
+			{id: 2, sigla: 'AA', nombre: 'Alfonso Acosta'},
+			{id: 2, sigla: 'DU', nombre: 'Diego Urrutia'},
+			{id: 2, sigla: 'EM', nombre: 'Esteban Muñoz'},
+			{id: 2, sigla: 'FA', nombre: 'Federico Arango'},
+			{id: 2, sigla: 'JD', nombre: 'Jaime de Greiff'},
+			{id: 2, sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
+			{id: 2, sigla: 'LV', nombre: 'Luis Fernando Velasco'},
+			{id: 2, sigla: 'MS', nombre: 'Miller Sánchez'},
+			{id: 2, sigla: 'NG', nombre: 'Natalia Guerrero'},
+			{id: 2, sigla: 'RR', nombre: 'Ricardo Ramírez'},
+			{id: 2, sigla: '##', nombre: 'OTRO'}
+		],
 		/*
 		*/
 		valorequipos: [

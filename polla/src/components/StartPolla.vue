@@ -235,6 +235,7 @@
 					<v-chip class="light-blue darken-2" text-color="white">
             <v-avatar :class="p_amigo(item.polleroamigo).col">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
             {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
+						{{quien(item.pollero)}}
           </v-chip>
 				</v-flex>
 			</v-layout>
@@ -302,6 +303,11 @@ export default {
       TiempoRestante
 	  },
   methods:{
+		quien(jugatore){
+			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
+			console.log("El PA es " + sale);
+			return sale;
+		},
 		pronos_parciales_pollero(pollero){
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
 		return tempo.length;
@@ -384,7 +390,7 @@ export default {
     }
   },
     computed: {
-    ...mapState(['horamostrable', 'frasesculas']),
+    ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
     ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
