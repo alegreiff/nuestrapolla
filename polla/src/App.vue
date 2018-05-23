@@ -37,7 +37,7 @@
     <v-footer  fixed color="pollarojo2" dark>
       <span><TiempoRestante deadline="June 14, 2018 10:00"></TiempoRestante></span>
       <button v-shortkey.once="['ctrl', 'h']" @shortkey="theAction()"></button> <span class="versionpolla">
-        v.0.93 Pronósticos por pollero
+        {{infoversion}}
         </span>
     </v-footer>
     <template>
@@ -69,6 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
+      infoversion: 'v.0.97 Polleros y polleras en colores',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
