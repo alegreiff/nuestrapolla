@@ -10,17 +10,17 @@ export const datos = new Vuex.Store({
 		sedes: [],
 		
 		pollerosamigos: [
-			{id: 2, sigla: 'AA', nombre: 'Alfonso Acosta'},
-			{id: 2, sigla: 'DU', nombre: 'Diego Urrutia'},
-			{id: 2, sigla: 'EM', nombre: 'Esteban Muñoz'},
-			{id: 2, sigla: 'FA', nombre: 'Federico Arango'},
-			{id: 2, sigla: 'JD', nombre: 'Jaime de Greiff'},
-			{id: 2, sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
-			{id: 2, sigla: 'LV', nombre: 'Luis Fernando Velasco'},
-			{id: 2, sigla: 'MS', nombre: 'Miller Sánchez'},
-			{id: 2, sigla: 'NG', nombre: 'Natalia Guerrero'},
-			{id: 2, sigla: 'RR', nombre: 'Ricardo Ramírez'},
-			{id: 2, sigla: '##', nombre: 'OTRO'}
+			{id: 18, sigla: 'AA', nombre: 'Alfonso Acosta'},
+			{id: 0, sigla: 'DU', nombre: 'Diego Urrutia'},
+			{id: 6, sigla: 'EM', nombre: 'Esteban Muñoz'},
+			{id: 19, sigla: 'FA', nombre: 'Federico Arango'},
+			{id: 0, sigla: 'JD', nombre: 'Jaime de Greiff'},
+			{id: 10, sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
+			{id: 7, sigla: 'LV', nombre: 'Luis Fernando Velasco'},
+			{id: 0, sigla: 'MS', nombre: 'Miller Sánchez'},
+			{id: 0, sigla: 'NG', nombre: 'Natalia Guerrero'},
+			{id: 11, sigla: 'RR', nombre: 'Ricardo Ramírez'},
+			{id: 0, sigla: '##', nombre: 'OTRO'}
 		],
 		/*
 		*/
