@@ -309,7 +309,7 @@ export default {
 			return sale.sigla;
 		},
 		es_pollero_amigo(id){
-			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
+			var sale = _.find(this.pollerosamigos, { 'id': id});
 			return sale.id === id ? true: false
 			
 		},
