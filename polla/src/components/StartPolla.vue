@@ -235,7 +235,7 @@
 					<v-chip class="light-blue darken-2" text-color="white">
             <v-avatar :class="p_amigo(item.polleroamigo).col">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
             {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
-						{{quien(item.polleroamigo)}}  {{es_pollero_amigo(item.id)}}
+						{{quien(item.polleroamigo)}}  <!--{{es_pollero_amigo(item.id)}}-->
 						
           </v-chip>
 				</v-flex>
