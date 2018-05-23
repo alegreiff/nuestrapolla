@@ -307,7 +307,11 @@ export default {
 		quien(jugatore){
 			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
 			console.log("El PA es " + sale.sigla);
-			return sale.sigla;
+			if(sale){
+				return sale.sigla;
+			}else{
+				return "NA"
+			}
 		},
 		es_pollero_amigo(id){
 			var sale = _.find(this.pollerosamigos, { 'id': id});
