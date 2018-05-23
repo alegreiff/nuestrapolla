@@ -234,7 +234,7 @@
 				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
 					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white">
             <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
-            <v-icon v-if="es_pollero_amigo(item.id)">person</v-icon> {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
+            <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
 						
           </v-chip>
 				</v-flex>
