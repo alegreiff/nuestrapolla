@@ -10,7 +10,7 @@ export const datos = new Vuex.Store({
 		sedes: [],
 		
 		pollerosamigos: [
-			{id: 18, sigla: 'AA', nombre: 'Alfonso Acosta'},
+			{id: 18, sigla: 'AA', nombre: 'Alfonso Acosta'}, 
 			{id: 0, sigla: 'DU', nombre: 'Diego Urrutia'},
 			{id: 6, sigla: 'EM', nombre: 'Esteban Muñoz'},
 			{id: 19, sigla: 'FA', nombre: 'Federico Arango'},

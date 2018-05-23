@@ -235,6 +235,7 @@
 					<v-chip class="light-blue darken-2" text-color="white">
             <v-avatar :class="p_amigo(item.polleroamigo).col">{{ p_amigo(item.polleroamigo).pollero}}</v-avatar>
             {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
+						{{quien(item.polleroamigo)}}  {{es_pollero_amigo(item.id)}}
 						
           </v-chip>
 				</v-flex>
@@ -303,12 +304,12 @@ export default {
       TiempoRestante
 	  },
   methods:{
-		/*quien(jugatore){
+		quien(jugatore){
 			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
 			console.log("El PA es " + sale.sigla);
 			return sale.sigla;
-		},*/
-		/*es_pollero_amigo(id){
+		},
+		es_pollero_amigo(id){
 			var sale = _.find(this.pollerosamigos, { 'id': id});
 			if(sale){
 				return sale.id === id ? true: false
@@ -316,7 +317,7 @@ export default {
 				return false;
 			}
 			
-		},*/
+		},
 		pronos_parciales_pollero(pollero){
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
 		return tempo.length;
