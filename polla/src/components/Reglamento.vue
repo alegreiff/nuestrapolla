@@ -7,16 +7,16 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs4>
+        <v-flex xs3>
             <v-card dark color="secondary">
                 <v-card-text class="px-0">
                     <v-btn :color="b1 ? 'error' : 'info'" @click="cambiacontenido(tx_intro, 'b1')" block small>Generalidades</v-btn>
                     <v-btn :color="b2 ? 'error' : 'info'" @click="cambiacontenido(tx_3, 'b2')" block small>Inscripción</v-btn>
-                    <v-btn :color="b3 ? 'error' : 'info'" @click="cambiacontenido(tx_2, 'b3')" block small>Fases y fechas de carga de marcadores</v-btn>
-                    <v-btn :color="b4 ? 'error' : 'info'" @click="cambiacontenido(tx_4, 'b4')" block small>¿Cómo se crean los pronósticos?</v-btn>
-                    <v-btn :color="b5 ? 'error' : 'info'" @click="cambiacontenido(tx_5, 'b5')" block small>Menús de la página</v-btn>
-                    <v-btn :color="b6 ? 'error' : 'info'" @click="cambiacontenido(tx_6, 'b6')" block small>6</v-btn>
-                    <v-btn :color="b7 ? 'error' : 'info'" @click="cambiacontenido(tx_2, 'b7')" block small>2</v-btn>
+                    <v-btn :color="b3 ? 'error' : 'info'" @click="cambiacontenido(tx_2, 'b3')" block small>Fases y fechas</v-btn>
+                    <v-btn :color="b4 ? 'error' : 'info'" @click="cambiacontenido(tx_4, 'b4')" block small>Pronósticos</v-btn>
+                    <v-btn :color="b5 ? 'error' : 'info'" @click="cambiacontenido(tx_5, 'b5')" block small>Menús</v-btn>
+                    <v-btn :color="b6 ? 'error' : 'info'" @click="cambiacontenido(tx_6, 'b6')" block small>Costo</v-btn>
+                    <v-btn :color="b7 ? 'error' : 'info'" @click="cambiacontenido(tx_7, 'b7')" block small>Puntajes</v-btn>
                 </v-card-text>
             </v-card>
         </v-flex>
@@ -24,8 +24,10 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento" v-html="textoactivo"></div>
+                     
                 </v-card-text>
             </v-card>
+            <b-table :data="data" :columns="columns"></b-table>
         </v-flex>
         <v-flex xs12>
             <v-card dark color="primary">
@@ -51,8 +53,8 @@ export default {
         b5: false,
         b6: false,
         b7: false,
-        tx_intro: "<p>¿Por qué muchos nos vemos tentados a participar en una polla del mundial de fútbol? Por muchas razones. Una de las más válidas es porque le da más sabor al mundial. Hemos comprobado que a personas que no gustan del fútbol y a quienes el mundial les parece exagerado, inscribirse en <b>Nuestra Polla</b> les cambia la percepción del evento. Inscribirse en <b>Nuestra Polla</b> es despertar los sentidos, es echarle ají a una empanada para potenciar el trabajo de las papilas gustativas. Participar en <b>Nuestra Polla</b> es emocionante, es garantizar la emoción del mundial.</p><p><b>Nuestra Polla</b> no está abierta a todo aquel que quiera participar; se accede por invitación de uno de los polleros amigos, quienes hacen viable el proceso. Los polleros amigos se encargan de dar a conocer <b>Nuestra Polla</b>, avalar a quienes se registran para participar, recoger el dinero de la inscripción, apoyar a su grupo de polleros en cualquier duda que surja y establecer contacto con el pollero mayor, quien se encarga de la administración de la <b>Nuestra Polla</b> y de la página web que la soporta.</p><p>A diferencia de los mundiales anteriores, el de Rusia 2018 no tendrá dos pollas (polla y repolla las llamábamos), sino una sola, que contempla los 64 partidos. Por esta razón, el valor de participación suma los valores equivalentes a la antigua dupla compuesta por polla y repolla. Ello determina que los premios serán muy jugosos y que los polleros deben asumir el compromiso de inscribir sus pronósticos en cinco momentos, porque en nuestro modelo se aplica sobre partidos ciertos, no sobre posibles llaves, definidas desde antes que empiece el mundial. No inscribir resultados significa perder los puntos de esa fase y restar muchas posibilidades de ser uno de los ganadores. Estos son los cinco momentos de inscripción de pronósticos y los plazos límite para hacerlo.</p>",
         textoactivo: null,
+        tx_intro: "<p>¿Por qué muchos nos vemos tentados a participar en una polla del mundial de fútbol? Por muchas razones. Una de las más válidas es porque le da más sabor al mundial. Hemos comprobado que a personas que no gustan del fútbol y a quienes el mundial les parece exagerado, inscribirse en <b>Nuestra Polla</b> les cambia la percepción del evento. Inscribirse en <b>Nuestra Polla</b> es despertar los sentidos, es echarle ají a una empanada para potenciar el trabajo de las papilas gustativas. Participar en <b>Nuestra Polla</b> es emocionante, es garantizar la emoción del mundial.</p><p><b>Nuestra Polla</b> no está abierta a todo aquel que quiera participar; se accede por invitación de uno de los polleros amigos, quienes hacen viable el proceso. Los polleros amigos se encargan de dar a conocer <b>Nuestra Polla</b>, avalar a quienes se registran para participar, recoger el dinero de la inscripción, apoyar a su grupo de polleros en cualquier duda que surja y establecer contacto con el pollero mayor, quien se encarga de la administración de la <b>Nuestra Polla</b> y de la página web que la soporta.</p><p>A diferencia de los mundiales anteriores, el de Rusia 2018 no tendrá dos pollas (polla y repolla las llamábamos), sino una sola, que contempla los 64 partidos. Por esta razón, el valor de participación suma los valores equivalentes a la antigua dupla compuesta por polla y repolla. Ello determina que los premios serán muy jugosos y que los polleros deben asumir el compromiso de inscribir sus pronósticos en cinco momentos, porque en nuestro modelo se aplica sobre partidos ciertos, no sobre posibles llaves, definidas desde antes que empiece el mundial. No inscribir resultados significa perder los puntos de esa fase y restar muchas posibilidades de ser uno de los ganadores. Estos son los cinco momentos de inscripción de pronósticos y los plazos límite para hacerlo.</p>",
         tx_2: `<ol>
         <li>Fase de grupos: 48 pronósticos. Deben inscribirse antes del martes 12 de junio a las 11:59 p.m.</li>
         <li>Octavos de final: 8 pronósticos. Deben inscribirse entre el 28 de junio 3:00 p.m. y el 29 de junio 11:00 p.m.</li>
@@ -95,22 +97,186 @@ export default {
         <li>Mi perfil (muestra la información del pollero, consignada en el registro; permite establecer la imagen del perfil, que será mostrada a todos los polleros, para su fácil identificación)</li>
         <li>Salir (para desconectarse de la página)</li>
         </ul>`,
-        tx_6: '6',
+        tx_6: `El costo de la inscripción es de $150.000. ¡Este valor de participación es el mismo de la suma de los costos de inscripción del Mundial Brasil 2014, porque la inscripción en esa polla (fase de grupos) fue por $100.000 y en esa repolla (fases restantes) fue de $50.000.`,
+        tx_7: `
+        <p>Nuestra Polla Rusia 2018 se juega con los 64 partidos del mundial y con 22 comodines, distribuidos en fases. La puntuación que otorga cada partido aumenta significativamente de acuerdo con la fase; los partidos de las finales dan más entre cinco y siete veces más puntos que los de la fase inicial, para que se mantenga la posibilidad de alcanzar a los punteros. La polla perfecta da 645 puntos e total: 320 en la fase de grupos y 325 en las fases siguientes.</p>
+
+<p>Ud., como pollero, suma en un partido en dos casos:
+-Si atina el resultado exacto del partido
+-Si no le pega al resultado exacto, pero sí a la distribución de puntos del partido. Ej.: el partido queda 3-0 y usted pronosticó 2-0.</p>
+
+<p>La otra condición que afecta la puntuación en un partido es el uso de comodines: doblan el puntaje que se obtiene en un partido.</p>
+
+<p>Para que sea muy claro el tema de la puntuación, es importante identificar las posibilidades de puntuación en un partido:</p>
+
+<table class="tabla_npreg"> 
+	<thead>
+		<tr>
+			<th width="200px">Nombre</th>
+			<th>Caso</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<td>Granchepazo</td>
+			<td>Con comodín, Ud. acierta de manera exacta el marcador del partido</td>
+		</tr>
+		<tr>
+			<td>Doble</td>
+			<td>Con comodín, Ud. acierta la distribución de puntos de un partido</td>
+		</tr>
+		<tr>
+			<td>Chepazo</td>
+			<td>Sin comodín, Ud. acierta de manera exacta el marcador del partido</td>
+		</tr>
+		<tr>
+			<td>Simple</td>
+			<td>Sin comodín, Ud. acierta la distribución de puntos de un partido</td>
+		</tr>
+		<tr>
+			<td>Blanco simple</td>
+			<td>Sin comodín, Ud. no acierta nada</td>
+		</tr>
+		<tr>
+			<td>Blanco con comodín</td>
+			<td>Con comodín, Ud. no acierta nada y ha desperdiciado un comodín</td>
+		</tr>
+		<tr>
+			<td>Nulo</td>
+			<td>Ojalá no ocurra. Ud. no inscribió el pronóstico dentro del plazo establecido para hacerlo</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>La siguiente tabla contiene la puntuación de cada fase del mundial.</p>
+<table class="tabla_npreg"> 
+	<thead>
+		<tr>
+			<th width="200px">---</th>
+			<th>Fase de grupos<br />48 partidos<br />16 comodines</th>
+			<th>Octavos<br /> 8 partidos<br />2 comodines)</th>
+			<th>Cuartos<br /> 4 partidos<br />2 comodines)</th>
+			<th>Semifinales<br /> 2 partidos<br />1 comodín)</th>
+			<th>Finales<br /> 2 partidos<br />1 comodín)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Granchepazo</td>
+			<td>10</td>
+			<td>20</td>
+			<td>30</td>
+			<td>40</td>
+			<td>50</td>
+		</tr>
+		<tr>
+			<td>Doble</td>
+			<td>6</td>
+			<td>12</td>
+			<td>20</td>
+			<td>30</td>
+			<td>40</td>
+		</tr>
+		<tr>
+			<td>Chepazo</td>
+			<td>5</td>
+			<td>10</td>
+			<td>15</td>
+			<td>20</td>
+			<td>25</td>
+		</tr>
+		<tr>
+			<td>Simple</td>
+			<td>3</td>
+			<td>6</td>
+			<td>10</td>
+			<td>15</td>
+			<td>20</td>
+		</tr>
+		<tr>
+			<td>Blanco simple</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>Blanco con comodín</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>Nulo</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+	</tbody>
+</table>
+        `,
+       data: [
+    { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
+    { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male' },
+    { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female' },
+    { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male' },
+    { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female' }
+], columns: [
+    {
+        field: 'id',
+        label: 'ID',
+        width: '40',
+        numeric: true
+    },
+    {
+        field: 'first_name',
+        label: 'First Name',
+    },
+    {
+        field: 'last_name',
+        label: 'Last Name',
+    },
+    {
+        field: 'date',
+        label: 'Date',
+        centered: true
+    },
+    {
+        field: 'gender',
+        label: 'Gender',
+    }
+]
     };
   },
   methods: {
       cambiacontenido(texto, boton){
-        console.log(boton)
-        this.boton
-        //this.boton = true;
-        /*this.textoactivo = texto;
+        //console.log(boton)
+        //this.boton
         this.b1 = false;
         this.b2 = false;
         this.b3 = false;
         this.b4 = false;
         this.b5 = false;
         this.b6 = false;
-        this.b7 = false;*/
+        this.b7 = false;
+        switch(boton){
+            case 'b1': this.b1 = true; break;
+            case 'b2': this.b2 = true; break;
+            case 'b3': this.b3 = true; break;
+            case 'b4': this.b4 = true; break;
+            case 'b5': this.b5 = true; break;
+            case 'b6': this.b6 = true; break;
+            case 'b7': this.b7 = true; break;
+        }
+        //this.boton = true;
+        this.textoactivo = texto;
+        
+        
         
         
       },
