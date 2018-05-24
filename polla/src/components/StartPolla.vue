@@ -23,9 +23,6 @@
 							<p v-if="estatuspronos>0">Pronósticos que le faltan para la fase de grupos: {{ estatuspronos }}</p>
 							<p>Partidos para esta fase {{ fasePolla.partidos }}</p>
 							<p>Esta es una polla de 64 partidos. Única para todo el mundial</p>
-							
-							
-							
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -57,32 +54,24 @@
 				</v-flex>
 				<v-flex xs12 md6 lg3>
 					<v-card color="pollagris" dark class="completacard">
-						<v-card-text class="text-xs-center np_frasepolla">
-							
-							<span>{{lafrase()}}</span>
-						</v-card-text>
-					</v-card>
-				</v-flex>
-				<v-flex xs12 md6 lg3>
-					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(elplandepremios.cuota) }}</p>
 							<span>Valor inscripción</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
-			</v-layout>
-			<v-layout row wrap>
 				<v-flex xs12 md6 lg3>
-					<v-card color="pollacrema" light>
+					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
-							<p class="dato_size2">{{ formatPremio(5) }}</p>
+							<p class="dato_size2">{{ formatPremio(6) }}</p>
 							<span>Gran bote</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
 				<v-flex xs12 md6 lg3>
-					<v-card color="pollagris" dark>
+					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(0) }}</p>
 							<span>Primer puesto</span>
@@ -90,7 +79,7 @@
 					</v-card>
 				</v-flex>
 				<v-flex xs12 md6 lg3>
-					<v-card color="pollacrema" light>
+					<v-card color="pollagris" dark class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(1) }}</p>
 							<span>Segundo puesto</span>
@@ -98,10 +87,18 @@
 					</v-card>
 				</v-flex>
 				<v-flex xs12 md6 lg3>
-					<v-card color="pollagris" dark>
+					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(2) }}</p>
 							<span>Tercer puesto</span>
+						</v-card-text>
+					</v-card>
+				</v-flex>
+				<v-flex xs12 md6 lg3>
+					<v-card color="red darken-4" dark class="completacard">
+						<v-card-text class="text-xs-center">
+							<p class="dato_size2">{{ formatPremio(4) }}</p>
+							<span>Ganador de la fase de grupos</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -290,14 +287,14 @@
 				<v-dialog v-model="pollerodata" max-width="500px">
         <v-card>
           <v-card-title>
-            Dialog 2
+            Datos de pollero
           </v-card-title>
           <v-card-text>
             
             {{txsnack}}
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" flat @click.stop="pollerodata=false">Close</v-btn>
+            <v-btn color="primary" flat @click.stop="pollerodata=false">Cerrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

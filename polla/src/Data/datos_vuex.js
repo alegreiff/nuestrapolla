@@ -20,6 +20,7 @@ export const datos = new Vuex.Store({
 			{id: 0, sigla: 'MS', nombre: 'Miller Sánchez'},
 			{id: 0, sigla: 'NG', nombre: 'Natalia Guerrero'},
 			{id: 11, sigla: 'RR', nombre: 'Ricardo Ramírez'},
+			{id: 0, sigla: 'MC', nombre: 'Marcela Cortés'},
 			{id: 0, sigla: '##', nombre: 'OTRO'}
 		],
 		/*
@@ -59,7 +60,7 @@ export const datos = new Vuex.Store({
 			{nombre: 'Irán', equipo: 8, puntos: 727, interes: 100},
 		],
 		//plandepremios:[50,20,10,15,5],
-		plandepremios: {cuota:150000, fee:20, porcentajes: [50, 20, 10, 15, 5, 100] },
+		plandepremios: {cuota:150000, fee:20, porcentajes: [50, 20, 10, 10, 5, 5, 100] },
 		frasesculas: [
 			'A esa edad se juega por plata, por compromiso, por durar un año más. Pero ya no hay ilusión. Y el fútbol es ilusión',
 			'Con Italia sería a otro precio',

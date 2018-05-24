@@ -10,13 +10,13 @@
         <v-flex xs4>
             <v-card dark color="secondary">
                 <v-card-text class="px-0">
-                    <v-btn color="info" @click="textoactivo = tx_intro" block small>Generalidades</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_3" block small>Inscripción</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_2" block small>Fases y fechas de carga de marcadores</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_4" block small>¿Cómo se crean los pronósticos?</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_5" block small>Menús de la página</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_6" block small>6</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_2" block small>2</v-btn>
+                    <v-btn :color="b1 ? 'error' : 'info'" @click="cambiacontenido(tx_intro, 'b1')" block small>Generalidades</v-btn>
+                    <v-btn :color="b2 ? 'error' : 'info'" @click="cambiacontenido(tx_3, 'b2')" block small>Inscripción</v-btn>
+                    <v-btn :color="b3 ? 'error' : 'info'" @click="cambiacontenido(tx_2, 'b3')" block small>Fases y fechas de carga de marcadores</v-btn>
+                    <v-btn :color="b4 ? 'error' : 'info'" @click="cambiacontenido(tx_4, 'b4')" block small>¿Cómo se crean los pronósticos?</v-btn>
+                    <v-btn :color="b5 ? 'error' : 'info'" @click="cambiacontenido(tx_5, 'b5')" block small>Menús de la página</v-btn>
+                    <v-btn :color="b6 ? 'error' : 'info'" @click="cambiacontenido(tx_6, 'b6')" block small>6</v-btn>
+                    <v-btn :color="b7 ? 'error' : 'info'" @click="cambiacontenido(tx_2, 'b7')" block small>2</v-btn>
                 </v-card-text>
             </v-card>
         </v-flex>
@@ -44,6 +44,13 @@ export default {
   
   data: function() {
     return {
+        b1: true,
+        b2: false,
+        b3: false,
+        b4: false,
+        b5: false,
+        b6: false,
+        b7: false,
         tx_intro: "<p>¿Por qué muchos nos vemos tentados a participar en una polla del mundial de fútbol? Por muchas razones. Una de las más válidas es porque le da más sabor al mundial. Hemos comprobado que a personas que no gustan del fútbol y a quienes el mundial les parece exagerado, inscribirse en <b>Nuestra Polla</b> les cambia la percepción del evento. Inscribirse en <b>Nuestra Polla</b> es despertar los sentidos, es echarle ají a una empanada para potenciar el trabajo de las papilas gustativas. Participar en <b>Nuestra Polla</b> es emocionante, es garantizar la emoción del mundial.</p><p><b>Nuestra Polla</b> no está abierta a todo aquel que quiera participar; se accede por invitación de uno de los polleros amigos, quienes hacen viable el proceso. Los polleros amigos se encargan de dar a conocer <b>Nuestra Polla</b>, avalar a quienes se registran para participar, recoger el dinero de la inscripción, apoyar a su grupo de polleros en cualquier duda que surja y establecer contacto con el pollero mayor, quien se encarga de la administración de la <b>Nuestra Polla</b> y de la página web que la soporta.</p><p>A diferencia de los mundiales anteriores, el de Rusia 2018 no tendrá dos pollas (polla y repolla las llamábamos), sino una sola, que contempla los 64 partidos. Por esta razón, el valor de participación suma los valores equivalentes a la antigua dupla compuesta por polla y repolla. Ello determina que los premios serán muy jugosos y que los polleros deben asumir el compromiso de inscribir sus pronósticos en cinco momentos, porque en nuestro modelo se aplica sobre partidos ciertos, no sobre posibles llaves, definidas desde antes que empiece el mundial. No inscribir resultados significa perder los puntos de esa fase y restar muchas posibilidades de ser uno de los ganadores. Estos son los cinco momentos de inscripción de pronósticos y los plazos límite para hacerlo.</p>",
         textoactivo: null,
         tx_2: `<ol>
@@ -92,6 +99,21 @@ export default {
     };
   },
   methods: {
+      cambiacontenido(texto, boton){
+        console.log(boton)
+        this.boton
+        //this.boton = true;
+        /*this.textoactivo = texto;
+        this.b1 = false;
+        this.b2 = false;
+        this.b3 = false;
+        this.b4 = false;
+        this.b5 = false;
+        this.b6 = false;
+        this.b7 = false;*/
+        
+        
+      },
   },
   computed: {
     //...mapGetters(['valueequipos', 'calendario', 'polleroFavoritos', 'equipoFavoritoID', 'nombrePollero']),
