@@ -231,8 +231,9 @@
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
-				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros">
-					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white">
+				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros" class="np_conocepolleros">
+					
+					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.pollero)">
             <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
             <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
 						
@@ -285,6 +286,22 @@
         </v-card>
       </v-dialog>
 			</template>
+			<template>
+				<v-dialog v-model="pollerodata" max-width="500px">
+        <v-card>
+          <v-card-title>
+            Dialog 2
+          </v-card-title>
+          <v-card-text>
+            
+            {{txsnack}}
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="pollerodata=false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+			</template>
 		</v-container>
 </template>
 <script>
@@ -295,6 +312,9 @@ import TiempoRestante from './TiempoRestante.vue'
 export default {
   data: () => ({
 		dialog2: false,
+		pollerodata: false,
+		txsnack: '',
+		timeout: 5000,
     valore: null,
     estatuspronos: null,
 
@@ -303,6 +323,10 @@ export default {
       TiempoRestante
 	  },
   methods:{
+		mueche(pollero){
+			this.txsnack = pollero;
+			this.pollerodata = true;
+		},
 		quien(jugatore){
 			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
 			//console.log("El PA es " + sale.sigla);

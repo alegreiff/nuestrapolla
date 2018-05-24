@@ -3,7 +3,7 @@
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
-                    ssss
+                    Reglamento Nuestra Polla Rusia 2018
                 </v-card-text>
             </v-card>
         </v-flex>
@@ -11,9 +11,9 @@
             <v-card dark color="secondary">
                 <v-card-text class="px-0">
                     <v-btn color="info" @click="textoactivo = tx_intro" block small>Generalidades</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_2" block small>2</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_3" block small>3</v-btn>
-                    <v-btn color="info" @click="textoactivo = tx_4" block small>Inscripción de los marcadores</v-btn>
+                    <v-btn color="info" @click="textoactivo = tx_3" block small>Inscripción</v-btn>
+                    <v-btn color="info" @click="textoactivo = tx_2" block small>Fases y fechas de carga de marcadores</v-btn>
+                    <v-btn color="info" @click="textoactivo = tx_4" block small>¿Cómo se crean los pronósticos?</v-btn>
                     <v-btn color="info" @click="textoactivo = tx_5" block small>Menús de la página</v-btn>
                     <v-btn color="info" @click="textoactivo = tx_6" block small>6</v-btn>
                     <v-btn color="info" @click="textoactivo = tx_2" block small>2</v-btn>
