@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.0.97 Polleros y polleras en colores',
+      infoversion: 'v.0.98 Plan de premios',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
