@@ -98,7 +98,7 @@
 					<v-card color="red darken-4" dark class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(4) }}</p>
-							<span>Ganador de la fase de grupos</span>
+							<span>Mejor pollero al finalizar la fase de grupos</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
