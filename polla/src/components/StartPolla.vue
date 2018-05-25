@@ -64,7 +64,8 @@
 					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(6) }}</p>
-							<span>Gran bote</span>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[6]}}%</span>
+							<span>Botín</span>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -74,6 +75,7 @@
 					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(0) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[0]}}%</span>
 							<span>Primer puesto</span>
 						</v-card-text>
 					</v-card>
@@ -82,7 +84,9 @@
 					<v-card color="pollagris" dark class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(1) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[1]}}%</span>
 							<span>Segundo puesto</span>
+							
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -90,6 +94,7 @@
 					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(2) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[2]}}%</span>
 							<span>Tercer puesto</span>
 						</v-card-text>
 					</v-card>
@@ -97,8 +102,10 @@
 				<v-flex xs12 md6 lg3>
 					<v-card color="red darken-4" dark class="completacard">
 						<v-card-text class="text-xs-center">
-							<p class="dato_size2">{{ formatPremio(4) }}</p>
+							<p class="dato_size2">{{ formatPremio(5) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[4]}}%</span>
 							<span>Mejor pollero al finalizar la fase de grupos</span>
+							
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -108,7 +115,9 @@
 					<v-card color="pollagris" dark>
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(3) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[3]}}%</span>
 							<span>Para repartir entre los mejores polleros de cada pollero amigo</span>
+							
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -116,6 +125,7 @@
 					<v-card color="pollacrema" light class="completacard">
 						<v-card-text class="text-xs-center">
 							<p class="dato_size2">{{ formatPremio(4) }}</p>
+							<span class="np_porcentaje">{{elplandepremios.porcentajes[4]}}%</span>
 							<span>Para el pollero amigo del gran ganador</span>
 						</v-card-text>
 					</v-card>
