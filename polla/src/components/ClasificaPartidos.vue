@@ -10,8 +10,9 @@
 				<Container :group-name="'1'" :get-child-payload="getChildPayload1" @drop="onDrop('g1', $event)">
 					<Draggable v-for="(partido, index) in g1" :key="partido.id">
 						<div class="draggable-item clasificador_g1">
-              <span class="clasificador_match"><strong>{{index + 1}}</strong> {{partido.local}} - {{partido.visitante}}</span>
-              <span class="clasificador_fecha">{{fechaCompleta(partido.fecha)}}</span>
+              <span class="clasificador_match"><strong>{{index + 1}}</strong> {{partido.local}} - {{partido.visitante}}<img :src="'/assets/dtv.png'" alt="" class="" v-if="partido.dtv===1"></span>
+              <span class="clasificador_fecha">{{ diaFechaCorta(partido.fecha) }} {{ fechaHoraLocal(partido.fecha, (partido.hora)) }}</span>
+              
 						</div>
 					</Draggable>
 				</Container>
@@ -22,8 +23,9 @@
 				<Container :group-name="'1'" :get-child-payload="getChildPayload2" @drop="onDrop('g2', $event)">
 					<Draggable v-for="(partido, index) in g2" :key="partido.id">
 						<div class="draggable-item clasificador_g2">
-              <span class="clasificador_match"><strong>{{index + 1 + g1.length}}</strong> {{partido.local}} - {{partido.visitante}}</span>
-              <span class="clasificador_fecha">{{fechaCompleta(partido.fecha)}}</span>
+              <span class="clasificador_match"><strong>{{index + 1 + g1.length}}</strong> {{partido.local}} - {{partido.visitante}}<img :src="'/assets/dtv.png'" alt="" class="" v-if="partido.dtv===1"></span>
+              <span class="clasificador_fecha">{{ diaFechaCorta(partido.fecha) }} {{ fechaHoraLocal(partido.fecha, (partido.hora)) }}</span>
+              
 						</div>
 					</Draggable>
 				</Container>
@@ -34,8 +36,10 @@
 				<Container :group-name="'1'" :get-child-payload="getChildPayload3" @drop="onDrop('g3', $event)">
 					<Draggable v-for="(partido, index) in g3" :key="partido.id">
 						<div class="draggable-item clasificador_g3">
-              <span class="clasificador_match"><strong>{{index + 1 + g1.length + g2.length}}</strong> {{partido.local}} - {{partido.visitante}}</span>
-              <span class="clasificador_fecha">{{fechaCompleta(partido.fecha)}}</span>
+              <span class="clasificador_match"><strong>{{index + 1 + g1.length + g2.length}}</strong> {{partido.local}} - {{partido.visitante}}<img :src="'/assets/dtv.png'" alt="" class="" v-if="partido.dtv===1"></span>
+              <span class="clasificador_fecha">{{ diaFechaCorta(partido.fecha) }} {{ fechaHoraLocal(partido.fecha, (partido.hora)) }}</span>
+              
+              
 						</div>
 					</Draggable>
 				</Container>
@@ -46,8 +50,9 @@
 				<Container :group-name="'1'" :get-child-payload="getChildPayload4" @drop="onDrop('g4', $event)">
 					<Draggable v-for="(partido, index) in g4" :key="partido.id">
 						<div class="draggable-item clasificador_g4">
-              <span class="clasificador_match"><strong>{{index + 1 + g1.length + g2.length + g3.length}}</strong> {{partido.local}} - {{partido.visitante}}</span>
-              <span class="clasificador_fecha">{{fechaCompleta(partido.fecha)}}</span>
+              <span class="clasificador_match"><strong>{{index + 1 + g1.length + g2.length + g3.length}}</strong> {{partido.local}} - {{partido.visitante}}<img :src="'/assets/dtv.png'" alt="" class="" v-if="partido.dtv===1"></span>
+              <span class="clasificador_fecha">{{ diaFechaCorta(partido.fecha) }} {{ fechaHoraLocal(partido.fecha, (partido.hora)) }}</span>
+              
 						</div>
 					</Draggable>
 				</Container>

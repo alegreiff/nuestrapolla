@@ -98,6 +98,13 @@ const FuncionesComunesPLG = {
 						return ''
 					}
 				},
+				diaFechaCorta (fecha) {
+					if (moment(fecha).isValid()) {
+						return moment(fecha).format('dddd MMM D')
+					} else {
+						return ''
+					}
+				},
 				fechaCompleta (fecha) {
 					if (moment(fecha).isValid()) {
 						return moment(fecha).format('dddd, MMMM D YYYY, h:mm:ss a')
