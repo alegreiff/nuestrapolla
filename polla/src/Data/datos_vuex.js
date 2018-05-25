@@ -10,18 +10,18 @@ export const datos = new Vuex.Store({
 		sedes: [],
 		
 		pollerosamigos: [
-			{id: 18, sigla: 'AA', nombre: 'Alfonso Acosta'}, 
-			{id: 0, sigla: 'DU', nombre: 'Diego Urrutia'},
-			{id: 6, sigla: 'EM', nombre: 'Esteban Muñoz'},
-			{id: 19, sigla: 'FA', nombre: 'Federico Arango'},
-			{id: 2, sigla: 'JD', nombre: 'Jaime de Greiff'},
-			{id: 10, sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
-			{id: 7, sigla: 'LV', nombre: 'Luis Fernando Velasco'},
-			{id: 0, sigla: 'MS', nombre: 'Miller Sánchez'},
-			{id: 0, sigla: 'NG', nombre: 'Natalia Guerrero'},
-			{id: 11, sigla: 'RR', nombre: 'Ricardo Ramírez'},
-			{id: 29, sigla: 'MC', nombre: 'Marcela Cortés'},
-			{id: 0, sigla: '##', nombre: 'OTRO'}
+			{id: 18, 	sigla: 'AA', nombre: 'Alfonso Acosta'}, 
+			{id: 0, 	sigla: 'DU', nombre: 'Diego Urrutia'},
+			{id: 6, 	sigla: 'EM', nombre: 'Esteban Muñoz'},
+			{id: 19, 	sigla: 'FA', nombre: 'Federico Arango'},
+			{id: 2, 	sigla: 'JD', nombre: 'Jaime de Greiff'},
+			{id: 10, 	sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
+			{id: 7, 	sigla: 'LV', nombre: 'Luis Fernando Velasco'},
+			{id: 0, 	sigla: 'MS', nombre: 'Miller Sánchez'},
+			{id: 0, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
+			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
+			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
+			{id: 0, 	sigla: '##', nombre: 'OTRO'}
 		],
 		/*
 		*/
@@ -175,8 +175,8 @@ export const datos = new Vuex.Store({
 					finlimite: '2018-06-29 23:00:00',
 					comodines: 2,
 					partidos: 8,
-					ptsPARCIAL: 4,
-					ptsFULL: 6,
+					ptsPARCIAL: 6,
+					ptsFULL: 10,
 					fasenumber: 8
 					
 					},
@@ -186,8 +186,8 @@ export const datos = new Vuex.Store({
 					finlimite: '2018-07-05 15:00:00',
 					comodines: 2,
 					partidos: 4,
-					ptsPARCIAL: 5,
-					ptsFULL: 7,
+					ptsPARCIAL: 10,
+					ptsFULL: 15,
 					fasenumber: 4
 					
 					},
@@ -197,8 +197,8 @@ export const datos = new Vuex.Store({
 					finlimite: '2018-07-09 15:00:00',
 					comodines: 1,
 					partidos: 2,
-					ptsPARCIAL: 6,
-					ptsFULL: 8,
+					ptsPARCIAL: 15,
+					ptsFULL: 20,
 					fasenumber: 2
 					
 					},
@@ -208,8 +208,8 @@ export const datos = new Vuex.Store({
 					finlimite: '2018-07-13 15:00:00',
 					comodines: 1,
 					partidos: 2,
-					ptsPARCIAL: 7,
-					ptsFULL: 9,
+					ptsPARCIAL: 20,
+					ptsFULL: 25,
 					fasenumber: 1
 					
 					}
