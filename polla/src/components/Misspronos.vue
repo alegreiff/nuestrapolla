@@ -20,6 +20,7 @@
                     <v-subheader v-text="'Los polleros'"></v-subheader>
                 </v-flex>
                 <v-flex xs12 sm6>
+                    {{ filtracomparables }}
                     <v-select v-if="comparables"
                     item-text="pollero"
                     
@@ -148,32 +149,14 @@ export default {
     comparadas: null,
     suma: null,
     comparables: null,
-    /*graficaTipo: 'PieChart',
-    columnsX: [{
-                    'type': 'string',
-                    'label': 'Resultado'
-                }, {
-                    'type': 'number',
-                    'label': 'Pronos'
-                }],
-                rowsX: [
-                    ['Local', 3 ],
-                    ['Empate', 1 ],
-                    ['Visitante', 2]
-                ],
-                optionsX: {
-                    width: 300,
-                    height: 150,
-                    pieHole: 0.2,
-                    colors:['#386801','#0b40b4', '#df9a07'],
-                    legend: {position: 'bottom', textStyle: {fontSize: 10}}
-                   
-                }*/
-    //cal: null
   }),
   components: {
   },
   methods: {
+      filtracomparables(){
+        var tempo = _.filter(this.comparables, [ 'pronos', true]);
+        this.comparables = tempo;
+      },
       pronos_parciales_pollero(pollero){
         var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
         var partidos = this.fasePolla.partidos
@@ -315,12 +298,6 @@ export default {
           //this.comparables = _.filter(val, [ 'pronos', true]);
           //var temp =  _.filter(this.pronosticosPolleroActivo, ['partido', partido]) 
           //this.comparables = resultado;
-      },
-      comparables(val){
-          console.log("merde")
-          //var id = parseInt(val.id)
-          _.filter(val, [ 'pronos', true]);
-          console.table(val)
       },
   },
   computed: {
