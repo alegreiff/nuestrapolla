@@ -303,7 +303,7 @@ export default {
       },
       losOtrosPolleros(val){
           for (var i in val){
-              if(pronos_parciales_pollero(val[i].id)===0){
+              if(this.pronos_parciales_pollero(val[i].id)===0){
                   val[i]['pronos'] = true;
               }else{
                   val[i]['pronos'] = false;
