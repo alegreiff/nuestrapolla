@@ -296,8 +296,8 @@ export default {
                     val[i]['pronos'] = false;
                 }
             }
-            this.comparables = _.cloneDeep(val)
-            this.comparables_.filter(this.comparables, function(o) { return o.pronos =true ; });
+            var temporal = _.cloneDeep(val)
+            this.comparables_.filter(temporal, function(o) { return o.pronos =true ; });
         },
     },
     computed: {
