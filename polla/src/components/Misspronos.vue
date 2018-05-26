@@ -292,8 +292,12 @@ export default {
         },
         losOtrosPolleros(val) {
             for (var i in val) {
-                console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
-                if (this.pronos_parciales_pollero(val[i].id) === 0) {
+                //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
+                var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': val[i].id});
+                var partidos = this.fasePolla.partidos
+                var resultado =  (partidos - pronospolleros.length);
+                console.log(val[i].id + ' -- ' + resultado)
+                if (resultado === 0) {
                     val[i]['pronos'] = true;
                 } else {
                     val[i]['pronos'] = false;
