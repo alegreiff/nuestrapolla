@@ -319,7 +319,8 @@ export default {
       comparables(val){
           console.log("merde")
           //var id = parseInt(val.id)
-          val = _.filter(val, [ 'pronos', true]);
+          _.filter(val, [ 'pronos', true]);
+          console.table(val)
       },
   },
   computed: {
