@@ -334,7 +334,7 @@ export default {
                 console.log(this.losOtrosPolleros[i]['pronos']);
             }
             var temporal = _.cloneDeep(this.losOtrosPolleros)
-            this.comparables = _.filter(temporal, function(o) { return !o.pronos; });
+            this.comparables = _.filter(temporal, function(o) { return o.pronos; });
     
   },
 }
