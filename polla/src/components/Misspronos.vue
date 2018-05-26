@@ -290,9 +290,8 @@ export default {
             this.comparadas = null
             this.suma = null
         },
-        losOtrosPolleros(val) {
+        /*losOtrosPolleros(val) {
             for (var i in val) {
-                //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
                 if(this.consolidadoPronos){
                     var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': val[i].id});
                 }
@@ -308,7 +307,7 @@ export default {
             }
             var temporal = _.cloneDeep(val)
             this.comparables = _.filter(temporal, function(o) { return !o.pronos; });
-        },
+        },*/
     },
     computed: {
         ...mapState(['horamostrable']),
@@ -319,8 +318,24 @@ export default {
 
     },
     mounted() {
-    this.losOtrosPolleros = this.losOtrosPolleros;
-    console.log("Montari")
+     for (var i in this.losOtrosPolleros) {
+                //console.log(this.losOtrosPolleros[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(this.losOtrosPolleros[i].id));
+                if(this.consolidadoPronos){
+                    var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': this.losOtrosPolleros[i].id});
+                }
+                var partidos = this.fasePolla.partidos
+                var resultado =  (partidos - pronospolleros.length);
+                console.log(this.losOtrosPolleros[i].id + ' -- ' + resultado)
+                if (resultado === 0) {
+                    this.losOtrosPolleros[i]['pronos'] = true;
+                } else {
+                    this.losOtrosPolleros[i]['pronos'] = false;
+                }
+                console.log(this.losOtrosPolleros[i]['pronos']);
+            }
+            var temporal = _.cloneDeep(this.losOtrosPolleros)
+            this.comparables = _.filter(temporal, function(o) { return !o.pronos; });
+    
   },
 }
 </script>
