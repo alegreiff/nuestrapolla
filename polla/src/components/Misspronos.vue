@@ -311,9 +311,9 @@ export default {
                   val[i]['pronos'] = false;
               }
           }
-          this.comparables = _.cloneDeep(val)
-          var resultado = _.filter(this.comparables, { 'pronos': true});
-          this.comparables = resultado;
+          //this.comparables = _.cloneDeep(val)
+          this.comparables = _.filter(val, { 'pronos': true});
+          //this.comparables = resultado;
       }
   },
   computed: {
