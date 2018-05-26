@@ -293,7 +293,9 @@ export default {
         losOtrosPolleros(val) {
             for (var i in val) {
                 //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
-                var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': val[i].id});
+                if(this.consolidadoPronos){
+                    var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': val[i].id});
+                }
                 var partidos = this.fasePolla.partidos
                 var resultado =  (partidos - pronospolleros.length);
                 console.log(val[i].id + ' -- ' + resultado)
