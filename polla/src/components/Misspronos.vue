@@ -315,7 +315,12 @@ export default {
           //this.comparables = _.filter(val, [ 'pronos', true]);
           //var temp =  _.filter(this.pronosticosPolleroActivo, ['partido', partido]) 
           //this.comparables = resultado;
-      }
+      },
+      comparables(val){
+          //console.log("Cambia el pollero seleccionado")
+          //var id = parseInt(val.id)
+          val = _.filter(val, [ 'pronos', true]);
+      },
   },
   computed: {
     ...mapState(['horamostrable']),
