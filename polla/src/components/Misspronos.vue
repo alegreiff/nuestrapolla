@@ -312,7 +312,8 @@ export default {
               }
           }
           //this.comparables = _.cloneDeep(val)
-          this.comparables = _.filter(val, { 'pronos': true});
+          this.comparables = _.filter(val, [ 'pronos', true]);
+          //var temp =  _.filter(this.pronosticosPolleroActivo, ['partido', partido]) 
           //this.comparables = resultado;
       }
   },
