@@ -173,6 +173,12 @@ export default {
   components: {
   },
   methods: {
+      pronos_parciales_pollero(pollero){
+        var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+        var partidos = this.fasePolla.partidos
+        
+		return (partidos - tempo.length);
+		},
     ...mapMutations(['cambiaHora']),
     miprono(partido){
         if(this.pronosticosPolleroActivo){
@@ -294,6 +300,15 @@ export default {
           this.outro = this.pronos_otro(val.id)
           this.comparadas = null
           this.suma = null
+      },
+      losOtrosPolleros(val){
+          for (var i in val){
+              if(pronos_parciales_pollero(val[i].id)===0){
+                  val[i]['pronos'] = true;
+              }else{
+                  val[i]['pronos'] = false;
+              }
+          }
       }
   },
   computed: {
