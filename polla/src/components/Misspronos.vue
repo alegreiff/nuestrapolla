@@ -307,6 +307,10 @@ export default {
 
 
 
-    }
+    },
+    mounted() {
+    this.losOtrosPolleros = this.losOtrosPolleros;
+    console.log("Montari")
+  },
 }
 </script>
