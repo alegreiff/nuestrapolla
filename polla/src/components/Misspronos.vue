@@ -20,7 +20,7 @@
                     <v-subheader v-text="'Los polleros'"></v-subheader>
                 </v-flex>
                 <v-flex xs12 sm6>
-                    <p v-if="comparables">{{ filtracomparables }}</p>
+                    
                     
                     <v-select v-if="comparables"
                     item-text="pollero"
@@ -139,177 +139,174 @@
 </template>
 <script>
 
-import { mapState,   mapMutations,   mapGetters } from 'vuex'
+import {
+    mapState,
+    mapMutations,
+    mapGetters
+} from 'vuex'
 
 
 export default {
-  data: () => ({
-    jk: 'Pooolo',
-    a1: null,
-    outro: null,
-    comparadas: null,
-    suma: null,
-    comparables: null,
-  }),
-  components: {
-  },
-  methods: {
-      filtracomparables(){
-        var tempo = _.filter(this.comparables, [ 'pronos', true]);
-        console.log(tempo.length + " --------------")
-        this.comparables = tempo;
-        return "ok"
-      },
-      pronos_parciales_pollero(pollero){
-        var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
-        var partidos = this.fasePolla.partidos
-        
-		return (partidos - tempo.length);
-		},
-    ...mapMutations(['cambiaHora']),
-    miprono(partido){
-        if(this.pronosticosPolleroActivo){
-        var t = parseInt(partido)
-        //console.log(typeof(partido) + " => " + partido)
-        //console.log(typeof(t) + " => " + t)
-        
-        //console.log("Tempore:::::::::::::::")
-        
-        var temp =  _.filter(this.pronosticosPolleroActivo, ['partido', partido]) 
-        //console.table(temp); CORREGIR JAIME
-        if(temp[0]){
-            if(temp[0].m_vis >=0){
+    data: () => ({
+        jk: 'Pooolo',
+        a1: null,
+        outro: null,
+        comparadas: null,
+        suma: null,
+        comparables: null,
+    }),
+    components: {},
+    methods: {
+        pronos_parciales_pollero(pollero) {
+            var tempo = _.filter(this.consolidadoPronos, {
+                'id_jugador': pollero
+            });
+            var partidos = this.fasePolla.partidos
+
+            return (partidos - tempo.length);
+        },
+        ...mapMutations(['cambiaHora']),
+        miprono(partido) {
+            if (this.pronosticosPolleroActivo) {
+                var t = parseInt(partido)
+                //console.log(typeof(partido) + " => " + partido)
+                //console.log(typeof(t) + " => " + t)
+
+                //console.log("Tempore:::::::::::::::")
+
+                var temp = _.filter(this.pronosticosPolleroActivo, ['partido', partido])
+                //console.table(temp); CORREGIR JAIME
+                if (temp[0]) {
+                    if (temp[0].m_vis >= 0) {
+                        return temp[0].m_loc + '-' + temp[0].m_vis;
+                    } else {
+                        return 'N/D'
+                    }
+                } else {
+                    return 99 + '-' + 95;
+                    //console.alert ("ERROR " + partido)
+                }
+
+            }
+        },
+        otroprono(partido) {
+            //partido = parseInt(partido)
+            var temp = _.filter(this.outro, ['partido', partido])
+            //return temp[0].m_loc + '-' + temp[0].m_vis;
+            if (temp[0].m_vis >= 0) {
                 return temp[0].m_loc + '-' + temp[0].m_vis;
-            }else{
+            } else {
                 return 'N/D'
             }
-        }else{
-            return 99 + '-' + 95;
-            //console.alert ("ERROR " + partido)
-        }
-        
-        }
-    },
-    otroprono(partido){
-        //partido = parseInt(partido)
-        var temp =  _.filter(this.outro, ['partido', partido])
-        //return temp[0].m_loc + '-' + temp[0].m_vis;
-        if(temp[0].m_vis >=0){
-            return temp[0].m_loc + '-' + temp[0].m_vis;
-        }else{
-            return 'N/D'
-        }
-    },
-    micomodin(partido){
-        var temporex =  _.filter(this.pronosticosPolleroActivo, ['partido', partido])
-        return temporex[0].comodin;
-    },
-    otrocomodin(partido){
-        //partido = parseInt(partido)
-        var temp =  _.filter(this.outro, ['partido', partido])
-        return temp[0].comodin;
-    },
-    compara(partido){
-        //partido = parseInt(partido)
-        var temp =  _.filter(this.comparadas, ['partido', partido])
-        return temp[0].resultado;
-    },
-    pronos_otro(id){
-        //console.log(id)
-      return  this.pronosticosPolleroComparado(id) 
-    },
-    comparaPollas(yo, otro){
-        var salida = new Object()
-        var suma = 0;
-        for(var i in yo){
-            var contador = +i + +1;
-            salida[i] = new Object()
-            salida[i].partido = yo[i].partido;
-            if((yo[i].m_loc > yo[i].m_vis &&  otro[i].m_loc > otro[i].m_vis) ||(yo[i].m_loc < yo[i].m_vis &&  otro[i].m_loc < otro[i].m_vis) ||(yo[i].m_loc === yo[i].m_vis &&  otro[i].m_loc === otro[i].m_vis)){
-                if((yo[i].m_loc === otro[i].m_loc) && (yo[i].m_vis === otro[i].m_vis)){
-                    if(yo[i].comodin === otro[i].comodin){
-                        salida[i].resultado = 100
-                        suma += 100
-                        //INTENCIÓN MARCADOR COMODÍN
-                    }else{
-                        salida[i].resultado = 85
-                        suma += 85
-                        //INTENCIÓN MARCADOR
-                    }
-                }else{
-                    //if((yo[i].m_loc + yo[i].m_vis) === (otro[i].m_loc + otro[i].m_vis)){
-                    if((yo[i].m_loc ===  otro[i].m_loc) || (yo[i].m_vis === otro[i].m_vis)){
-                        if(yo[i].comodin === otro[i].comodin){
-                            salida[i].resultado = 90
-                            suma += 90
-                            //INTENCIÓN COMODÍN GOLESLOCALOVISITANTE
-                        }else{
-                            salida[i].resultado = 75
-                            suma += 75
-                            //INTENCIÓN GOLESLOCALOVISITANTE
-                        }    
-                    }else{
-                        if(yo[i].comodin === otro[i].comodin){
-                            salida[i].resultado = 65
-                            suma += 65
-                            //INTENCIÓN COMODÍN
-                        }else{
-                            salida[i].resultado = 50
-                            suma += 50
-                            //INTENCIÓN
+        },
+        micomodin(partido) {
+            var temporex = _.filter(this.pronosticosPolleroActivo, ['partido', partido])
+            return temporex[0].comodin;
+        },
+        otrocomodin(partido) {
+            //partido = parseInt(partido)
+            var temp = _.filter(this.outro, ['partido', partido])
+            return temp[0].comodin;
+        },
+        compara(partido) {
+            //partido = parseInt(partido)
+            var temp = _.filter(this.comparadas, ['partido', partido])
+            return temp[0].resultado;
+        },
+        pronos_otro(id) {
+            //console.log(id)
+            return this.pronosticosPolleroComparado(id)
+        },
+        comparaPollas(yo, otro) {
+            var salida = new Object()
+            var suma = 0;
+            for (var i in yo) {
+                var contador = +i + +1;
+                salida[i] = new Object()
+                salida[i].partido = yo[i].partido;
+                if ((yo[i].m_loc > yo[i].m_vis && otro[i].m_loc > otro[i].m_vis) || (yo[i].m_loc < yo[i].m_vis && otro[i].m_loc < otro[i].m_vis) || (yo[i].m_loc === yo[i].m_vis && otro[i].m_loc === otro[i].m_vis)) {
+                    if ((yo[i].m_loc === otro[i].m_loc) && (yo[i].m_vis === otro[i].m_vis)) {
+                        if (yo[i].comodin === otro[i].comodin) {
+                            salida[i].resultado = 100
+                            suma += 100
+                            //INTENCIÓN MARCADOR COMODÍN
+                        } else {
+                            salida[i].resultado = 85
+                            suma += 85
+                            //INTENCIÓN MARCADOR
+                        }
+                    } else {
+                        //if((yo[i].m_loc + yo[i].m_vis) === (otro[i].m_loc + otro[i].m_vis)){
+                        if ((yo[i].m_loc === otro[i].m_loc) || (yo[i].m_vis === otro[i].m_vis)) {
+                            if (yo[i].comodin === otro[i].comodin) {
+                                salida[i].resultado = 90
+                                suma += 90
+                                //INTENCIÓN COMODÍN GOLESLOCALOVISITANTE
+                            } else {
+                                salida[i].resultado = 75
+                                suma += 75
+                                //INTENCIÓN GOLESLOCALOVISITANTE
+                            }
+                        } else {
+                            if (yo[i].comodin === otro[i].comodin) {
+                                salida[i].resultado = 65
+                                suma += 65
+                                //INTENCIÓN COMODÍN
+                            } else {
+                                salida[i].resultado = 50
+                                suma += 50
+                                //INTENCIÓN
+                            }
                         }
                     }
+                } else {
+                    salida[i].resultado = 0
                 }
-            }else{
-                salida[i].resultado = 0
+                if (this.calendarioArray) {
+                    this.calendarioArray[i].semejanza = salida[i].resultado;
+                }
+                //console.log("El contador es: " + contador)
             }
-            if(this.calendarioArray){
-                this.calendarioArray[i].semejanza = salida[i].resultado;
+            this.comparadas = salida;
+
+            if (suma > 1) {
+                this.suma = suma;
+            } else {
+                this.suma = 1;
             }
-            //console.log("El contador es: " + contador)
-        }
-        this.comparadas =  salida;
-        
-        if(suma > 1){
-            this.suma = suma;
-        }else{
-            this.suma = 1;
-        }
-        
 
-    }
 
-  },
-  watch: {
-      a1(val){
-          //console.log("Cambia el pollero seleccionado")
-          //var id = parseInt(val.id)
-          this.outro = this.pronos_otro(val.id)
-          this.comparadas = null
-          this.suma = null
-      },
-      losOtrosPolleros(val){
-          for (var i in val){
-              //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
-              if(this.pronos_parciales_pollero(val[i].id)===0){
-                  val[i]['pronos'] = true;
-              }else{
-                  val[i]['pronos'] = false;
-              }
-          }
-          this.comparables = _.cloneDeep(val)
-          //this.comparables = _.filter(val, [ 'pronos', true]);
-          //var temp =  _.filter(this.pronosticosPolleroActivo, ['partido', partido]) 
-          //this.comparables = resultado;
-      },
-  },
-  computed: {
-    ...mapState(['horamostrable']),
-    ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroComparado', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos']),
+        }
+
+    },
+    watch: {
+        a1(val) {
+            //console.log("Cambia el pollero seleccionado")
+            //var id = parseInt(val.id)
+            this.outro = this.pronos_otro(val.id)
+            this.comparadas = null
+            this.suma = null
+        },
+        losOtrosPolleros(val) {
+            for (var i in val) {
+                //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
+                if (this.pronos_parciales_pollero(val[i].id) === 0) {
+                    val[i]['pronos'] = true;
+                } else {
+                    val[i]['pronos'] = false;
+                }
+            }
+            this.comparables = _.cloneDeep(val)
+            this.comparables_.filter(this.comparables, function(o) { return o.pronos =true ; });
+        },
+    },
+    computed: {
+        ...mapState(['horamostrable']),
+        ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroComparado', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos']),
 
 
 
 
     }
-} 
+}
 </script>
