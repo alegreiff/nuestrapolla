@@ -20,7 +20,8 @@
                     <v-subheader v-text="'Los polleros'"></v-subheader>
                 </v-flex>
                 <v-flex xs12 sm6>
-                    {{ filtracomparables }}
+                    <p v-if="comparables">{{ filtracomparables }}</p>
+                    
                     <v-select v-if="comparables"
                     item-text="pollero"
                     
@@ -156,6 +157,7 @@ export default {
       filtracomparables(){
         var tempo = _.filter(this.comparables, [ 'pronos', true]);
         this.comparables = tempo;
+        return "ok"
       },
       pronos_parciales_pollero(pollero){
         var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
