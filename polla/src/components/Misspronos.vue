@@ -317,7 +317,7 @@ export default {
 
 
     },
-    mounted() {
+    created() {
      for (var i in this.losOtrosPolleros) {
                 //console.log(this.losOtrosPolleros[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(this.losOtrosPolleros[i].id));
                 if(this.consolidadoPronos){
