@@ -303,6 +303,7 @@ export default {
       },
       losOtrosPolleros(val){
           for (var i in val){
+              console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
               if(this.pronos_parciales_pollero(val[i].id)===0){
                   val[i]['pronos'] = true;
               }else{
