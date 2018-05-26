@@ -309,11 +309,12 @@ export default {
             this.comparadas = null
             this.suma = null
         },
-        /*losOtrosPolleros(val) {
+        losOtrosPolleros(val) {
+            if(this.consolidadoPronos){
             for (var i in val) {
-                if(this.consolidadoPronos){
+                
                     var pronospolleros = _.filter(this.consolidadoPronos, {'id_jugador': val[i].id});
-                }
+                
                 var partidos = this.fasePolla.partidos
                 var resultado =  (partidos - pronospolleros.length);
                 console.log(val[i].id + ' -- ' + resultado)
@@ -326,7 +327,8 @@ export default {
             }
             var temporal = _.cloneDeep(val)
             this.comparables = _.filter(temporal, function(o) { return !o.pronos; });
-        },*/
+            }
+        },
     },
     computed: {
         ...mapState(['horamostrable']),
