@@ -302,6 +302,9 @@ export default {
 
     },
     watch: {
+        consolidadoPronos(val){
+            this.inicioseccion()
+        },
         a1(val) {
             //console.log("Cambia el pollero seleccionado")
             //var id = parseInt(val.id)
