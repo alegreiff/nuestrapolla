@@ -317,7 +317,7 @@ export default {
           //this.comparables = resultado;
       },
       comparables(val){
-          //console.log("Cambia el pollero seleccionado")
+          console.log("merde")
           //var id = parseInt(val.id)
           val = _.filter(val, [ 'pronos', true]);
       },
