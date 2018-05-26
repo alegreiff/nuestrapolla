@@ -156,6 +156,7 @@ export default {
   methods: {
       filtracomparables(){
         var tempo = _.filter(this.comparables, [ 'pronos', true]);
+        console.log(tempo.length + " --------------")
         this.comparables = tempo;
         return "ok"
       },
@@ -289,7 +290,7 @@ export default {
       },
       losOtrosPolleros(val){
           for (var i in val){
-              console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
+              //console.log(val[i].pollero + ' ---------- ' + this.pronos_parciales_pollero(val[i].id));
               if(this.pronos_parciales_pollero(val[i].id)===0){
                   val[i]['pronos'] = true;
               }else{
