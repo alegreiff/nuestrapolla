@@ -158,11 +158,15 @@ export default {
     components: {},
     methods: {
         pronos_parciales_pollero(pollero) {
-            var tempo = _.filter(this.consolidadoPronos, {'id_jugador': pollero});
-            console.log(pollero + ' - ' + tempo.length)
-            var partidos = this.fasePolla.partidos
-
-            return (partidos - tempo.length);
+            if(this.consolidadoPronos){
+                var tempo = _.filter(this.consolidadoPronos, {'id_jugador': pollero});
+                console.log(pollero + ' - ' + tempo.length)
+                var partidos = this.fasePolla.partidos
+                return (partidos - tempo.length);
+            }else{
+                console.log("UNO")
+                return 1;
+            }
         },
         ...mapMutations(['cambiaHora']),
         miprono(partido) {
