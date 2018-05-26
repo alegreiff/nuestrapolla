@@ -20,10 +20,10 @@
                     <v-subheader v-text="'Los polleros'"></v-subheader>
                 </v-flex>
                 <v-flex xs12 sm6>
-                    <v-select v-if="losOtrosPolleros"
+                    <v-select v-if="comparables"
                     item-text="pollero"
                     
-                    v-bind:items="losOtrosPolleros"
+                    v-bind:items="comparables"
                     v-model="a1"
                     label="Polleros"
 
@@ -147,6 +147,7 @@ export default {
     outro: null,
     comparadas: null,
     suma: null,
+    comparables: null,
     /*graficaTipo: 'PieChart',
     columnsX: [{
                     'type': 'string',
@@ -310,6 +311,9 @@ export default {
                   val[i]['pronos'] = false;
               }
           }
+          var comparables = _.cloneDeep(val)
+          var resultado = _.filter(comparables, { 'pronos': true});
+          this.comparables = resultado;
       }
   },
   computed: {
