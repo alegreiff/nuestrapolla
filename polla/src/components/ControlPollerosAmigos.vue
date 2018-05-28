@@ -19,8 +19,10 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
-                        <table>
-                        </table>
+                        <p v-for="usuario in union_datos_filtrados" key="pollero.id">{{usuario.pollero}}</p>
+                        <!--<table>
+                            
+                        </table>-->
                     </div>
                      
                 </v-card-text>
