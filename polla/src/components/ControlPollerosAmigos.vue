@@ -79,7 +79,7 @@ export default {
     
     },
       created() {
-    axios.get(`/wp-json/lospolleros/v1/all/`).then(response => {
+    axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
       var lospolleros = response.data
       _.each(lospolleros, item => item.id = parseInt(item.id))
       _.each(lospolleros, item => item.idpollero = parseInt(item.idpollero))
