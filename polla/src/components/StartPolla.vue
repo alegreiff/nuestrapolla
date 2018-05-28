@@ -297,7 +297,7 @@
 				<v-dialog v-model="pollerodata" max-width="500px">
         <v-card>
           <v-card-title v-if="pollero_activo">
-            Datos de {{ pollero_activo.pollero }} 
+            {{ pollero_activo.pollero }} 
 						<img :src="'/assets/fpc/'+escudo_FPC(pollero_activo.hincha) + '.png'" class="np_home_escudofpc">
           </v-card-title>
           <v-card-text class="np_datopollerohome" v-if="pollero_activo">
