@@ -17,6 +17,7 @@
                     <v-btn :color="b5 ? 'error' : 'info'" @click="cambiacontenido(tx_5, 'b5')" block small>Menús</v-btn>
                     <v-btn :color="b6 ? 'error' : 'info'" @click="cambiacontenido(tx_6, 'b6')" block small>Costo</v-btn>
                     <v-btn :color="b7 ? 'error' : 'info'" @click="cambiacontenido(tx_7, 'b7')" block small>Puntajes</v-btn>
+                    <v-btn :color="b8 ? 'error' : 'info'" @click="cambiacontenido(tx_8, 'b8')" block small>Premiación</v-btn>
                 </v-card-text>
             </v-card>
         </v-flex>
@@ -220,6 +221,52 @@ export default {
 	</tbody>
 </table>
         `,
+        tx_7: `
+        <p>
+	El 80% del dinero recaudado por concepto de inscripciones conforma el botín que se repartirán los ganadores. El 20% restante se destinará a cubrir los gastos administrativos y de mantenimiento de la página web. (Los polleros amigos con 10 o más polleros NO PAGARÁN inscripción)</p>
+	<p>Los ganadores se repartirán el botín así:</p>
+<table class="tabla_npreg"> 
+	<thead>
+		<tr>
+			<th width="90%">Premio</th>
+			<th>Porcentaje</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Primer lugar</td>
+			<td>50</td>
+			
+		</tr>
+		<tr>
+			<td>Segundo lugar</td>
+			<td>20</td>
+			
+		</tr>
+		<tr>
+			<td>Tercer lugar</td>
+			<td>10</td>
+			
+		</tr>
+		<tr>
+			<td>Para repartir por partes iguales entre quienes obtengan el mayor puntaje del grupo de cada uno de los polleros amigos <br />(condiciones: el pollero amigo deberá tener al menos 10 inscritos, contando con él <br />y el ganador será quien no haya obtenido premio alguno).</td>
+			<td>10</td>
+			
+		</tr>
+		<tr>
+			<td>Pollero amigo del ganador del primer premio</td>
+			<td>5</td>
+			
+		</tr>
+		<tr>
+			<td>Para el pollero que al terminar la fase de grupos (los primeros 48 partidos) vaya de primero</td>
+			<td>5</td>
+			
+		</tr>
+
+	</tbody>
+</table>
+        `,
        
     };
   },
@@ -234,6 +281,7 @@ export default {
         this.b5 = false;
         this.b6 = false;
         this.b7 = false;
+        this.b8 = false;
         switch(boton){
             case 'b1': this.b1 = true; break;
             case 'b2': this.b2 = true; break;
@@ -242,6 +290,7 @@ export default {
             case 'b5': this.b5 = true; break;
             case 'b6': this.b6 = true; break;
             case 'b7': this.b7 = true; break;
+            case 'b8': this.b8 = true; break;
         }
         //this.boton = true;
         this.textoactivo = texto;
