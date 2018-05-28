@@ -526,7 +526,7 @@ if(valor === 0){
 				return this.allpollerosHome.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
 				//return 
-				return _.sortBy(this.allpollerosHome, [function(o) { return o.pollero; }]);
+				return _.sortBy(this.allpollerosHome, [function(o) { return o.id; }]);
 				
 			}
 		},
