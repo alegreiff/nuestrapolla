@@ -249,6 +249,7 @@
 			</v-layout>
 			<v-layout row wrap>
 				<v-flex xs12>
+					{{ filtrados_pollero.length }}
 					<v-btn color="primary" small dark @click="filtroPolleros(0)">TODOS</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Alfonso Acosta')">AA</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Alejandro Pardo')">AP</v-btn>
