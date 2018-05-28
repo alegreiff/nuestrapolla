@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.1.11 Reglamento público y privado',
+      infoversion: 'v.1.12 CORREGIDO. Reglamento público y privado',
       vieneeljefe: false,
       clipped: true,
       drawer: false,

@@ -221,7 +221,7 @@ export default {
 	</tbody>
 </table>
         `,
-        tx_7: `
+        tx_8: `
         <p>
 	El 80% del dinero recaudado por concepto de inscripciones conforma el botín que se repartirán los ganadores. El 20% restante se destinará a cubrir los gastos administrativos y de mantenimiento de la página web. (Los polleros amigos con 10 o más polleros NO PAGARÁN inscripción)</p>
 	<p>Los ganadores se repartirán el botín así:</p>
