@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.1.10 Filtro de pollero amigo en HOME',
+      infoversion: 'v.1.11 Reglamento público y privado',
       vieneeljefe: false,
       clipped: true,
       drawer: false,

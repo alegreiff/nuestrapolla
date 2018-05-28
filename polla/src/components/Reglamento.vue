@@ -8,7 +8,7 @@
             </v-card>
         </v-flex>
         <v-flex xs3>
-            <v-card dark color="secondary">
+            <v-card color="secondary">
                 <v-card-text class="px-0">
                     <v-btn :color="b1 ? 'error' : 'info'" @click="cambiacontenido(tx_intro, 'b1')" block small>Generalidades</v-btn>
                     <v-btn :color="b2 ? 'error' : 'info'" @click="cambiacontenido(tx_3, 'b2')" block small>Inscripción</v-btn>
@@ -31,7 +31,7 @@
         </v-flex>
         <v-flex xs12>
             <v-card dark color="primary">
-                <v-card-text class="px-0">12</v-card-text>
+                <v-card-text class="px-0">No es tu polla. No es mi polla. Es Nuestra Polla</v-card-text>
             </v-card>
         </v-flex>
 
@@ -220,37 +220,7 @@ export default {
 	</tbody>
 </table>
         `,
-       data: [
-    { 'id': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
-    { 'id': 2, 'first_name': 'John', 'last_name': 'Jacobs', 'date': '2016-12-15 06:00:53', 'gender': 'Male' },
-    { 'id': 3, 'first_name': 'Tina', 'last_name': 'Gilbert', 'date': '2016-04-26 06:26:28', 'gender': 'Female' },
-    { 'id': 4, 'first_name': 'Clarence', 'last_name': 'Flores', 'date': '2016-04-10 10:28:46', 'gender': 'Male' },
-    { 'id': 5, 'first_name': 'Anne', 'last_name': 'Lee', 'date': '2016-12-06 14:38:38', 'gender': 'Female' }
-], columns: [
-    {
-        field: 'id',
-        label: 'ID',
-        width: '40',
-        numeric: true
-    },
-    {
-        field: 'first_name',
-        label: 'First Name',
-    },
-    {
-        field: 'last_name',
-        label: 'Last Name',
-    },
-    {
-        field: 'date',
-        label: 'Date',
-        centered: true
-    },
-    {
-        field: 'gender',
-        label: 'Gender',
-    }
-]
+       
     };
   },
   methods: {
