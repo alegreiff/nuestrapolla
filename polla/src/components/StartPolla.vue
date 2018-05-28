@@ -250,7 +250,7 @@
 			<v-layout row wrap>
 				<v-flex xs12>
 					{{ filtrados_pollero.length }}
-					<v-btn color="primary" small dark @click="filtroPolleros(0)">TODOS</v-btn>
+					
 					<v-btn color="primary" small dark @click="filtroPolleros('Alfonso Acosta')">AA</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Alejandro Pardo')">AP</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Diego Urrutia')">DU</v-btn>
@@ -259,9 +259,10 @@
 					<v-btn color="primary" small dark @click="filtroPolleros('Jaime de Greiff')">JD</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Luis Carlos Urrutia')">LU</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Luis Fernando Velasco')">LV</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Marcela Cortés')">MC</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Miller Sánchez')">MS</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Ricardo Ramírez')">RR</v-btn>
-					<v-btn color="primary" small dark @click="filtroPolleros('Marcela Cortés')">MC</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros(0)">TODOS</v-btn>
 
 <!--
 '}, 
