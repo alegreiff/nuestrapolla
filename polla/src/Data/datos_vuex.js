@@ -229,6 +229,10 @@ export const datos = new Vuex.Store({
 			_.each(state.allpolleros, item => item.pollero = item.pollero[0].toUpperCase() + item.pollero.slice(1))
 			return state.allpolleros
 		},
+		allpollerosHome: (state, getters) => {
+			var temp = _.cloneDeep(getters.allpolleros);
+			return temp
+		},
 		valueequipos: (state) => {
 			//_.each(state.allpolleros, item => item.id = parseInt(item.id))
 			return state.valorequipos

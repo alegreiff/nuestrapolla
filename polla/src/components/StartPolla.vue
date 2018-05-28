@@ -29,7 +29,7 @@
 				<v-flex xs12 md6 lg3>
 					<v-card color="pollarojo2" dark class="completacard">
 						<v-card-text class="text-xs-center">
-							<p v-if="allpolleros" class="dato_size0">{{allpolleros.length}}</p>
+							<p v-if="allpollerosHome" class="dato_size0">{{allpollerosHome.length}}</p>
 							<span>Polleros registrados</span>
 						</v-card-text>
 					</v-card>
@@ -238,13 +238,45 @@
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
-				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros" class="np_conocepolleros">
+				<v-flex xs6 md3 lg2 v-for="(item, index) in filtrados_pollero" class="np_conocepolleros">
 					
 					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
             <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
             <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
 						
           </v-chip>
+				</v-flex>
+			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs12>
+					<v-btn color="primary" small dark @click="filtroPolleros(0)">TODOS</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Alfonso Acosta')">AA</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Alejandro Pardo')">AP</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Diego Urrutia')">DU</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Esteban Muñoz')">EM</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Federico Arango')">FA</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Jaime de Greiff')">JD</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Luis Carlos Urrutia')">LU</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Luis Fernando Velasco')">LV</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Miller Sánchez')">MS</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Ricardo Ramírez')">RR</v-btn>
+					<v-btn color="primary" small dark @click="filtroPolleros('Marcela Cortés')">MC</v-btn>
+
+<!--
+'}, 
+			
+Alfonso Acosta'}, 
+			{id: 0, 	sigla: 'DU', nombre: 'Diego Urrutia'},
+			{id: 6, 	sigla: 'EM', nombre: 'Esteban Muñoz'},
+			{id: 19, 	sigla: 'FA', nombre: 'Federico Arango'},
+			{id: 2, 	sigla: 'JD', nombre: 'Jaime de Greiff'},
+			{id: 10, 	sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
+			{id: 7, 	sigla: 'LV', nombre: 'Luis Fernando Velasco'},
+			{id: 0, 	sigla: 'MS', nombre: 'Miller Sánchez'},
+			{id: 0, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
+			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
+			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
+-->
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
@@ -334,19 +366,27 @@ export default {
     valore: null,
 		estatuspronos: null,
 		pollero_activo: null,
+		polleroamigoactivo: null
 
 	}),
 	    components: {
       TiempoRestante
 	  },
   methods:{
+filtroPolleros(valor){
+if(valor === 0){
+	this.polleroamigoactivo = null;
+}else{
+	this.polleroamigoactivo = valor;
+}
+},
 		escudo_FPC(equipo){
       var escudo =  this.escudoFPC(equipo)
       return escudo.escudo
     },
 		mueche(pollero){
 			this.txsnack = pollero;
-			this.pollero_activo = (_.filter(this.allpolleros, { 'id': pollero}))[0];
+			this.pollero_activo = (_.filter(this.allpollerosHome, { 'id': pollero}))[0];
 			this.pollerodata = true;
 		},
 		quien(jugatore){
@@ -393,8 +433,8 @@ export default {
     },
     formatPremio(value) {
       var premio = 0;
-      if(this.allpolleros){
-        value < 10 ? premio = (((this.allpolleros.length) * (this.elplandepremios.cuota *((100 - this.elplandepremios.fee)/100))) *(this.elplandepremios.porcentajes[value]/100)): premio = value;
+      if(this.allpollerosHome){
+        value < 10 ? premio = (((this.allpollerosHome.length) * (this.elplandepremios.cuota *((100 - this.elplandepremios.fee)/100))) *(this.elplandepremios.porcentajes[value]/100)): premio = value;
       }
         //this.porcentajes[value] * this.elplandepremios.cuota * 
         //=(polleros * (cuota * ((100 - fee)/100))) * (E4 / 100)
@@ -433,10 +473,18 @@ export default {
 			//console.log("pasa por main CREAR un PDF")
 		}
     }
+	},
+	created() {
+    //console.log("///////////////")
+		
+		
   },
   mounted() {
     //console.log("///////////////")
-    this.estatuspronos = this.pronosPendientes;
+		this.estatuspronos = this.pronosPendientes;
+
+		
+		
   },
   watch: {
     pronosticosPolleroActivo(val){
@@ -451,7 +499,7 @@ export default {
   },
     computed: {
     ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
-    ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios', 'escudoFPC']),
+    ...mapGetters(['allpollerosHome', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios', 'escudoFPC']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
           var nulos = _.filter(this.pronosticosPolleroActivo, function(o) { if (isNaN(o.m_loc)) return o }).length;
@@ -469,7 +517,15 @@ export default {
         var sortable = this.sortObject(this.statistics.sumagxp)
       }
       return sortable
-    }
+		},
+		filtrados_pollero(){
+			
+			if(this.polleroamigoactivo){
+				return this.allpollerosHome.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+			}else{
+				return this.allpollerosHome
+			}
+		},
 
     }
   
