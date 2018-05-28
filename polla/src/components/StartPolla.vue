@@ -240,7 +240,7 @@
 			<v-layout row wrap>
 				<v-flex xs6 md3 lg2 v-for="(item, index) in allpolleros" class="np_conocepolleros">
 					
-					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.pollero)">
+					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
             <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
             <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
 						
@@ -296,12 +296,21 @@
 			<template>
 				<v-dialog v-model="pollerodata" max-width="500px">
         <v-card>
-          <v-card-title>
-            Datos de pollero
+          <v-card-title v-if="pollero_activo">
+            Datos de {{ pollero_activo.pollero }} 
+						<img :src="'/assets/fpc/'+escudo_FPC(pollero_activo.hincha) + '.png'" class="np_home_escudofpc">
           </v-card-title>
-          <v-card-text>
+          <v-card-text class="np_datopollerohome" v-if="pollero_activo">
+						<v-chip color="primary" text-color="white">{{quien(pollero_activo.polleroamigo)}}</v-chip>
+						<v-chip>{{ pollero_activo.edad }}</v-chip>
+						<v-chip color="primary" text-color="white" v-for="(equipo, index) in pollero_activo.favoritos" :key="equipo.index">{{equipo}}</v-chip>
+						<hr>
+						<v-chip color="primary" text-color="white">Pronósticos: {{pronos_parciales_pollero(pollero_activo.id)}}</v-chip>
+						
+						
             
-            {{txsnack}}
+            
+						<!--<pre>{{pollero_activo}}</pre>-->
           </v-card-text>
           <v-card-actions>
             <v-btn color="primary" flat @click.stop="pollerodata=false">Cerrar</v-btn>
@@ -323,15 +332,21 @@ export default {
 		txsnack: '',
 		timeout: 5000,
     valore: null,
-    estatuspronos: null,
+		estatuspronos: null,
+		pollero_activo: null,
 
 	}),
 	    components: {
       TiempoRestante
 	  },
   methods:{
+		escudo_FPC(equipo){
+      var escudo =  this.escudoFPC(equipo)
+      return escudo.escudo
+    },
 		mueche(pollero){
 			this.txsnack = pollero;
+			this.pollero_activo = (_.filter(this.allpolleros, { 'id': pollero}))[0];
 			this.pollerodata = true;
 		},
 		quien(jugatore){
@@ -436,7 +451,7 @@ export default {
   },
     computed: {
     ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
-    ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios']),
+    ...mapGetters(['allpolleros', 'nombrePollero', 'posicionesNumericas', 'fasePolla', 'losOtrosPolleros', 'pronosticosPolleroActivo', 'calendarioArray', 'consolidadoPronos', 'statistics', 'polleroID', 'eltiempo','elplandepremios', 'escudoFPC']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
           var nulos = _.filter(this.pronosticosPolleroActivo, function(o) { if (isNaN(o.m_loc)) return o }).length;
