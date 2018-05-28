@@ -7,6 +7,8 @@ import Polleros from './components/Polleros.vue'
 import Misspronos from './components/Misspronos.vue'
 import Clasificador from './components/ClasificaPartidos.vue'
 import Reglamento from './components/Reglamento.vue'
+import ControlPA from './components/ControlPollerosAmigos.vue'
+
 
 
 
@@ -20,6 +22,7 @@ export const routes = [
 	{path: '/mispronos', component: Misspronos},
 	{path: '/clasificador', component: Clasificador},
 	{path: '/reglamento', component: Reglamento},
+	{path: '/polleroamigo', component: ControlPA},
 	{path: '/nouser',
     beforeEnter(to, from, next) {
         window.location = "../"

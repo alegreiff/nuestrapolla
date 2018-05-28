@@ -24,6 +24,7 @@
             <v-list-tile-action><v-icon>more_horiz</v-icon></v-list-tile-action>
             <v-list-tile-content><v-list-tile-title>Reglamento</v-list-tile-title></v-list-tile-content>
         </v-list-tile>
+        
         <!--<v-list-tile :to="{path: '/mispronos'}">
             <v-list-tile-action><v-icon>more_horiz</v-icon></v-list-tile-action>
             <v-list-tile-content><v-list-tile-title>Comparapollas</v-list-tile-title></v-list-tile-content>
