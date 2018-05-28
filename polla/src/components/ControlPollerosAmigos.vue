@@ -19,7 +19,8 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
-                        <p v-for="usuario in filtrados_pollero" key="pollero.id">{{usuario.pollero}}</p>
+                        <table>
+                        </table>
                     </div>
                      
                 </v-card-text>
@@ -58,7 +59,7 @@ export default {
   computed: {
       ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
     ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'statistics', 'polleroID', ]),
-    amigospolleros(){
+        amigospolleros(){
 			
 			if(this.pollerosamigos){
 				return _.sortBy(this.pollerosamigos, [function(o) { return o.sigla; }]);
@@ -71,7 +72,26 @@ export default {
 			}else{
 				return this.allpollerosHome
 			}
-		},
+        },
+        union_datos_filtrados(){
+            if(this.polleroamigoactivo && this.union_datos){
+				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+			}else{
+				if(this.union_datos){
+                    return this.union_datos
+                }
+			}
+        },
+
+        union_datos(){
+               if(this.polleros){
+                   var merge = _.merge(this.allpollerosHome, this.polleros);
+               return merge;
+               }else{
+                   return 'NoMatch';
+               }
+            
+        }
   },
     watch: {
   },
@@ -82,7 +102,7 @@ export default {
     axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
       var lospolleros = response.data
       _.each(lospolleros, item => item.id = parseInt(item.id))
-      _.each(lospolleros, item => item.idpollero = parseInt(item.idpollero))
+      _.each(lospolleros, item => item.orden = parseInt(item.orden))
       this.polleros = lospolleros;
     }).catch(e => {
       this.errors.push(e.message)
