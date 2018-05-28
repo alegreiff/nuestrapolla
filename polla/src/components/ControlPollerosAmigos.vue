@@ -76,7 +76,16 @@ export default {
   },
   	mounted () {
     
-	},
+    },
+      created() {
+    axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
+      var lospolleros = response.data
+      _.each(lospolleros, item => item.id = parseInt(item.id))
+      this.polleros = lospolleros;
+    }).catch(e => {
+      this.errors.push(e.message)
+    })
+  }
 
 };
 </script>
