@@ -80,7 +80,8 @@ export default {
                     },
                     {
                         field: 'correo',
-                        label: 'Correo'
+                        label: 'Correo',
+                        width: '250'
                     },
                     {
                         field: 'nombre',
