@@ -154,7 +154,7 @@ export default {
       created() {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
         if(this.amigo.length === 1){
-            this.polleroamigoactivo = this.amigo[0].nombre;
+            //this.polleroamigoactivo = this.amigo[0].nombre;
         }
 
     if(this.amigo.length === 1){
