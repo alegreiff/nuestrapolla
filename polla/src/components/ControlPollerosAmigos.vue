@@ -13,6 +13,7 @@
                 <v-card-text class="px-0">
 
                         <v-btn small block color="info" v-if="polleroID===1" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
+
                     
                 </v-card-text>
             </v-card>
@@ -25,7 +26,8 @@
             </v-card>
             
         </v-flex>-->
-        <v-flex :class="polleroID===1? xs10 : xs12">
+        <!--<v-flex :class="polleroID===1? xs10 : xs12">-->
+        <v-flex xs10>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :narrowed="true">
@@ -63,15 +65,25 @@
         </v-flex>
 
 <template>
-<v-dialog v-model="dialog2" max-width="500px">
+<v-dialog v-model="dialog2" max-width="700px" v-if="apollado">
         <v-card>
           <v-card-title>
-            Dialog 2
+            {{apollado.pollero}} - {{apollado.nombre}}
           </v-card-title>
           <v-card-text>
-            <pre>
-                {{apollado}}
-            </pre>
+                
+                <textarea name="" v-model="apollado.comentario" cols="30" rows="2"></textarea>
+                
+                <input type="radio" id="one" value="0" v-model="apollado.pago">
+                <label for="one">No ha pagado</label>
+                <br>
+                <input type="radio" id="two" value="1" v-model="apollado.pago">
+                <label for="two">Ya pagó</label>
+                <ht />
+                <v-btn small @click="updatePolleroData()">Actualizar</v-btn>
+            <!--<pre>
+                 {{apollado}} 
+            </pre>-->
             
           </v-card-text>
           <v-card-actions>
@@ -136,6 +148,23 @@ export default {
     }),
 
     methods: {
+        updatePolleroData(){
+            axios.post(`/wp-json/updateapollado/v1/all/`, {
+			pollero: this.apollado.id,
+			pago: parseInt(this.apollado.pago),
+            comentario: this.apollado.comentario
+            
+			
+            })
+            .then(response => {
+			    //this.actualizarDatos()
+                //this.mensaje = response.data
+                this.dialog2 = false;
+				})
+				.catch(e => {
+				    console.log('ERROR ' + e)
+					})
+        },
         editaUsuario(user){
             
             this.apollado = user;
