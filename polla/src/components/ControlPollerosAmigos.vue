@@ -20,7 +20,7 @@
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
                         
-                        <table class="tabla_npreg">
+                        <table class="tabla_npreg" v-if="union_datos_filtrados">
                             <thead>
                                 <tr>
                                     <th>Pollero</th>
