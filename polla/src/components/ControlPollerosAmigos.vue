@@ -163,7 +163,7 @@ export default {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
         
 
-    if(this.amigo.length === 1 || polleroID === 1){
+    if(this.amigo.length === 1 || this.polleroID === 1){
         axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
       var lospolleros = response.data
       _.each(lospolleros, item => item.id = parseInt(item.id))
