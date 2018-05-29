@@ -9,7 +9,7 @@
         </v-flex>
         <v-flex xs3>
             <v-card color="secondary">
-                <v-card-text class="">
+                <v-card-text class="px-0">
                         <v-btn color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
                     
                 </v-card-text>
@@ -18,8 +18,8 @@
         <v-flex xs8>
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
-                    <div class="np_reglamento">
-                        <table class="tabla_npreg" v-if="union_datos_filtrados">
+                    
+                        <!--<table class="tabla_npreg" v-if="union_datos_filtrados">
                             <thead>
                                 <tr>
                                     <th>Pollero</th>
@@ -39,11 +39,15 @@
                                 </tr>
                             </tbody>
                             
-                        </table>                            
-                    </div>
+                        </table>-->  
+                        
+                            <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas"></b-table>
+                            
+                                      
+                    
                 </v-card-text>
             </v-card>
-            <b-table :data="data" :columns="columns"></b-table>
+            
         </v-flex>
         <v-flex xs12>
             <v-card dark color="primary">
@@ -59,15 +63,38 @@ import {  mapGetters, mapState} from 'vuex'
 
 export default {
   name: "Control Polleros Amigos",
-  
-  data: function() {
-    return {
+    data: () => ({
         polleroamigoactivo: null,
-        polleros: null
-        
-       
-    };
-  },
+        polleros: null,
+        lascolumnas: [
+                    {
+                        field: 'pollero',
+                        label: 'ID',
+                        width: '200'
+                        
+                    },
+                    {
+                        field: 'pago',
+                        label: '¿pagó?',
+                        width: '40'
+                    },
+                    {
+                        field: 'correo',
+                        label: 'Correo'
+                    },
+                    {
+                        field: 'nombre',
+                        label: 'Nombre',
+                        centered: true
+                    },
+                    {
+                        field: 'comentario',
+                        label: 'Comentario'
+                    }
+                ],		
+
+	}),
+
   methods: {
       pa_activo(pollero){
           this.polleroamigoactivo = pollero;

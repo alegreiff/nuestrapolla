@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Buefy from 'buefy'
 import VueRouter from 'vue-router'
 import {routes} from './routes'
 import App from './App.vue'
@@ -9,7 +10,7 @@ import FuncionesComunesPLG from './Data/funcionesComunes.js'
 import VueCharts from  'vue-charts'
 import { mapState, mapMutations} from 'vuex'
 Vue.use(VueCharts)
-Vue.use(Buefy.default)
+Vue.use(Buefy)
 import VueYouTubeEmbed from 'vue-youtube-embed'
 Vue.use(VueYouTubeEmbed)
 
