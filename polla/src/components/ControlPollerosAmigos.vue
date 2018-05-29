@@ -1,6 +1,6 @@
 <template>
     <!-- <v-layout row wrap v-if="polleroID && polleroID===103"> -->
-    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1">
+    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1" v-cloak>
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
@@ -30,7 +30,7 @@
         <v-flex xs10>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
-                    <b-table v-if="polleroamigoactivo" :data="union_datos_filtrados" :narrowed="true">
+                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :narrowed="true">
                     <template slot-scope="props">
                 
                 <b-table-column label="Pollero" centered width="150">
