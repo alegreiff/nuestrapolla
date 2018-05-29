@@ -28,7 +28,30 @@
         <v-flex :class="polleroID===1? xs10 : xs12">
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
-                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
+                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :narrowed="true">
+                    <template slot-scope="props">
+                
+                <b-table-column label="Partido" centered>
+                    {{ (props.row.pollero) }} 
+                </b-table-column>
+                <b-table-column label="pago" centered>
+                    {{ (props.row.pago) }} 
+                </b-table-column>
+                <b-table-column label="correo" centered>
+                    {{ (props.row.correo) }} 
+                </b-table-column>
+                <b-table-column label="nombre" centered>
+                    {{ (props.row.nombre) }} 
+                </b-table-column>
+                <b-table-column label="comentario" centered>
+                    {{ (props.row.comentario) }} 
+                </b-table-column>
+                <b-table-column label="EDITAR">
+                        <v-btn color="info" small>Editar {{props.row.id}}</v-btn>
+                </b-table-column>
+                
+            </template>
+            </b-table>
                 </v-card-text>
             </v-card>
             
