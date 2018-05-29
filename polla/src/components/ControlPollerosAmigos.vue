@@ -10,7 +10,7 @@
         <v-flex xs3>
             <v-card color="secondary">
                 <v-card-text class="">
-                        <v-btn color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
+                        <v-btn color="info" v-for="(pollero, index) in  amigospolleros" :key="index" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
                     
                 </v-card-text>
             </v-card>
