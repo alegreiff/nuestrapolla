@@ -30,28 +30,35 @@
         <v-flex xs10>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
-                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :narrowed="true">
+                    <b-table v-if="polleroamigoactivo" :data="union_datos_filtrados" :narrowed="true">
                     <template slot-scope="props">
                 
-                <b-table-column label="Partido" centered>
+                <b-table-column label="Pollero" centered width="150">
                     {{ (props.row.pollero) }} 
                 </b-table-column>
-                <b-table-column label="pago" centered>
-                    {{ (props.row.pago) }} 
+                <b-table-column label="¿Pagó?" centered width="30">
+                    {{ props.row.pago==='0' ? 'NO' : 'SI' }} 
                 </b-table-column>
-                <b-table-column label="correo" centered>
+                <b-table-column label="Correo" centered width="220">
                     {{ (props.row.correo) }} 
                 </b-table-column>
-                <b-table-column label="nombre" centered>
+                <b-table-column label="Nombre" centered width="200">
                     {{ (props.row.nombre) }} 
                 </b-table-column>
-                <b-table-column label="comentario" centered>
+                <b-table-column label="Anotación" centered>
                     {{ (props.row.comentario) }} 
                 </b-table-column>
                 <b-table-column label="EDITAR">
                         <v-btn color="info" small @click="editaUsuario(props.row)">Editar {{props.row.id}}</v-btn>
                 </b-table-column>
                 
+            </template>
+            <template slot="empty">
+                <section class="section">
+                    <div class="content has-text-grey has-text-centered">
+                        <p>Cargando datos</p>
+                    </div>
+                </section>
             </template>
             </b-table>
                 </v-card-text>
@@ -106,11 +113,11 @@
     } from 'vuex'
 
 export default {
-    beforeRouteEnter: ((to, from, next) => {
+    /*beforeRouteEnter: ((to, from, next) => {
         console.info("Antes de entrar");
 
         next((vm) => console.log(vm));
-    }),
+    }),*/
     name: "Control Polleros Amigos",
     data: () => ({
         dialog2: false,
