@@ -7,15 +7,15 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs3>
+        <v-flex xs2>
             <v-card color="secondary">
                 <v-card-text class="px-0">
-                        <v-btn color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
+                        <v-btn small block color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
                     
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs8>
+        <v-flex xs10>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     
