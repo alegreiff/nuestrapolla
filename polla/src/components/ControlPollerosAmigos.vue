@@ -153,6 +153,9 @@ export default {
     },
       created() {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
+        if(this.amigo.length === 1){
+            this.polleroamigoactivo = this.amigo[0].nombre;
+        }
 
     if(this.amigo.length === 1){
         axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
@@ -163,7 +166,7 @@ export default {
     }).catch(e => {
       this.errors.push(e.message)
     })
-    this.polleroamigoactivo = this.amigo[0].nombre;
+    
     }
   }
 
