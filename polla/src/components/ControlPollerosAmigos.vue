@@ -18,33 +18,17 @@
             </v-card>
         </v-flex>
         <v-flex xs10 v-if="polleroID===1">
-        <v-flex xs12 v-else>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
-                    
-                        <!--<table class="tabla_npreg" v-if="union_datos_filtrados">
-                            <thead>
-                                <tr>
-                                    <th>Pollero</th>
-                                    <th>Pagó</th>
-                                    <th>Correo</th>
-                                    <th>Nombre</th>
-                                    <th>Comentario</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(usuario, index) in  union_datos_filtrados" :key="index">
-                                    <td>{{usuario.pollero}}</td>
-                                    <td>{{usuario.pago}}</td>
-                                    <td>{{usuario.correo}}</td>
-                                    <td>{{usuario.nombre}}</td>
-                                    <td>{{usuario.comentario}}</td>
-                                </tr>
-                            </tbody>
-                            
-                        </table>-->  
-                        
-                            <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
+                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
+                </v-card-text>
+            </v-card>
+            
+        </v-flex>
+        <v-flex xs12 v-if="polleroID > 1">
+            <v-card color="grey lighten-5">
+                <v-card-text class="px-0">
+                    <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
                 </v-card-text>
             </v-card>
             
