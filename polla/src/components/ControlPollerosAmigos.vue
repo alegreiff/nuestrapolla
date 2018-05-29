@@ -55,7 +55,7 @@
 
     </v-layout>
 <v-layout v-else>
-    <h1>paila pichurria {{polleroID}}</h1>
+    <h1>Unauthorized {{polleroID}}</h1>
 </v-layout>
 </template>
 
