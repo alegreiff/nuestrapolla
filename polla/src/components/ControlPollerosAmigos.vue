@@ -140,6 +140,7 @@ export default {
                if(this.polleros){
                    var merge = _.merge(this.allpollerosHome, this.polleros);
                return merge;
+               this.polleroamigoactivo = this.amigo[0].nombre;
                }else{
                    return 'NoMatch';
                }
