@@ -33,19 +33,19 @@
                     <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :narrowed="true">
                     <template slot-scope="props">
                 
-                <b-table-column label="Pollero" centered width="150" sortable>
+                <b-table-column label="Pollero" centered width="150" sortable field="pollero">
                     {{ (props.row.pollero) }} 
                 </b-table-column>
-                <b-table-column label="¿Pagó?" centered width="30" sortable>
+                <b-table-column label="¿Pagó?" centered width="30" sortable field="pago">
                     {{ props.row.pago==='0' ? 'NO' : 'SI' }} 
                 </b-table-column>
                 <b-table-column label="Correo" centered width="220">
                     {{ (props.row.correo) }} 
                 </b-table-column>
-                <b-table-column label="Nombre" centered width="200" sortable>
+                <b-table-column label="Nombre" centered width="200" sortable field="nombre">
                     {{ (props.row.nombre) }} 
                 </b-table-column>
-                <b-table-column label="Anotación" centered sortable>
+                <b-table-column label="Anotación" centered sortable field="comentario">
                     {{ (props.row.comentario) }} 
                 </b-table-column>
                 <b-table-column label="EDITAR">
