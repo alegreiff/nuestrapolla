@@ -163,6 +163,7 @@ export default {
     }).catch(e => {
       this.errors.push(e.message)
     })
+    this.polleroamigoactivo = this.amigo[0].nombre;
     }
   }
 
