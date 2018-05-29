@@ -130,17 +130,16 @@ export default {
             if(this.polleroamigoactivo && this.union_datos){
 				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
-                return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 				/*if(this.union_datos){
                     return this.union_datos
                 }*/
+                this.polleroamigoactivo = this.amigo[0].nombre;
 			}
         },
 
         union_datos(){
                if(this.polleros){
                    var merge = _.merge(this.allpollerosHome, this.polleros);
-               this.polleroamigoactivo = this.amigo[0].nombre;
                return merge;
                
                }else{
