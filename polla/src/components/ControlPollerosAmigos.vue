@@ -130,10 +130,10 @@ export default {
             if(this.polleroamigoactivo && this.union_datos){
 				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
-				/*if(this.union_datos){
+				if(this.union_datos){
                     return this.union_datos
-                }*/
-                this.polleroamigoactivo = this.amigo[0].nombre;
+                }
+                
 			}
         },
 
@@ -155,9 +155,7 @@ export default {
     },
       created() {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
-        if(this.amigo.length === 1){
-            //this.polleroamigoactivo = this.amigo[0].nombre;
-        }
+        
 
     if(this.amigo.length === 1){
         axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
@@ -170,6 +168,11 @@ export default {
     })
     
     }
+    if(this.amigo.length === 1){
+            //this.polleroamigoactivo = this.amigo[0].nombre;
+            this.pa_activo(this.amigo[0].nombre)
+        }
+    
   }
 
 };
