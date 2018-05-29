@@ -152,7 +152,7 @@ export default {
     watch: {
   },
   beforeMount() {
-    this.pa_activo(this.amigo[0].nombre);
+    //this.pa_activo(this.amigo[0].nombre);
   },
   	mounted () {
     
