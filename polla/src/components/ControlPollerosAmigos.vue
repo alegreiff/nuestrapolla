@@ -10,7 +10,7 @@
         <v-flex xs3>
             <v-card color="secondary">
                 <v-card-text class="">
-                        <v-btn color="info" v-for="(pollero, index) in  amigospolleros" :key="index" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
+                        <v-btn color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
                     
                 </v-card-text>
             </v-card>
@@ -19,6 +19,7 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
+                        <!--<p v-for="usuario in union_datos_filtrados" key="pollero.id">{{usuario.pollero}}</p>-->
                         
                         <table class="tabla_npreg" v-if="union_datos_filtrados">
                             <thead>
@@ -30,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="usuario in union_datos_filtrados" :key="pollero.id">
+                                <tr v-for="(usuario, index) in  union_datos_filtrados" :key="index">
                                     <td>{{usuario.pollero}}</td>
                                     <td>{{usuario.pago}}</td>
                                     <td>@</td>
@@ -38,7 +39,8 @@
                                 </tr>
                             </tbody>
                             
-                        </table>
+                        </table>                            
+                        
                     </div>
                      
                 </v-card-text>
