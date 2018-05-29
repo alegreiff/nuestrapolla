@@ -47,7 +47,7 @@
                     {{ (props.row.comentario) }} 
                 </b-table-column>
                 <b-table-column label="EDITAR">
-                        <v-btn color="info" small>Editar {{props.row.id}}</v-btn>
+                        <v-btn color="info" small @click="editaUsuario(props.row)">Editar {{props.row.id}}</v-btn>
                 </b-table-column>
                 
             </template>
@@ -62,6 +62,25 @@
             </v-card>
         </v-flex>
 
+<template>
+<v-dialog v-model="dialog2" max-width="500px">
+        <v-card>
+          <v-card-title>
+            Dialog 2
+          </v-card-title>
+          <v-card-text>
+            <pre>
+                {{apollado}}
+            </pre>
+            
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="dialog2=false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+</template>
+
     </v-layout>
 <v-layout v-else>
     <h1>No es lugar para un pollero como tu {{polleroID}}</h1>
@@ -69,124 +88,123 @@
 </template>
 
 <script>
-import {  mapGetters, mapState} from 'vuex'
+    import {
+        mapGetters,
+        mapState
+    } from 'vuex'
 
 export default {
-    beforeRouteEnter:((to, from, next) =>{
+    beforeRouteEnter: ((to, from, next) => {
         console.info("Antes de entrar");
-        
+
         next((vm) => console.log(vm));
     }),
-  name: "Control Polleros Amigos",
+    name: "Control Polleros Amigos",
     data: () => ({
+        dialog2: false,
+        apollado: null,
         amigo: null,
         polleroamigoactivo: null,
         polleros: null,
-        lascolumnas: [
-                    {
-                        field: 'pollero',
-                        label: 'ID',
-                        width: '200'
-                        
-                    },
-                    {
-                        field: 'pago',
-                        label: '¿pagó?',
-                        width: '40'
-                    },
-                    {
-                        field: 'correo',
-                        label: 'Correo',
-                        width: '250'
-                    },
-                    {
-                        field: 'nombre',
-                        label: 'Nombre',
-                        width: '125'
-                    },
-                    {
-                        field: 'comentario',
-                        label: 'Comentario'
-                    }
-                ],		
+        lascolumnas: [{
+                field: 'pollero',
+                label: 'ID',
+                width: '200'
 
-	}),
+            },
+            {
+                field: 'pago',
+                label: '¿pagó?',
+                width: '40'
+            },
+            {
+                field: 'correo',
+                label: 'Correo',
+                width: '250'
+            },
+            {
+                field: 'nombre',
+                label: 'Nombre',
+                width: '125'
+            },
+            {
+                field: 'comentario',
+                label: 'Comentario'
+            }
+        ],
 
-  methods: {
-      pa_activo(pollero){
-          this.polleroamigoactivo = pollero;
-      }
+    }),
 
-  },
-  computed: {
-    ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
-    ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'polleroID', ]),
-        amigospolleros(){
-			
-			if(this.pollerosamigos){
-				return _.sortBy(this.pollerosamigos, [function(o) { return o.sigla; }]);
-			}
+    methods: {
+        editaUsuario(user){
+            
+            this.apollado = user;
+            this.dialog2 = true;
+        },     
+        pa_activo(pollero) {
+            this.polleroamigoactivo = pollero;
+        }
+
+    },
+    computed: {
+        ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
+        ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'polleroID', ]),
+        amigospolleros() {
+
+            if (this.pollerosamigos) {
+                return _.sortBy(this.pollerosamigos, [function (o) {
+                    return o.sigla;
+                }]);
+            }
         },
-        filtrados_pollero(){
-			
-			if(this.polleroamigoactivo){
-				return this.allpollerosHome.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
-			}else{
-				return this.allpollerosHome
-			}
+        filtrados_pollero() {
+            if (this.polleroamigoactivo) {
+                return this.allpollerosHome.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+            } else {
+                return this.allpollerosHome
+            }
         },
-        union_datos_filtrados(){
-            if(this.polleroamigoactivo && this.union_datos){
-				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
-			}else{
-				if(this.union_datos){
-                    if(this.amigo.length===1){
+        union_datos_filtrados() {
+            if (this.polleroamigoactivo && this.union_datos) {
+                return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+            } else {
+                if (this.union_datos) {
+                    if (this.amigo.length === 1) {
                         this.pa_activo(this.amigo[0].nombre);
                     }
-                    
                     return this.union_datos
                 }
-                
-			}
+            }
         },
+        union_datos() {
+            if (this.polleros) {
+                var merge = _.merge(this.allpollerosHome, this.polleros);
 
-        union_datos(){
-               if(this.polleros){
-                   var merge = _.merge(this.allpollerosHome, this.polleros);
-                   
-               return merge;
-               
-               }else{
-                   return 'NoMatch';
-               }
-            
+                return merge;
+
+            } else {
+                return 'NoMatch';
+            }
+
         }
-  },
-    watch: {
-  },
-  beforeMount() {
-    //this.pa_activo(this.amigo[0].nombre);
-  },
-  	mounted () {
-    
     },
-      created() {
+    watch: {},
+    beforeMount() {
+        //this.pa_activo(this.amigo[0].nombre);
+    },
+    mounted() {
+    },
+    created() {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
-        
-
-    if(this.amigo.length === 1 || this.polleroID === 1){
-        axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
-      var lospolleros = response.data
-      _.each(lospolleros, item => item.id = parseInt(item.id))
-      _.each(lospolleros, item => item.orden = parseInt(item.orden))
-      this.polleros = lospolleros;
-    }).catch(e => {
-      this.errors.push(e.message)
-    })
-    
+        if (this.amigo.length === 1 || this.polleroID === 1) {
+            axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
+                var lospolleros = response.data
+                _.each(lospolleros, item => item.id = parseInt(item.id))
+                _.each(lospolleros, item => item.orden = parseInt(item.orden))
+                this.polleros = lospolleros;
+            }).catch(e => {
+                this.errors.push(e.message)
+            })
+        }
     }
-    
-  }
-
-};
-</script>
+}; </script>
