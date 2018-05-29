@@ -1,5 +1,5 @@
 <template>
-    <v-layout row wrap>
+    <v-layout row wrap v-if="polleroID && polleroID===103">
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
@@ -42,9 +42,6 @@
                         </table>-->  
                         
                             <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
-                            
-                                      
-                    
                 </v-card-text>
             </v-card>
             
@@ -56,14 +53,23 @@
         </v-flex>
 
     </v-layout>
-
+<v-layout v-else>
+    <h1>paila pichurria {{polleroID}}</h1>
+</v-layout>
 </template>
+
 <script>
 import {  mapGetters, mapState} from 'vuex'
 
 export default {
+    beforeRouteEnter:((to, from, next) =>{
+        console.info("Antes de entrar");
+        
+        next((vm) => console.log(vm));
+    }),
   name: "Control Polleros Amigos",
     data: () => ({
+        amigo: null,
         polleroamigoactivo: null,
         polleros: null,
         lascolumnas: [
@@ -103,8 +109,8 @@ export default {
 
   },
   computed: {
-      ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
-    ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'statistics', 'polleroID', ]),
+    ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
+    ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'polleroID', ]),
         amigospolleros(){
 			
 			if(this.pollerosamigos){
@@ -145,7 +151,10 @@ export default {
     
     },
       created() {
-    axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
+        this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
+
+    //if(this.polleroID === 103){
+        axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
       var lospolleros = response.data
       _.each(lospolleros, item => item.id = parseInt(item.id))
       _.each(lospolleros, item => item.orden = parseInt(item.orden))
@@ -153,6 +162,7 @@ export default {
     }).catch(e => {
       this.errors.push(e.message)
     })
+    //}
   }
 
 };
