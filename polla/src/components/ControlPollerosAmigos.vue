@@ -1,6 +1,6 @@
 <template>
     <!-- <v-layout row wrap v-if="polleroID && polleroID===103"> -->
-    <v-layout row wrap v-if="amigo.length === 1">
+    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1">
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
@@ -12,7 +12,7 @@
             <v-card color="secondary">
                 <v-card-text class="px-0">
 
-                        <!--<v-btn small block color="info" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>-->
+                        <v-btn small block color="info" v-if="polleroID===1" v-for="pollero in  amigospolleros" :key="pollero.id" @click="pa_activo(pollero.nombre)">{{ pollero.sigla }} - {{pollero.nombre}}</v-btn>
                     
                 </v-card-text>
             </v-card>
@@ -163,7 +163,7 @@ export default {
         this.amigo = this.pollerosamigos.filter((amigos) => amigos.id === this.polleroID)
         
 
-    if(this.amigo.length === 1){
+    if(this.amigo.length === 1 || polleroID === 1){
         axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
       var lospolleros = response.data
       _.each(lospolleros, item => item.id = parseInt(item.id))
