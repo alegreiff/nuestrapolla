@@ -16,7 +16,7 @@
             </v-card>
         </v-flex>
         <v-flex xs8>
-            <v-card dark color="grey lighten-5">
+            <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     
                         <!--<table class="tabla_npreg" v-if="union_datos_filtrados">
@@ -41,7 +41,7 @@
                             
                         </table>-->  
                         
-                            <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas"></b-table>
+                            <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
                             
                                       
                     
@@ -50,7 +50,7 @@
             
         </v-flex>
         <v-flex xs12>
-            <v-card dark color="primary">
+            <v-card color="primary">
                 <v-card-text class="px-0">No es tu polla. No es mi polla. Es Nuestra Polla</v-card-text>
             </v-card>
         </v-flex>
