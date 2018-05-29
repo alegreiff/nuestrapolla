@@ -41,7 +41,7 @@
 
     </v-layout>
 <v-layout v-else>
-    <h1>Unauthorized {{polleroID}}</h1>
+    <h1>No es lugar para un pollero como tu {{polleroID}}</h1>
 </v-layout>
 </template>
 
