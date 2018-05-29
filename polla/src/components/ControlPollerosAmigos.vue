@@ -86,7 +86,7 @@ export default {
                     {
                         field: 'nombre',
                         label: 'Nombre',
-                        centered: true
+                        width: '125'
                     },
                     {
                         field: 'comentario',
