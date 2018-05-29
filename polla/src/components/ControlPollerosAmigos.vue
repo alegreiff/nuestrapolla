@@ -19,14 +19,13 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
-                        <!--<p v-for="usuario in union_datos_filtrados" key="pollero.id">{{usuario.pollero}}</p>-->
-                        
                         <table class="tabla_npreg" v-if="union_datos_filtrados">
                             <thead>
                                 <tr>
                                     <th>Pollero</th>
                                     <th>Pagó</th>
                                     <th>Correo</th>
+                                    <th>Nombre</th>
                                     <th>Comentario</th>
                                 </tr>
                             </thead>
@@ -34,15 +33,14 @@
                                 <tr v-for="(usuario, index) in  union_datos_filtrados" :key="index">
                                     <td>{{usuario.pollero}}</td>
                                     <td>{{usuario.pago}}</td>
-                                    <td>@</td>
+                                    <td>{{usuario.correo}}</td>
+                                    <td>{{usuario.nombre}}</td>
                                     <td>{{usuario.comentario}}</td>
                                 </tr>
                             </tbody>
                             
                         </table>                            
-                        
                     </div>
-                     
                 </v-card-text>
             </v-card>
             <b-table :data="data" :columns="columns"></b-table>
