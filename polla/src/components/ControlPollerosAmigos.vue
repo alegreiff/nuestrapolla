@@ -17,15 +17,15 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs10 v-if="polleroID===1">
+        <!--<v-flex xs10 v-if="polleroID===1">
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
                 </v-card-text>
             </v-card>
             
-        </v-flex>
-        <v-flex xs12 v-if="polleroID > 1">
+        </v-flex>-->
+        <v-flex :class="polleroID===1? xs10 : xs12">
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     <b-table v-if="union_datos_filtrados" :data="union_datos_filtrados" :columns="lascolumnas" :narrowed="true"></b-table>
