@@ -132,7 +132,10 @@ export default {
 				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
 				if(this.union_datos){
-                    this.pa_activo(this.amigo[0].nombre);
+                    if(this.amigo.length===1){
+                        this.pa_activo(this.amigo[0].nombre);
+                    }
+                    
                     return this.union_datos
                 }
                 
