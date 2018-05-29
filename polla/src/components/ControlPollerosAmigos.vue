@@ -79,6 +79,7 @@
           </v-card-title>
           <v-card-text>
                 
+                <p>Comentario, forma de pago, nota, recordatorio, tip...</p>
                 <textarea name="" v-model="apollado.comentario" cols="30" rows="2"></textarea>
                 
                 <input type="radio" id="one" value="0" v-model="apollado.pago">
@@ -86,15 +87,15 @@
                 <br>
                 <input type="radio" id="two" value="1" v-model="apollado.pago">
                 <label for="two">Ya pagó</label>
-                <ht />
-                <v-btn small @click="updatePolleroData()">Actualizar</v-btn>
+                <hr />
+                <v-btn small @click="updatePolleroData()">Actualizar información de {{apollado.pollero}}</v-btn>
             <!--<pre>
                  {{apollado}} 
             </pre>-->
             
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" flat @click.stop="dialog2=false">Close</v-btn>
+            <v-btn color="primary" flat @click.stop="dialog2=false">Cerrar sin cambios</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
