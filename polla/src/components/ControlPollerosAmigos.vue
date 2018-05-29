@@ -140,6 +140,7 @@ export default {
         union_datos(){
                if(this.polleros){
                    var merge = _.merge(this.allpollerosHome, this.polleros);
+                   this.pa_activo(this.amigo[0].nombre)
                return merge;
                
                }else{
@@ -170,7 +171,7 @@ export default {
     }
     if(this.amigo.length === 1){
             //this.polleroamigoactivo = this.amigo[0].nombre;
-            this.pa_activo(this.amigo[0].nombre)
+            
         }
     
   }
