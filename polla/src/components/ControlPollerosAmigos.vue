@@ -130,9 +130,10 @@ export default {
             if(this.polleroamigoactivo && this.union_datos){
 				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
-				if(this.union_datos){
+                return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+				/*if(this.union_datos){
                     return this.union_datos
-                }
+                }*/
 			}
         },
 
