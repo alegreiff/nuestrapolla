@@ -8,7 +8,7 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs2>
+        <v-flex xs2 v-if="polleroID===1">
             <v-card color="secondary">
                 <v-card-text class="px-0">
 
@@ -17,7 +17,8 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs10>
+        <v-flex xs10 v-if="polleroID===1">
+        <v-flex xs12 v-else>
             <v-card color="grey lighten-5">
                 <v-card-text class="px-0">
                     
