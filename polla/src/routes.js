@@ -22,7 +22,7 @@ export const routes = [
 	{path: '/mispronos', component: Misspronos},
 	{path: '/clasificador', component: Clasificador},
 	{path: '/reglamento', component: Reglamento},
-	{path: '/polleroamigo', component: ControlPA},
+	{path: '/amigopollero', component: ControlPA},
 	{path: '/nouser',
     beforeEnter(to, from, next) {
         window.location = "../"

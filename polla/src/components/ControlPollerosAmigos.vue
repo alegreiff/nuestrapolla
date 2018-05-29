@@ -19,10 +19,26 @@
             <v-card dark color="grey lighten-5">
                 <v-card-text class="px-0">
                     <div class="np_reglamento">
-                        <p v-for="usuario in union_datos_filtrados" key="pollero.id">{{usuario.pollero}}</p>
-                        <!--<table>
+                        
+                        <table class="tabla_npreg">
+                            <thead>
+                                <tr>
+                                    <th>Pollero</th>
+                                    <th>Pagó</th>
+                                    <th>Correo</th>
+                                    <th>Comentario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="usuario in union_datos_filtrados" :key="pollero.id">
+                                    <td>{{usuario.pollero}}</td>
+                                    <td>{{usuario.pago}}</td>
+                                    <td>@</td>
+                                    <td>{{usuario.comentario}}</td>
+                                </tr>
+                            </tbody>
                             
-                        </table>-->
+                        </table>
                     </div>
                      
                 </v-card-text>
