@@ -179,7 +179,7 @@ export default {
             this.dialog2 = true;
         },     
         pa_activo(pollero) {
-            this.polleroamigoactivo = pollero;
+            pollero === 'OTRO' ? this.polleroamigoactivo = 'POR DEFINIR' : this.polleroamigoactivo = pollero;
         }
 
     },
