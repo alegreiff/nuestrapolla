@@ -238,16 +238,6 @@
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
-				<v-flex xs6 md3 lg2 v-for="(item, index) in filtrados_pollero" class="np_conocepolleros">
-					
-					<v-chip :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
-            <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
-            <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
-						
-          </v-chip>
-				</v-flex>
-			</v-layout>
-			<v-layout row wrap>
 				<v-flex xs12>
 					{{ filtrados_pollero.length }}
 					
@@ -263,24 +253,19 @@
 					<v-btn color="primary" small dark @click="filtroPolleros('Miller Sánchez')">MS</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros('Ricardo Ramírez')">RR</v-btn>
 					<v-btn color="primary" small dark @click="filtroPolleros(0)">TODOS</v-btn>
-
-<!--
-'}, 
-			
-Alfonso Acosta'}, 
-			{id: 0, 	sigla: 'DU', nombre: 'Diego Urrutia'},
-			{id: 6, 	sigla: 'EM', nombre: 'Esteban Muñoz'},
-			{id: 19, 	sigla: 'FA', nombre: 'Federico Arango'},
-			{id: 2, 	sigla: 'JD', nombre: 'Jaime de Greiff'},
-			{id: 10, 	sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
-			{id: 7, 	sigla: 'LV', nombre: 'Luis Fernando Velasco'},
-			{id: 0, 	sigla: 'MS', nombre: 'Miller Sánchez'},
-			{id: 0, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
-			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
-			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
--->
 				</v-flex>
 			</v-layout>
+			<v-layout row wrap>
+				<v-flex xs6 md3 lg2 v-for="(item, index) in filtrados_pollero" class="np_conocepolleros">
+					
+					<v-chip block :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
+            <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
+            <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
+						
+          </v-chip>
+				</v-flex>
+			</v-layout>
+			
 			<v-layout row wrap>
 				<v-flex xs12 md6 lg3>
 					<v-card color="pollacrema" light>
