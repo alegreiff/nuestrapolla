@@ -264,7 +264,7 @@
 						
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
-						{{quien(item.polleroamigo)}} <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;&nbsp; {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
+						{{quien(item.polleroamigo)}} {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
 					</v-btn>
 				</v-flex>
 			</v-layout>
@@ -350,6 +350,7 @@ import TiempoRestante from './TiempoRestante.vue'
 export default {
   data: () => ({
 		dialog2: false,
+		polleros: null,
 		pollerodata: false,
 		txsnack: '',
 		timeout: 5000,
@@ -465,7 +466,14 @@ if(valor === 0){
     }
 	},
 	created() {
-    //console.log("///////////////")
+    axios.get(`/wp-json/pollerosamics/v1/all/`).then(response => {
+                var lospolleros = response.data
+                _.each(lospolleros, item => item.id = parseInt(item.id))
+                _.each(lospolleros, item => item.orden = parseInt(item.orden))
+                this.polleros = lospolleros;
+            }).catch(e => {
+                this.errors.push(e.message)
+            })
 		
 		
   },
