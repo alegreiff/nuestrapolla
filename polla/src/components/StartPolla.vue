@@ -264,7 +264,7 @@
 						
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
-						<v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar> <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;&nbsp; {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
+						{{quien(item.polleroamigo)}} <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;&nbsp; {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
 					</v-btn>
 				</v-flex>
 			</v-layout>
