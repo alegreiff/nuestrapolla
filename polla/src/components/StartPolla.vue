@@ -258,11 +258,14 @@
 			<v-layout row wrap>
 				<v-flex xs6 md3 lg2 v-for="(item, index) in filtrados_pollero" class="np_conocepolleros">
 					
-					<v-chip block :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
+					<!--<v-chip block :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)">
             <v-avatar class="blue darken-3">{{quien(item.polleroamigo)}}</v-avatar>
-            <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} <!--{{es_pollero_amigo(item.id)}}-->
+            <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}} 
 						
-          </v-chip>
+          </v-chip>-->
+					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " text-color="white" @click="mueche(item.id)" block>
+						{{quien(item.polleroamigo)}} - <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon>  {{ item.pollero }} - {{pronos_parciales_pollero(item.id)}}
+					</v-btn>
 				</v-flex>
 			</v-layout>
 			
