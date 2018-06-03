@@ -265,7 +265,7 @@
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
 						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id)}}
-					<v-icon v-if="item.pago===1">check_box</v-icon>
+					<v-icon v-if="item.pago==='1'">check_box</v-icon>
 					<v-icon v-else>check_box_out</v-icon>
 					</v-btn>
 				</v-flex>
@@ -472,7 +472,7 @@ if(valor === 0){
                 var lospolleros = response.data
                 _.each(lospolleros, item => item.id = parseInt(item.id))
                 _.each(lospolleros, item => item.orden = parseInt(item.orden))
-								_.each(lospolleros, item => item.pago = parseInt(item.pago))
+								//_.each(lospolleros, item => item.pago = parseInt(item.pago))
                 this.polleros = lospolleros;
             }).catch(e => {
                 this.errors.push(e.message)
