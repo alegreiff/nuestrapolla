@@ -265,6 +265,8 @@
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
 						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id)}}
+					<v-icon v-if="item.pago===1">check_box</v-icon>
+					<v-icon v-else>check_box_out</v-icon>
 					</v-btn>
 				</v-flex>
 			</v-layout>
@@ -520,10 +522,10 @@ if(valor === 0){
 		filtrados_pollero(){
 			
 			if(this.polleroamigoactivo){
-				return this.allpollerosHome.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
+				return this.union_datos.filter((polleros) => polleros.polleroamigo === this.polleroamigoactivo)
 			}else{
 				//return 
-				return _.sortBy(this.allpollerosHome, [function(o) { return o.id; }]);
+				return _.sortBy(this.union_datos, [function(o) { return o.id; }]);
 				
 			}
 		},
