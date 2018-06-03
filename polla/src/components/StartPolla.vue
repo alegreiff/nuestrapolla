@@ -527,6 +527,17 @@ if(valor === 0){
 				
 			}
 		},
+		union_datos() {
+            if (this.polleros) {
+                var merge = _.merge(this.allpollerosHome, this.polleros);
+
+                return merge;
+
+            } else {
+                return 'NoMatch';
+            }
+
+        }
 
     }
   
