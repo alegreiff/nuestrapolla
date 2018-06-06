@@ -11,14 +11,14 @@ export const datos = new Vuex.Store({
 		
 		pollerosamigos: [
 			{id: 18, 	sigla: 'AA', nombre: 'Alfonso Acosta'}, 
-			{id: 0, 	sigla: 'DU', nombre: 'Diego Urrutia'},
+			{id: 27, 	sigla: 'DU', nombre: 'Diego Urrutia'},
 			{id: 6, 	sigla: 'EM', nombre: 'Esteban Muñoz'},
 			{id: 19, 	sigla: 'FA', nombre: 'Federico Arango'},
 			{id: 2, 	sigla: 'JD', nombre: 'Jaime de Greiff'},
 			{id: 10, 	sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
 			{id: 7, 	sigla: 'LV', nombre: 'Luis Fernando Velasco'},
 			{id: 0, 	sigla: 'MS', nombre: 'Miller Sánchez'},
-			{id: 0, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
+			{id: 88, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
 			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
 			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
 			{id: 0, 	sigla: '##', nombre: 'OTRO'}

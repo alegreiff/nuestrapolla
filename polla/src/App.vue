@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.1.12 CORREGIDO. Reglamento público y privado',
+      infoversion: 'v.1.30 Pardito como pollero amigo',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
