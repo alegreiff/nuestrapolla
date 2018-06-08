@@ -264,7 +264,7 @@
 						
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
-						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id, item.correo, item.tuira, item.pago)}}
+						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id, item.correo, item.tuira, item.pago, item.polleroamigo)}}
 					
 					&nbsp;<v-icon v-if="item.pago==='1'">check_box</v-icon>
 					<!--<v-icon v-else>check_box_out</v-icon>-->
@@ -330,7 +330,7 @@
 						<v-chip>{{ pollero_activo.edad }}</v-chip>
 						<v-chip color="primary" text-color="white" v-for="(equipo, index) in pollero_activo.favoritos" :key="equipo.index">{{equipo}}</v-chip>
 						<hr>
-						<v-chip color="primary" text-color="white">Pronósticos: {{pronos_parciales_pollero(pollero_activo.id, pollero_activo.correo, pollero_activo.tuira, pollero_activo.pago)}}</v-chip>
+						<v-chip color="primary" text-color="white">Pronósticos: {{pronos_parciales_pollero(pollero_activo.id, pollero_activo.correo, pollero_activo.tuira, pollero_activo.pago, pollero_activo.polleroamigo)}}</v-chip>
 						
 						
             
@@ -402,10 +402,10 @@ if(valor === 0){
 			}
 			
 		},
-		pronos_parciales_pollero(pollero, mail, tw, pago){
+		pronos_parciales_pollero(pollero, mail, tw, pago, polleroamigo){
 			//pollero_activo
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
-		console.log( pollero+':::'+mail+':::'+tw+':::'+pago);
+		console.error( polleroamigo+':::'+pollero+':::'+mail+':::'+tw+':::'+pago+':::'+tempo.length);
 		return tempo.length;
 		},
 		lafrase () {
