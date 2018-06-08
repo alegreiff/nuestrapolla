@@ -405,7 +405,8 @@ if(valor === 0){
 		pronos_parciales_pollero(pollero, mail, tw, pago, polleroamigo){
 			//pollero_activo
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
-		//console.error( polleroamigo+':::'+pollero+':::'+mail+':::'+tw+':::'+pago+':::'+tempo.length);
+		tw === '' ? tw = 'SIN TWITTER' : tw = tw
+		console.info( polleroamigo+':::'+pollero+':::'+mail+':::'+tw+':::'+pago+':::'+tempo.length);
 		return tempo.length;
 		},
 		lafrase () {
