@@ -106,6 +106,7 @@
               <img :src="'/assets/flags/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario">
               <img :src="'/assets/band/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario"
                 v-if="banderas">
+                espacio1
             </div>
             <div class="resultados" v-if="pronos_partido(partido.id)">
               <p class="res_superior"></p>
@@ -126,8 +127,10 @@
             <div class="equipo_visitante">
               {{calendario[partido.id].visitante}}
               <img :src="'/assets/flags/'+calendario[partido.id].idvis + '.png'" :alt="calendario[partido.id].idvis" class="flags_diario">
+              
               <img :src="'/assets/band/'+calendario[partido.id].idvis + '.png'" :alt="calendario[partido.id].idvis" class="flags_diario"
                 v-if="banderas">
+                espacio2
             </div>
             <div class="comandos" v-if="pronos_partido(partido.id)">
               <v-chip color="green" text-color="white">
