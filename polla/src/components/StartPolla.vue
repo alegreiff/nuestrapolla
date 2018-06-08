@@ -264,7 +264,7 @@
 						
           </v-chip>-->
 					<v-btn small :class="item.genero==='Pollero' ? 'light-blue darken-2': 'purple lighten-2' " dark @click="mueche(item.id)" block>
-						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id)}}
+						{{quien(item.polleroamigo)}} {{ item.pollero }} &nbsp; <v-icon v-if="es_pollero_amigo(item.id)">people</v-icon> &nbsp;{{pronos_parciales_pollero(item.id, item.correo, item.tuira, item.pago)}}
 					
 					&nbsp;<v-icon v-if="item.pago==='1'">check_box</v-icon>
 					<!--<v-icon v-else>check_box_out</v-icon>-->
@@ -330,7 +330,7 @@
 						<v-chip>{{ pollero_activo.edad }}</v-chip>
 						<v-chip color="primary" text-color="white" v-for="(equipo, index) in pollero_activo.favoritos" :key="equipo.index">{{equipo}}</v-chip>
 						<hr>
-						<v-chip color="primary" text-color="white">Pronósticos: {{pronos_parciales_pollero(pollero_activo.id)}}</v-chip>
+						<v-chip color="primary" text-color="white">Pronósticos: {{pronos_parciales_pollero(pollero_activo.id, pollero_activo.correo, pollero_activo.tuira, pollero_activo.pago)}}</v-chip>
 						
 						
             
@@ -387,10 +387,10 @@ if(valor === 0){
 			var sale = _.find(this.pollerosamigos, { 'nombre': jugatore});
 			//console.log("El PA es " + sale.sigla);
 			if(sale){
-				console.log("El PA es " + sale.sigla);
+				//console.log("El PA es " + sale.sigla);
 				return sale.sigla;
 			}else{
-				console.log("PAILASS")
+				//console.log("PAILASS")
 			}
 		},
 		es_pollero_amigo(id){
@@ -402,8 +402,10 @@ if(valor === 0){
 			}
 			
 		},
-		pronos_parciales_pollero(pollero){
+		pronos_parciales_pollero(pollero, mail, tw, pago){
+			//pollero_activo
 		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+		console.log( pollero+':::'+mail+':::'+tw+':::'+pago);
 		return tempo.length;
 		},
 		lafrase () {
