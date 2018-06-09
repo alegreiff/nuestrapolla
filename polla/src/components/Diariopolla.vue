@@ -134,7 +134,11 @@
                 v-if="banderas">
                 
             </div>
-            <div class="graficadiariopolla" v-html="graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)"></div> 
+            <!-- v-html="graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)"-->
+            <div class="graficadiariopolla">
+              <v-progress-circular :value="64" :width="10" :size="80" color="teal">35<br>64.2%</v-progress-circular>
+              <v-progress-circular :value="12" :width="10" :size="80" color="red">5<br>12.2%</v-progress-circular>
+              <v-progress-circular :value="24" :width="10" :size="80" color="pink">12<br>23.5%</v-progress-circular></div> 
             <div class="comandos" v-if="pronos_partido(partido.id)">
               <v-chip color="green" text-color="white">
                 <v-avatar class="green darken-4">{{ calendario[partido.id].grupo }}</v-avatar>
@@ -303,8 +307,9 @@ export default {
       var locP = (loc * 100) / base;
       var visP = (vis * 100) / base;
       var empP = (emp * 100) / base;
-      var salida = '<table border ="2" class="np_tabla_resultados" ><tr><td width='+ locP +'%> </td> <td width=' +empP+ '%> </td> <td width=' +visP+ '%> </td></tr></table>';
+      //var salida = '<table border ="2" class="np_tabla_resultados" ><tr><td width='+ locP +'%> </td> <td width=' +empP+ '%> </td> <td width=' +visP+ '%> </td></tr></table>';
     //return (locP + ' ' + visP + ' ' +empP);
+    var salida = '<v-progress-circular :value="60"></v-progress-circular><v-progress-circular :value="10"></v-progress-circular><v-progress-circular :value="30"></v-progress-circular>'
     return salida;
     },
 
