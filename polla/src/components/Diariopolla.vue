@@ -134,7 +134,7 @@
                 v-if="banderas">
                 
             </div>
-            <div class="graficadiariopolla"><span>{{graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)}}</span></div> 
+            <div class="graficadiariopolla" v-html="graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)"></div> 
             <div class="comandos" v-if="pronos_partido(partido.id)">
               <v-chip color="green" text-color="white">
                 <v-avatar class="green darken-4">{{ calendario[partido.id].grupo }}</v-avatar>
@@ -303,7 +303,9 @@ export default {
       var locP = (loc * 100) / base;
       var visP = (vis * 100) / base;
       var empP = (emp * 100) / base;
-    return (locP.toFixed(1) + ' ' + visP.toFixed(1) + ' ' +empP.toFixed(1));
+      var salida = '<table border ="2" class="np_tabla_resultados" ><tr><td width='+ locP +'%> </td> <td width=' +empP+ '%> </td> <td width=' +visP+ '%> </td></tr></table>';
+    //return (locP + ' ' + visP + ' ' +empP);
+    return salida;
     },
 
 
