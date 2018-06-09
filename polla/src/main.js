@@ -13,6 +13,8 @@ Vue.use(VueCharts)
 Vue.use(Buefy)
 import VueYouTubeEmbed from 'vue-youtube-embed'
 Vue.use(VueYouTubeEmbed)
+import VueChartkick from 'vue-chartkick'
+Vue.use(VueChartkick)
 
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)

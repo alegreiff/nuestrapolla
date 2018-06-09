@@ -106,7 +106,7 @@
               <img :src="'/assets/flags/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario">
               <img :src="'/assets/band/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario"
                 v-if="banderas">
-                espacio1
+                <pie-chart :data="[[calendario[partido.id].local, pronos_partido(partido.id).loc], [calendario[partido.id].visitante, pronos_partido(partido.id).vis], ['Empate', pronos_partido(partido.id).emp]]" :legend="false" width="100%" height="90px" class="cartapolla" :donut="true"></pie-chart>
             </div>
             <div class="resultados" v-if="pronos_partido(partido.id)">
               <p class="res_superior"></p>
@@ -122,6 +122,8 @@
               <p class="marcadorDef_loc" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].lg}}</p>
               <p class="marcadorDef_vis" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].vg}}</p>
               <p class="res_puntos" v-if="calendario[partido.id].procesado== 1">Puntos</p>
+              <!--<span>{{graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)}}</span>-->
+              
               <p class="res_pts" v-if="calendario[partido.id].procesado== 1">{{ pronos_partido(partido.id).mipuntos}}</p>
             </div>
             <div class="equipo_visitante">
@@ -130,7 +132,7 @@
               
               <img :src="'/assets/band/'+calendario[partido.id].idvis + '.png'" :alt="calendario[partido.id].idvis" class="flags_diario"
                 v-if="banderas">
-                espacio2
+                
             </div>
             <div class="comandos" v-if="pronos_partido(partido.id)">
               <v-chip color="green" text-color="white">
@@ -268,6 +270,7 @@ import QPS from './snippets/QPS.vue'
 
 export default {
   data: () => ({
+    chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]],
     qps: false,
     modo: '',
     partidoactivo: null,
@@ -295,6 +298,9 @@ export default {
     source: String
   },
   methods: {
+    graficaPronos(loc, vis, emp){
+    return (loc + ':' + vis + ':' +emp);
+    },
 
 
     colorderesultado(resultado, partido){
