@@ -106,7 +106,7 @@
               <img :src="'/assets/flags/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario">
               <img :src="'/assets/band/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario"
                 v-if="banderas">
-                <pie-chart :data="[[calendario[partido.id].local, pronos_partido(partido.id).loc], [calendario[partido.id].visitante, pronos_partido(partido.id).vis], ['Empate', pronos_partido(partido.id).emp]]" :legend="true" width="100%" height="120px" class="cartapolla"></pie-chart>
+                <!--<pie-chart :data="[[calendario[partido.id].local, pronos_partido(partido.id).loc], [calendario[partido.id].visitante, pronos_partido(partido.id).vis], ['Empate', pronos_partido(partido.id).emp]]" :legend="true" width="100%" height="120px" class="cartapolla"></pie-chart>-->
             </div>
             <div class="resultados" v-if="pronos_partido(partido.id)">
               <p class="res_superior"></p>
@@ -270,7 +270,6 @@ import QPS from './snippets/QPS.vue'
 
 export default {
   data: () => ({
-    chartData: [["Jan", 4], ["Feb", 2], ["Mar", 10], ["Apr", 5], ["May", 3]],
     qps: false,
     modo: '',
     partidoactivo: null,

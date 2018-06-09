@@ -9,12 +9,12 @@ import Vuetify from 'vuetify'
 import FuncionesComunesPLG from './Data/funcionesComunes.js'
 import VueCharts from  'vue-charts'
 import { mapState, mapMutations} from 'vuex'
-Vue.use(VueCharts)
+//Vue.use(VueCharts)
 Vue.use(Buefy)
 import VueYouTubeEmbed from 'vue-youtube-embed'
 Vue.use(VueYouTubeEmbed)
-import VueChartkick from 'vue-chartkick'
-Vue.use(VueChartkick)
+//import VueChartkick from 'vue-chartkick'
+//Vue.use(VueChartkick)
 
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)
