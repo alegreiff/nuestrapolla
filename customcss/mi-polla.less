@@ -713,7 +713,7 @@ np_partido_dia
   margin-bottom: 1em;
   display: grid;
   grid-template-columns: 170px 1fr 90px 1fr;
-  grid-template-rows: 320px auto;
+  grid-template-rows: 320px 80px auto;
   /*background-color: @azulRusia;*/
 }
 .np_partido_dia_proces{
@@ -815,40 +815,6 @@ font-weight: bold;
 }
 
 
-/*
-            <p class="res_superior">superior</p>
-            <p class="res_pron">Pronóstico</p>
-            <p class="res_pronlocal"> {{ pronos_partido(partido.id).miloc}} </p>
-            
-            <p class="res_pronlocal"> {{ pronos_partido(partido.id).mivis}} </p>
-            <p class="res_comodin">Comodín</p>
-
-            <p class="res_marcador">Marcador</p>
-            <p class="marcadorDef_loc" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].lg}}</p>
-             
-            <p class="marcadorDef_vis" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].vg}}</p>
-            <p class="res_puntos">Puntos</p>
-            <p class="res_pts">6</p>
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 span.marcadorDef{
   font-weight: 2em;
@@ -865,6 +831,10 @@ span.marcadorDef{
     text-align: center;
     font-size: 1.1em;
     font-weight: 500;
+  }
+  .graficadiariopolla{
+    grid-column-start: 2;
+    grid-column-end: 5;
   }
   .comandos{
     border-radius: 0.66em;
