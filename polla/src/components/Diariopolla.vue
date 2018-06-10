@@ -274,7 +274,7 @@ import Vue from 'vue'
 import Flashcard from './flashcard'
 import tablapronosporpartido from './tablapronosporpartido'
 import { mapState, mapMutations, mapGetters} from 'vuex'
-import jsPDF from 'jsPDF'
+//import jsPDF from 'jsPDF'
 import QPS from './snippets/QPS.vue'
 
 

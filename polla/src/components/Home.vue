@@ -143,7 +143,7 @@ import {
   mapMutations,
   mapGetters
 } from 'vuex'
-import jsPDF from 'jsPDF'
+//import jsPDF from 'jsPDF'
 //import { ChartPie } from 'vue-d2b'
 
 
@@ -172,12 +172,12 @@ export default {
     source: String
   },
   methods: {
-    createPDF() {
+    /*createPDF() {
       var doc = new jsPDF();
       var pdfName = "ddoo"
       doc.text("Hello World", 10, 10);
       doc.save(pdfName + '.pdf');
-    },
+    },*/
     muestrabanderas() {
       this.banderas = !this.banderas
     },
