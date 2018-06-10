@@ -1,4 +1,5 @@
-import moment from 'moment'
+//import moment from 'moment'
+//var moment = require('moment');
 moment.locale('es') // 'es'
 moment.updateLocale('es', {
 	monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']

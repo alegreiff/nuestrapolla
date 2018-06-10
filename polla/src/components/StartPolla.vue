@@ -15,7 +15,7 @@
 							<v-btn :to="{path: '/pronos'}"  block color="primary">Crear o modificar mis marcadores
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
-							<v-btn color="primary" dark @click.stop="dialog2 = true">Ayuda sobre marcadores</v-btn>
+							<!--<v-btn color="primary" dark @click.stop="dialog2 = true">Ayuda sobre marcadores</v-btn>-->
 							<!--<v-btn @click="pdftest()"  block color="terciary" v-if="(fasePolla.partidos - valore) === 0" >Mis pronósticos PDF<v-icon right dark>highlight</v-icon></v-btn>-->
 							<v-btn @click="pdftest()"  block color="terciary" v-if="(estatuspronos) === 0" >Descargar Mis pronósticos PDF
 								<v-icon right dark>highlight</v-icon>
@@ -295,7 +295,7 @@
 					</v-card>
 				</v-flex>
 			</v-layout>
-			<template>
+			<!--<template>
 				<v-dialog v-model="dialog2" max-width="900px">
         <v-card>
           <v-card-title>
@@ -310,7 +310,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-			</template>
+			</template>-->
 			<template>
 				<v-dialog v-model="pollerodata" max-width="500px">
         <v-card>
@@ -345,7 +345,7 @@ import { mapState, mapGetters } from 'vuex'
 import TiempoRestante from './TiempoRestante.vue'
 export default {
   data: () => ({
-		dialog2: false,
+		//dialog2: false,
 		polleros: null,
 		pollerodata: false,
 		txsnack: '',

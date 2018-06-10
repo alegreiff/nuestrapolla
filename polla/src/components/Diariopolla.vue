@@ -337,7 +337,7 @@ export default {
     salida.cl = classLoc
     salida.ce = classEmp
     salida.cv = classVis
-    console.table(salida);
+    //console.table(salida);
     return salida;
     //return 'jaime LG';
     },

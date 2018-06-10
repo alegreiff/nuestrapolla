@@ -11,8 +11,8 @@ import FuncionesComunesPLG from './Data/funcionesComunes.js'
 import { mapState, mapMutations} from 'vuex'
 //Vue.use(VueCharts)
 Vue.use(Buefy)
-import VueYouTubeEmbed from 'vue-youtube-embed'
-Vue.use(VueYouTubeEmbed)
+//import VueYouTubeEmbed from 'vue-youtube-embed'
+//Vue.use(VueYouTubeEmbed)
 //import VueChartkick from 'vue-chartkick'
 //Vue.use(VueChartkick)
 

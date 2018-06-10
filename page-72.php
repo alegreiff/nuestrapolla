@@ -18,8 +18,11 @@ function jaimeenqueue() {
     //wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/customcss/mi-polla.css' );
     /*wp_register_script( 'vue_logic', get_stylesheet_directory_uri() . "/vuelogic/app.js", null, null, true );
     wp_enqueue_script('vue_logic');*/
-    wp_register_script( 'chartsg', 'https://www.gstatic.com/charts/loader.js', null, null, true );
-    wp_enqueue_script('chartsg');
+    //wp_register_script( 'chartsg', 'https://www.gstatic.com/charts/loader.js', null, null, true );
+    //wp_enqueue_script('chartsg');
+    wp_register_script( 'momento', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js', null, null, true );
+    wp_enqueue_script('momento');
+    
     wp_register_script( 'html2canvas', 'https://html2canvas.hertzen.com/dist/html2canvas.js', null, null, true );
     wp_enqueue_script('html2canvas');
     wp_register_script( 'axios', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js', null, null, false );
