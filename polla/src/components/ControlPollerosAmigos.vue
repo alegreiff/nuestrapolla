@@ -34,13 +34,16 @@
                     <template slot-scope="props">
                 
                 <b-table-column label="Pollero" centered width="150" sortable field="pollero">
-                    {{ (props.row.pollero) }} 
+                    {{ (props.row.pollero) }}  
                 </b-table-column>
-                <b-table-column label="¿Pagó?" centered width="30" sortable field="pago">
+                <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<48 ? 'pronosROJOS' : 'pronosVERDES'">
+                    <span>{{pronos_parciales_pollero(props.row.id)}}</span>
+                </b-table-column>
+                <b-table-column label="¿Pagó?" centered width="30" sortable field="pago" :class="props.row.pago==0 ? 'pronosROJOS' : 'pronosVERDES'">
                     {{ props.row.pago==='0' ? 'NO' : 'SI' }} 
                 </b-table-column>
                 <b-table-column label="Correo" centered width="220">
-                    {{ (props.row.correo) }} 
+                    {{ (props.row.correo) }}  
                 </b-table-column>
                 <b-table-column label="Nombre" centered width="200" sortable field="nombre">
                     {{ (props.row.nombre) }} 
@@ -156,6 +159,12 @@ export default {
     }),
 
     methods: {
+        pronos_parciales_pollero(pollero){
+		
+		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+		
+		return tempo.length;
+		},
         updatePolleroData(){
             axios.post(`/wp-json/updateapollado/v1/all/`, {
 			pollero: this.apollado.id,

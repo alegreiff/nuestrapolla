@@ -17,7 +17,7 @@ export const datos = new Vuex.Store({
 			{id: 2, 	sigla: 'JD', nombre: 'Jaime de Greiff'},
 			{id: 10, 	sigla: 'LU', nombre: 'Luis Carlos Urrutia'},
 			{id: 7, 	sigla: 'LV', nombre: 'Luis Fernando Velasco'},
-			{id: 0, 	sigla: 'MS', nombre: 'Miller Sánchez'},
+			{id: 134, 	sigla: 'MS', nombre: 'Miller Sánchez'},
 			{id: 88, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
 			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
 			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
