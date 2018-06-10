@@ -713,9 +713,26 @@ np_partido_dia
   margin-bottom: 1em;
   display: grid;
   grid-template-columns: 170px 1fr 90px 1fr;
-  grid-template-rows: 320px 80px auto;
+  grid-template-rows: 320px 100px auto;
   /*background-color: @azulRusia;*/
 }
+
+.graficadiariopolla{
+  grid-column-start: 2;
+  grid-column-end: 5;
+  font-size: 0.8em;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.graficadiariopolla div {
+  justify-self: center;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+
+
 .np_partido_dia_proces{
   background-color: rgba(128, 128, 128, 0.125);
 }
@@ -744,22 +761,6 @@ span.np_pronocomodin::after{
   font-weight: bolder;
 
 }
-/*
-<div class="resultados">
-    <p class="res_superior"></p> 
-    <p class="res_pron">Pronóstico</p> 
-    <p class="res_pronlocal"> 0 </p> 
-    <p class="res_pronvis"> 2 </p> 
-    <p class="res_comodin"></p> 
-    <p class="res_marcador">Marcador</p> 
-    <p class="marcadorDef_loc">0</p> 
-    <p class="marcadorDef_vis">3</p> 
-    <p class="res_puntos">Puntos</p> 
-    <p class="res_pts">6</p>
-</div> 
-*/
-
-
 .res_superior{
 grid-column-start: 1;
 grid-column-end: 3;
@@ -832,10 +833,7 @@ span.marcadorDef{
     font-size: 1.1em;
     font-weight: 500;
   }
-  .graficadiariopolla{
-    grid-column-start: 2;
-    grid-column-end: 5;
-  }
+
   .comandos{
     border-radius: 0.66em;
     background-color: rgba(51, 51, 51, 0.2);

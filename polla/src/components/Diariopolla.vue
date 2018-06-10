@@ -135,10 +135,15 @@
                 
             </div>
             <!-- v-html="graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)"-->
-            <div class="graficadiariopolla">
-              <v-progress-circular :value="64" :width="10" :size="80" color="teal">35<br>64.2%</v-progress-circular>
-              <v-progress-circular :value="12" :width="10" :size="80" color="red">5<br>12.2%</v-progress-circular>
-              <v-progress-circular :value="24" :width="10" :size="80" color="pink">12<br>23.5%</v-progress-circular></div> 
+            <div class="graficadiariopolla" v-if="pronos_partido(partido.id)">
+              
+              <v-progress-circular :value="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).l" :width="10" :size="80" :color="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).cl">{{pronos_partido(partido.id).loc}}<br>{{(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).l}}%</v-progress-circular>
+
+              <v-progress-circular :value="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).e" :width="10" :size="80" :color="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).ce">{{pronos_partido(partido.id).emp}}<br>{{(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).e}}%</v-progress-circular>
+
+              <v-progress-circular :value="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).v" :width="10" :size="80" :color="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).cv">{{pronos_partido(partido.id).vis}}<br>{{(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).v}}%</v-progress-circular>
+              
+            </div> 
             <div class="comandos" v-if="pronos_partido(partido.id)">
               <v-chip color="green" text-color="white">
                 <v-avatar class="green darken-4">{{ calendario[partido.id].grupo }}</v-avatar>
@@ -147,7 +152,7 @@
               <v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" round color="primary" dark class="np_textodusha">
                 Ver {{ pronos_partido(partido.id).cuantos}} pronósticos
               </v-btn>
-              {{ pronos_partido(partido.id).loc}} -- {{ pronos_partido(partido.id).vis}} -- {{ pronos_partido(partido.id).emp}} -- {{ pronos_partido(partido.id).nulo
+              {{ pronos_partido(partido.id).loc}} -- {{ pronos_partido(partido.id).emp}} -- {{ pronos_partido(partido.id).vis}} -- {{ pronos_partido(partido.id).nulo
               }}
               <v-btn v-if="calendario[partido.id].procesado=== 0" @click="funcionQPS(partido.id)" small color="primary">
                 QPS {{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}
@@ -303,14 +308,38 @@ export default {
   },
   methods: {
     graficaPronos(loc, vis, emp){
+      var salida = []
       var base = loc+vis+emp;
-      var locP = (loc * 100) / base;
-      var visP = (vis * 100) / base;
-      var empP = (emp * 100) / base;
+      var locP = ((loc * 100) / base).toFixed(2);
+      var visP = ((vis * 100) / base).toFixed(2);
+      var empP = ((emp * 100) / base).toFixed(2);
       //var salida = '<table border ="2" class="np_tabla_resultados" ><tr><td width='+ locP +'%> </td> <td width=' +empP+ '%> </td> <td width=' +visP+ '%> </td></tr></table>';
     //return (locP + ' ' + visP + ' ' +empP);
-    var salida = '<v-progress-circular :value="60"></v-progress-circular><v-progress-circular :value="10"></v-progress-circular><v-progress-circular :value="30"></v-progress-circular>'
+    //var salida = '<v-progress-circular :value="60"></v-progress-circular><v-progress-circular :value="10"></v-progress-circular><v-progress-circular :value="30"></v-progress-circular>'
+    var classLoc='';
+    var classVis='';
+    var classEmp='amber';
+       
+    if(loc > vis){
+      classLoc = 'teal';
+      classVis = 'red';
+    }else if(vis > loc){
+      classLoc = 'red';
+      classVis = 'teal';
+    }else{
+      classLoc = 'pink';
+      classVis = 'pink';
+    }
+
+    salida.l = locP
+    salida.e = empP
+    salida.v = visP
+    salida.cl = classLoc
+    salida.ce = classEmp
+    salida.cv = classVis
+    console.table(salida);
     return salida;
+    //return 'jaime LG';
     },
 
 

@@ -7,7 +7,7 @@ import App from './App.vue'
 import { datos} from './Data/datos_vuex'
 import Vuetify from 'vuetify'
 import FuncionesComunesPLG from './Data/funcionesComunes.js'
-import VueCharts from  'vue-charts'
+//import VueCharts from  'vue-charts'
 import { mapState, mapMutations} from 'vuex'
 //Vue.use(VueCharts)
 Vue.use(Buefy)
@@ -18,7 +18,7 @@ Vue.use(VueYouTubeEmbed)
 
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)
-Vue.config.devtools = true //producción false desarrollo true
+Vue.config.devtools = false //producción false desarrollo true
 
 Vue.use(Vuetify, {
 	theme: {
