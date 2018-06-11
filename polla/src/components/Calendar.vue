@@ -16,7 +16,7 @@
 
                 <b-table-column label="Ciudad">
                      +{{ (props.row.hora) }}<v-icon>timelapse</v-icon> {{ props.row.ciudad }} 
-                     <v-btn flat icon color="indigo" @click="infoCiudad(props.row.locacion)"><v-icon>star</v-icon></v-btn>
+                     <v-btn flat icon color="indigo" @click="infoCiudad(props.row)"><v-icon>star</v-icon></v-btn>
                 </b-table-column>
 
                 <b-table-column :label="horamostrable ? 'Hora Colombia' : 'Hora Rusia' " sortable field="fecha">
@@ -51,24 +51,51 @@
 <template>
 <v-layout row justify-center>
 <v-dialog v-model="dialog2" max-width="500px">
-    <v-card>
+    <v-card v-if="partidata">
         <v-card-title>
-        Dialog 2
+        {{nombrePollero}}
         </v-card-title>
-        <v-card-text v-if="ciudadactiva">
+        <v-card-text class=np_modal_calendario>
         <span class="estadio_icono bigstadium" :class="'est'+ ciudadactiva"></span>
-        
+        <span>{{partidata.estadio}}</span>
+        <p>{{ fechaCorta(partidata.fecha) }} {{ fechaHoraLocal(partidata.fecha, (partidata.hora)) }}</p>
+        <p>{{partidata.local}} vs {{partidata.visitante}}</p>
+        <p><img :src="'/assets/band/'+partidata.idloc + '.png'" alt="">  {{miprono(partidata.id)}} <img :src="'/assets/band/'+partidata.idvis + '.png'" alt=""></p>
         <img :src="'/assets/ciudades/'+ciudadactiva + '.jpg'" alt="" class="np_posteresciudad">
         </v-card-text>
         <v-card-actions>
-        <v-btn color="primary" flat @click.stop="dialog2=false">Close</v-btn>
+        <v-btn color="primary" flat @click.stop="dialog2=false">Cerrar</v-btn>
         </v-card-actions>
         </v-card>
 </v-dialog>
 </v-layout>
 </template>
 </v-layout>
+<!-- 
+2 - 1
 
+{
+  "id": 1,
+  "idloc": 1,
+  "idvis": 2,
+  "local": "Rusia",
+  "visitante": "Arabia Saudita",
+  "grupo": "A",
+  "lg": null,
+  "vg": null,
+  "procesado": 0,
+  "fecha": "2018-06-14 18:00:00",
+  "fase": 32,
+  "ciudad": "Moscú",
+  "estadio": "Estadio Olímpico Luzhnikí",
+  "hora": 3,
+  "locacion": 1,
+  "dtv": 0
+}
+
+
+
+-->
 
 
 </template>
@@ -89,7 +116,8 @@ export default {
                 isHoverable: false,
                 isLoading: false,
                 hasMobileCards: true,
-            grupoActivo: '',
+                grupoActivo: '',
+                partidata: null,
                 dialog2: false,
                 ciudadactiva: null
 			
@@ -99,14 +127,15 @@ export default {
 	},
 	computed: {
         ...mapState(['horamostrable', 'datosUsuarioWordpress', 'configuracionPolla']),
-        ...mapGetters(['pronosticosPolleroActivo', 'calendario']),
+        ...mapGetters(['pronosticosPolleroActivo', 'calendario', 'nombrePollero']),
 		partidos_fase_grupos () {
 			if (this.calendario) {
 				if (this.grupoActivo === '') {
 					var resultado = _.filter(this.calendario, function (elem) { return elem.grupo !== null })
 				} else {
 					var resultado = this.partidos_grupo(this.grupoActivo)
-				}
+                }
+                resultado = _.sortBy(resultado, ['fecha']);
 				return resultado
 			}
 		}
@@ -148,10 +177,12 @@ export default {
                 return "ERR";
             }
         },
-        infoCiudad(ciudad){
-            console.log(ciudad)
-            this.ciudadactiva = ciudad;
+        infoCiudad(dato){
+            //console.log(ciudad)
+            this.ciudadactiva = dato.locacion;
+            this.partidata = dato;
             this.dialog2 = true;
+            
         }
 	}
 }

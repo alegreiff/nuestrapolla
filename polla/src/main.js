@@ -3,23 +3,14 @@ import Buefy from 'buefy'
 import VueRouter from 'vue-router'
 import {routes} from './routes'
 import App from './App.vue'
-// import '../node_modules/vuetify/dist/vuetify.min.css'
 import { datos} from './Data/datos_vuex'
 import Vuetify from 'vuetify'
 import FuncionesComunesPLG from './Data/funcionesComunes.js'
-//import VueCharts from  'vue-charts'
 import { mapState, mapMutations} from 'vuex'
-//Vue.use(VueCharts)
 Vue.use(Buefy)
-//import VueYouTubeEmbed from 'vue-youtube-embed'
-//Vue.use(VueYouTubeEmbed)
-//import VueChartkick from 'vue-chartkick'
-//Vue.use(VueChartkick)
-
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)
 Vue.config.devtools = false //producción false desarrollo true
-
 Vue.use(Vuetify, {
 	theme: {
 		primary: '#1976D2',
@@ -58,14 +49,9 @@ new Vue({
 		}
 	},
 	created () {
-		//console.dir(variables_wordpress);
-		//console.log(JSON.stringify(variables_wordpress))
-
-		//
 		this.actualiza_polleros()
 		this.$store.state.datosUsuarioWordpress = variables_wordpress
 		this.userid = parseInt(variables_wordpress['id'])
-		
 		if (this.userid) {
 			axios.get(`/wp-json/getpronosuser/v1/all/` + this.userid)
 				.then(response => {
@@ -75,7 +61,6 @@ new Vue({
 					this.errors.push(e.message)
 				})
 		}else{
-			//console.log("pasa por main 74")
 		}
 
 		axios.get(`/wp-json/calendario/v1/all/32`)

@@ -31,7 +31,7 @@ function jaimeenqueue() {
     wp_enqueue_script('lodash');
     wp_register_script( 'buefy', 'https://unpkg.com/buefy@0.6.2/lib/index.js', null, null, false );
     wp_enqueue_script('buefy');
-    wp_register_script( 'appvue', get_stylesheet_directory_uri() . '/polla/dist/build.js', null, null, true );
+    wp_register_script( 'appvue', get_stylesheet_directory_uri() . '/polla/dist/build.js', null, null, true);
     $usuarioID = get_current_user_id();
     $ff = (get_user_meta($usuarioID, 'submitted'));
     if ( is_user_logged_in() ) {
