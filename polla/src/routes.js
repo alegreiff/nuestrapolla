@@ -8,12 +8,13 @@ import Misspronos from './components/Misspronos.vue'
 import Clasificador from './components/ClasificaPartidos.vue'
 import Reglamento from './components/Reglamento.vue'
 import ControlPA from './components/ControlPollerosAmigos.vue'
+import inicioprov from './components/inicioprov.vue'
 
 
 
 
 export const routes = [
-	{path: '/', component: StartPolla},
+	{path: '/', component: inicioprov},
 	{path: '/diariopolla', component: Diariopolla},
 	{path: '/pronos', component: PronosMobile},
 	{path: '/calendario', component: Calendar},
@@ -23,6 +24,7 @@ export const routes = [
 	{path: '/clasificador', component: Clasificador},
 	{path: '/reglamento', component: Reglamento},
 	{path: '/amigopollero', component: ControlPA},
+	{path: '/provis', component: StartPolla},
 	{path: '/nouser',
     beforeEnter(to, from, next) {
         window.location = "../"

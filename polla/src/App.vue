@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.1.51 Cambios en DIARIO POLLA',
+      infoversion: 'v.1.80 Inicio Provisional',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
