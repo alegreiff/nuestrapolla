@@ -87,7 +87,11 @@ export default {
 		}
     }
 	},
-
+  mounted() {
+    //console.log("///////////////")
+		this.estatuspronos = this.pronosPendientes;
+		
+  },
     computed: {
     ...mapState(['horamostrable',]),
     ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla','pronosticosPolleroActivo']),
