@@ -92,6 +92,12 @@ export default {
 		this.estatuspronos = this.pronosPendientes;
 		
   },
+    watch: {
+    pronosPendientes(val){
+      //console.log("Cambia")
+      this.estatuspronos = val;
+    }
+  },
     computed: {
     ...mapState(['horamostrable',]),
     ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla','pronosticosPolleroActivo']),
