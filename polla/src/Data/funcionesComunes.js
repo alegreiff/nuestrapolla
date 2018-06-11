@@ -2,7 +2,8 @@
 //var moment = require('moment');
 moment.locale('es') // 'es'
 moment.updateLocale('es', {
-	monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+	monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+	weekdays: [ 'Dom', 'Lun','Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
 })
 
 const FuncionesComunesPLG = {
