@@ -26,6 +26,10 @@
 								<v-btn :to="{path: '/provis'}"  block color="primary">Ver toda la información de la polla
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
+
+							<v-btn :to="{path: '/amigopollero'}"  block color="secondary">Enlace exclusivo para polleros amigos
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
 								 </p>
 						</v-card-text>
 					</v-card>
