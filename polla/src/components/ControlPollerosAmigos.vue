@@ -1,6 +1,6 @@
 <template>
     <!-- <v-layout row wrap v-if="polleroID && polleroID===103"> -->
-    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1 || polleroID === 59" v-cloak>
+    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1" v-cloak>
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
@@ -8,7 +8,7 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs2 v-if="polleroID===1||polleroID===59">
+        <v-flex xs2 v-if="polleroID===1">
             <v-card color="secondary">
                 <v-card-text class="px-0">
 
@@ -106,7 +106,7 @@
 
     </v-layout>
 <v-layout v-else>
-    <h1>No es lugar para un pollero como tu {{polleroID}}</h1>
+    <h1>No es lugar para un pollero como usted {{polleroID}}</h1>
 </v-layout>
 </template>
 
