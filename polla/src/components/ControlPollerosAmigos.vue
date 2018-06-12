@@ -8,7 +8,7 @@
                 </v-card-text>
             </v-card>
         </v-flex>
-        <v-flex xs2 v-if="polleroID===1">
+        <v-flex xs2 v-if="polleroID===1||polleroID===59">
             <v-card color="secondary">
                 <v-card-text class="px-0">
 
