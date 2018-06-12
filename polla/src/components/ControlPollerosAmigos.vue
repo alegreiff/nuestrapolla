@@ -1,6 +1,6 @@
 <template>
     <!-- <v-layout row wrap v-if="polleroID && polleroID===103"> -->
-    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1" v-cloak>
+    <v-layout row wrap v-if="amigo.length === 1 || polleroID === 1 || polleroID === 59" v-cloak>
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
