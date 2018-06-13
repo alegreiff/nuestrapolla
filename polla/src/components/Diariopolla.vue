@@ -555,6 +555,18 @@ export default {
         var resultado = _.filter(this.eventos, ['date', this.fechas_picker])
         resultado = _.orderBy(resultado, ['fechafull'], ['asc'])
         console.table(resultado)
+
+    
+      var partidos = [];
+      for(var i in resultado){
+        partidos.push(resultado[i].id)
+      }
+      console.log("PARTIDOS " + partidos)
+      //this.miniPronos(this.partidosDIA);
+      this.partidia = this.consolidadoPronosDia(partidos);
+    
+
+
         return resultado
       }
     },
@@ -581,20 +593,12 @@ export default {
     //this.fechas_picker = '2018-06-14'
     
     this.fechas_picker = this.lafecha();
-    
+        
 
     
   },
   created() {
-    if(this.partidos_fecha){
-      var partidos = [];
-      for(var i in this.partidos_fecha){
-        partidos.push(this.partidos_fecha[i].id)
-      }
-      //console.log("PARTIDOS " + partidos)
-      //this.miniPronos(this.partidosDIA);
-      this.partidia = this.consolidadoPronosDia(partidos);
-    }
+
   }
 } 
 </script>
