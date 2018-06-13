@@ -554,7 +554,7 @@ export default {
         this.lasfechas
         var resultado = _.filter(this.eventos, ['date', this.fechas_picker])
         resultado = _.orderBy(resultado, ['fechafull'], ['asc'])
-        console.table(resultado)
+        //console.table(resultado)
 
     
       var partidos = [];
@@ -564,9 +564,6 @@ export default {
       console.log("PARTIDOS " + partidos)
       //this.miniPronos(this.partidosDIA);
       this.partidia = this.consolidadoPronosDia(partidos);
-    
-
-
         return resultado
       }
     },
