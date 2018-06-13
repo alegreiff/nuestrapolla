@@ -295,6 +295,8 @@ export default {
     feitas: [],
     //estadoQPS: [],
     partidosfechaQPS: null,
+    jaime: null,
+    partidia: null
 
 
   }),
@@ -397,10 +399,10 @@ export default {
     pronos_partido(partido) {
       //console.log("PARTITA = ")
         //console.log(partido)
-      if(this.consolidadoPronos){
+      if(this.partidia){
         //var cotejo = parseInt(partido)
         var cotejo = partido
-        var pronosticosInternos = _.filter(this.consolidadoPronos, ['partido', cotejo])
+        var pronosticosInternos = _.filter(this.partidia, ['partido', cotejo])
         var cuantos = pronosticosInternos.length
         //console.log("Cuantos pronos.....")
         //console.log(pronosticosInternos.length)
@@ -500,12 +502,25 @@ export default {
 
       
     },
+    miniPronos(idpartidos){
+      this.partidia = this.consolidadoPronosDia(idpartidos);
+    }
   },
   watch: {
+    partidos_fecha(val){
+      var partidos = [];
+      for(var i in val){
+        partidos.push(val[i].id)
+      }
+      this.jaime = partidos;
+      this.miniPronos(this.jaime)
+      
+    }
+
   },
   computed: {
     ...mapState(['horamostrable', 'datosUsuarioWordpress', 'configuracionPolla', 'listaequipos', 'frasesculas', 'sedes']),
-    ...mapGetters(['nombrePollero', 'partidosProcesados', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'consolidadoPronos', 'polleroID', 'partidosProcesadosSencillo']),
+    ...mapGetters(['nombrePollero', 'partidosProcesados', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'polleroID', 'partidosProcesadosSencillo', 'consolidadoPronosDia']),
     eventos() {
       var eventos = []
       if (this.calendario) {
@@ -539,6 +554,7 @@ export default {
         this.lasfechas
         var resultado = _.filter(this.eventos, ['date', this.fechas_picker])
         resultado = _.orderBy(resultado, ['fechafull'], ['asc'])
+        console.table(resultado)
         return resultado
       }
     },

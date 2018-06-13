@@ -264,6 +264,36 @@ export const datos = new Vuex.Store({
 			_.each(state.allpronos, item => item.puntos = parseInt(item.puntos))
 			return state.allpronos
 		},
+		consolidadoPronosDia: (state) => (partidos) => {
+			_.each(state.allpronos, item => item.id = parseInt(item.id))
+			_.each(state.allpronos, item => item.cambios = parseInt(item.cambios))
+			_.each(state.allpronos, item => item.id_jugador = parseInt(item.id_jugador))
+			_.each(state.allpronos, item => item.m_loc = parseInt(item.m_loc))
+			_.each(state.allpronos, item => item.m_vis = parseInt(item.m_vis))
+			_.each(state.allpronos, item => item.partido = parseInt(item.partido))
+			_.each(state.allpronos, item => item.puntos = parseInt(item.puntos))
+			
+			var cuantos = partidos.length;
+			if(cuantos === 1){
+				var temp = _.filter(state.allpronos, function(o) { return o.partido === partidos[0]});	
+			}else if(cuantos === 2){
+				var temp = _.filter(state.allpronos, function(o) { return o.partido === partidos[0] || o.partido === partidos[1]});
+			}else if(cuantos === 3){
+				var temp = _.filter(state.allpronos, function(o) { return o.partido === partidos[0] || o.partido === partidos[1] || o.partido === partidos[2]});
+			}else if(cuantos === 4){
+				var temp = _.filter(state.allpronos, function(o) { return o.partido === partidos[0] || o.partido === partidos[1] || o.partido === partidos[2]|| o.partido === partidos[3]});
+			}
+
+			//var temp = _.filter(state.allpronos, function(o) { return o.partido === 1 || o.partido === 2});
+			return temp
+		},
+/*
+		escudoFPC: (state) => (id) => {
+			return state.escudoscolombia.find(escudoscolombia => escudoscolombia.equipo === id)
+		},
+*/
+
+
 		calendarioArray: (state) => {
 			_.each(state.calendario, item => item.id = parseInt(item.id))
 			var arr = _.values(state.calendario);
