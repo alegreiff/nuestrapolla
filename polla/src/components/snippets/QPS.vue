@@ -205,7 +205,7 @@ export default {
   },
   methods:{
     verificaQPS(){
-      console.log("verificando pendiente")
+      //console.log("verificando pendiente")
       this.QPSDATA = null
       if(this.partidosQPS){
         this.QPSDATA = _.cloneDeep(this.posicionesQPS)
@@ -232,7 +232,7 @@ export default {
 
     qpsProcesa(partido, caso){
       
-      console.log(' procesa ')
+      //console.log(' procesa ')
     },
     calculoQPS(){
       var salida = ''
@@ -261,11 +261,11 @@ export default {
           if(this.QPSDATA.length !=0){
 
             var temp = _.findIndex(this.QPSDATA, ['id_jugador', pronos_partidoQPS[j].id_jugador]); 
-            console.log(temp + " =============================" + cuenta)
+            //console.log(temp + " =============================" + cuenta)
             if(temp >=0){
               var orden = temp;
             }
-            console.log(temp + " =============================" + orden)
+            //console.log(temp + " =============================" + orden)
             //console.log(pronos_partidoQPS[j].id_jugador + " < Lleno...> " + orden)
           }
           
@@ -279,7 +279,7 @@ export default {
 
 
           if(ganador === 'LOCAL'){
-            console.log("LOCAL: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' | ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
+            //console.log("LOCAL: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' | ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
             //GRANCHEPAZO O CHEPAZO
             if((pronos_partidoQPS[j].m_loc === parseInt(this.partidosQPS[i].GL)) && (pronos_partidoQPS[j].m_vis === parseInt(this.partidosQPS[i].GV))){
               salida+= (" GANA EXACTO " + pronos_partidoQPS[j].m_loc + " vs " + pronos_partidoQPS[j].m_vis)
@@ -376,7 +376,7 @@ export default {
               
             }
           }else if(ganador === 'VISITANTE'){
-            console.log("VISITANTE: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
+            //console.log("VISITANTE: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
             //GRANCHEPAZO O CHEPAZO
             if((pronos_partidoQPS[j].m_loc === parseInt(this.partidosQPS[i].GL)) && (pronos_partidoQPS[j].m_vis === parseInt(this.partidosQPS[i].GV))){
               salida+= (" GANA EXACTO " + pronos_partidoQPS[j].m_loc + " vs " + pronos_partidoQPS[j].m_vis)
@@ -467,7 +467,7 @@ export default {
 
             }
           }else if(ganador === 'EMPATE'){
-            console.log("EMPATE: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
+            //console.log("EMPATE: " + pronos_partidoQPS[j].id_jugador + " ID:: " + orden + ' ::| ' + contador + ' ' + cuenta+ ' --- '+ pronos_partidoQPS[j].pollero )
             //GRANCHEPAZO O CHEPAZO
             if((pronos_partidoQPS[j].m_loc === parseInt(this.partidosQPS[i].GL)) && (pronos_partidoQPS[j].m_vis === parseInt(this.partidosQPS[i].GV))){
               salida+= (" GANA EXACTO " + pronos_partidoQPS[j].m_loc + " vs " + pronos_partidoQPS[j].m_vis)
@@ -564,7 +564,7 @@ export default {
         }
       }
       //console.log(sale);
-      console.log(salida);
+      //console.log(salida);
     },
 
     agregaComparado(id, boton, index){
@@ -608,9 +608,9 @@ export default {
       }
     },
     partidosFecha(val){
-      console.log(this.modo + ' es el modo')
+      //console.log(this.modo + ' es el modo')
       if(this.modo && this.modo==="DIOS"){
-        console.log("Modo GOD")
+        //console.log("Modo GOD")
         var tempQps  = _.cloneDeep(_.filter(this.calendario, ['procesado', 0]))
       }else{
         var tempQps  = _.cloneDeep(_.filter(val, ['procesado', 0]))

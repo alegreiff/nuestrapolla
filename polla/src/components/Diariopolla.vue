@@ -295,7 +295,7 @@ export default {
     feitas: [],
     //estadoQPS: [],
     partidosfechaQPS: null,
-    jaime: null,
+    partidosDIA: null,
     partidia: null
 
 
@@ -341,7 +341,7 @@ export default {
     salida.cv = classVis
     //console.table(salida);
     return salida;
-    //return 'jaime LG';
+    //return 'partidosDIA LG';
     },
 
 
@@ -512,8 +512,8 @@ export default {
       for(var i in val){
         partidos.push(val[i].id)
       }
-      this.jaime = partidos;
-      this.miniPronos(this.jaime)
+      this.partidosDIA = partidos;
+      this.miniPronos(this.partidosDIA)
       
     }
 
@@ -582,9 +582,19 @@ export default {
     
     this.fechas_picker = this.lafecha();
     
+
+    
   },
   created() {
-    
+    if(this.partidos_fecha){
+      var partidos = [];
+      for(var i in this.partidos_fecha){
+        partidos.push(this.partidos_fecha[i].id)
+      }
+      //console.log("PARTIDOS " + partidos)
+      //this.miniPronos(this.partidosDIA);
+      this.partidia = this.consolidadoPronosDia(partidos);
+    }
   }
 } 
 </script>
