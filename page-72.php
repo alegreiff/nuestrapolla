@@ -66,7 +66,6 @@ function jaimeenqueue() {
     wp_enqueue_style( 'materialdesign', '//cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
 }
 function muestragrupo(){
-    //echo "<div id='app'></div>";    
-    echo "volvemos al rato";
+    echo "<div id='app'></div>";    
 }
 genesis();
