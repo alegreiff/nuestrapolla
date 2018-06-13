@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.1.80 Inicio Provisional',
+      infoversion: 'v.1.85 PDF Provisional',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
