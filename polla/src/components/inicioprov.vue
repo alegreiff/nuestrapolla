@@ -12,9 +12,9 @@
 				<v-flex xs12 md6 lg6>
 					<v-card color="pollarojo2" dark class="completacard">
 						<v-card-text class="text-xs-center">
-							<!--<v-btn :to="{path: '/pronos'}"  block color="primary">Crear o modificar mis marcadores
+							<v-btn href="https://nuestrapolla.com/assets/nuestrapolla-fasedegrupos.pdf"  target="_blank" block color="primary">Descargar TODOS los pronósticos - Fase de grupos
 								<v-icon right dark>highlight</v-icon>
-							</v-btn>-->
+							</v-btn>
 							<v-btn @click="pdftest()"  block color="terciary" v-if="(estatuspronos) === 0" >Descargar Mis pronósticos PDF
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
