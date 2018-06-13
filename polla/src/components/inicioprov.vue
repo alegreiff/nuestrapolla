@@ -100,7 +100,7 @@ export default {
   },
     computed: {
     ...mapState(['horamostrable',]),
-    ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla','pronosticosPolleroActivo']),
+    ...mapGetters(['allpollerosHome', 'polleroID', 'nombrePollero', 'fasePolla','pronosticosPolleroActivo']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
           var nulos = _.filter(this.pronosticosPolleroActivo, function(o) { if (isNaN(o.m_loc)) return o }).length;
