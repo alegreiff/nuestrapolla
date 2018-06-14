@@ -64,6 +64,8 @@
               <span class="horapartido">{{ fechaCorta(calendario[partido.id].fecha) }}</span>
               <span class="horapartido" v-if="horamostrable">{{ fechaHoraLocal(calendario[partido.id].fecha, calendario[partido.id].hora) }} co</span>
               <span class="horapartido" v-else>{{ fechaHora(calendario[partido.id].fecha) }} ru</span>
+              
+              <span><img :src="'/assets/dtv.png'" alt="" class="np_diretivi" v-if="calendario[partido.id].dtv===1"></span>
             </div>
             <div class="resultadospartidopolla" v-else>
               <!--<p class="res_pts" v-if="calendario[partido.id].procesado== 1">{{ pronos_partido(partido.id).miresultado}}</p>-->
