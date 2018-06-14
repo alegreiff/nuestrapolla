@@ -410,6 +410,78 @@ export const datos = new Vuex.Store({
 			salida['partidos']=partidos
 			return salida
 		},
+		estadisticaPartido: (state, getters) => (partido) => {
+			var golesporprono = _.cloneDeep(getters.consolidadoPronos)
+			//golesporprono = _.filter(golesporprono, { 'm_loc': NaN, 'm_vis': NaN });
+			golesporprono = _.filter(golesporprono, function(o) { return o.partido === partido;});
+			golesporprono = _.filter(golesporprono, function(o) { return o.m_loc >= 0 ; });
+			for(var i in golesporprono){
+				//golesporprono[i].gxp = golesporprono[i].m_loc + golesporprono[i].m_vis
+				
+					golesporprono[i].gxp = golesporprono[i].m_loc + golesporprono[i].m_vis;
+				
+				
+			}
+			//var sumagxp = _.groupBy(golesporprono, function(num) {
+			var sumagxp = _.countBy(golesporprono, function(num) {
+					return num.gxp;
+			});
+			var agrupado = _.cloneDeep(getters.consolidadoPronos)
+			agrupado = _.filter(agrupado, function(o) { return o.partido === partido;});
+			agrupado = _.filter(agrupado, function(o) { return o.m_loc >= 0 ; });
+			for(var i in agrupado){
+				
+					if(agrupado[i].m_loc < agrupado[i].m_vis ){
+						agrupado[i].m0 = agrupado[i].m_vis
+						agrupado[i].m1 = agrupado[i].m_loc
+					}else if(agrupado[i].m_loc > agrupado[i].m_vis){
+						agrupado[i].m0 = agrupado[i].m_loc
+						agrupado[i].m1 = agrupado[i].m_vis
+					}else{
+						agrupado[i].m0 = agrupado[i].m_loc
+						agrupado[i].m1 = agrupado[i].m_vis
+					}
+				
+			}
+			var result = _.countBy(agrupado, function(num) {
+					return num.m0 + ' - ' + num.m1;
+			});
+			var salida = new Object()
+			var goles = 0
+			var partidos = 0
+			var victorias = 0
+			var empates = 0
+			var comodines = 0
+			for (var i in agrupado){
+				//console.log("LOCAL " + agrupado[i].m_loc + " -vs- " + agrupado[i].m_vis)
+				
+				if((isNaN(agrupado[i].m_loc)) && (isNaN(agrupado[i].m_vis))){
+					
+				}else{
+					//console.log("KKK " +agrupado[i].comodin )
+					if(agrupado[i].comodin==="SI"){
+						comodines++;
+					}
+					partidos++
+					goles+= agrupado[i].m_loc
+					goles+= agrupado[i].m_vis
+					if(agrupado[i].m_loc === agrupado[i].m_vis){
+						empates++
+					}else{
+						victorias++
+					}
+				}
+			}
+			salida['sumagxp']=sumagxp
+			salida['grupo']=result
+			salida['prom']=goles / partidos
+			salida['goles']=goles
+			salida['empates']=empates
+			salida['victorias']=victorias
+			salida['partidos']=partidos
+			salida['comodines']=comodines
+			return salida
+		},
 		posicionesQPS(state, getters){
 			return _.cloneDeep(getters.posicionesNumericas)
 		},

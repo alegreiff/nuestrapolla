@@ -160,7 +160,7 @@
                 QPS {{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}
                 <v-icon right dark>highlight</v-icon>
               </v-btn>
-              
+              <!-- <pre> {{ estadisticaPartido(calendario[partido.id].id)}} </pre> -->
             </div>
           </div>
         </div>
@@ -522,7 +522,7 @@ export default {
   },
   computed: {
     ...mapState(['horamostrable', 'datosUsuarioWordpress', 'configuracionPolla', 'listaequipos', 'frasesculas', 'sedes']),
-    ...mapGetters(['nombrePollero', 'partidosProcesados', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'polleroID', 'partidosProcesadosSencillo', 'consolidadoPronosDia']),
+    ...mapGetters(['nombrePollero', 'partidosProcesados', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'polleroID', 'partidosProcesadosSencillo', 'consolidadoPronosDia', 'estadisticaPartido']),
     eventos() {
       var eventos = []
       if (this.calendario) {

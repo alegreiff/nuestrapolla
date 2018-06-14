@@ -35,7 +35,8 @@
       <img :src="'/assets/polla.png'" class="" alt="Nuestra Polla">
     </v-navigation-drawer>
     <v-footer  fixed color="pollarojo2" dark>
-      <span><TiempoRestante deadline="June 14, 2018 10:00"></TiempoRestante></span>
+      <!-- <span><TiempoRestante deadline="June 14, 2018 10:00"></TiempoRestante></span> -->
+      Nuestra Polla
       <button v-shortkey.once="['ctrl', 'h']" @shortkey="theAction()"></button> <span class="versionpolla">
         {{infoversion}}
         </span>
