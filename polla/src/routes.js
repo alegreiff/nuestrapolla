@@ -21,7 +21,7 @@ export const routes = [
 	{path: '/calendario', component: Calendar},
 	{path: '/polladmin', component: Admin},
 	{path: '/posiciones', component: Polleros},
-	{path: '/mispronos', component: Misspronos},
+	{path: '/compara', component: Misspronos},
 	{path: '/clasificador', component: Clasificador},
 	{path: '/reglamento', component: Reglamento},
 	{path: '/amigopollero', component: ControlPA},
