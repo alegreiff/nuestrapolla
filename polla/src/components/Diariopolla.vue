@@ -152,8 +152,8 @@
               <v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" round color="primary" dark class="np_textodusha">
                 Ver {{ pronos_partido(partido.id).cuantos}} pronósticos
               </v-btn>
-              {{ pronos_partido(partido.id).loc}} -- {{ pronos_partido(partido.id).emp}} -- {{ pronos_partido(partido.id).vis}} -- {{ pronos_partido(partido.id).nulo
-              }}
+              <!--{{ pronos_partido(partido.id).loc}} - {{ pronos_partido(partido.id).emp}} - {{ pronos_partido(partido.id).vis}} - {{ pronos_partido(partido.id).nulo
+              }} //Para mostrar los NULOS  -->
               <v-btn v-if="calendario[partido.id].procesado=== 0" @click="funcionQPS(partido.id)" small color="primary">
                 QPS {{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}
                 <v-icon right dark>highlight</v-icon>
