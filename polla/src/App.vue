@@ -69,7 +69,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.2.3 Tabla de posiciones. Vacía ella',
+      infoversion: 'v.2.4 Comparador de pronósticos',
       vieneeljefe: false,
       clipped: true,
       drawer: false,
