@@ -160,7 +160,13 @@
                 QPS {{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}
                 <v-icon right dark>highlight</v-icon>
               </v-btn>
-              <!-- <pre> {{ estadisticaPartido(calendario[partido.id].id)}} </pre> -->
+              <v-btn @click="marcadoresFrecuentes(partido.id)" round color="primary" dark class="np_textodusha">
+                Comodines / marcadores
+              </v-btn>
+               <!-- <pre> {{ OLDENmarcadoresFrecuentes(estadisticaPartido(calendario[partido.id].id))}} </pre> -->
+               <!--<p v-for="(pron, index) in marcadoresFrecuentes(estadisticaPartido(calendario[partido.id].id))">
+                 {{index}} - {{pron}}
+               </p>-->
             </div>
           </div>
         </div>
@@ -224,6 +230,56 @@
           <hr>
         </div>
       </v-flex>
+      <!-- INICIO VENTANA MODAL MARCADORES_MATCH -->
+      <template>
+        <v-layout row justify-center>
+          <v-dialog v-model="markadores" max-width="500px">
+        <v-card>
+          <v-card-title>
+            <span v-if="comodines">Marcadores ({{comodines}} comodines en juego)</span>
+          </v-card-title>
+          <v-card-text>
+            <!-- <pre v-if="frecuencia">{{frecuencia.grupo}}</pre> -->
+            
+            <table class="tabla_np elevation-24 np_frecuentes" v-if="frecuencia">
+        <thead>
+            <tr>
+              <th>#</th>
+              <th>Marcadores</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(pron, index) in frecuencia">
+              <td>{{pron}}</td>
+              <td class="alnleft">{{index}}</td>
+
+            </tr>
+            </tbody>
+            </table>
+            <table class="tabla_np elevation-12 np_frecuentes" v-if="golesporpartido">
+        <thead>
+            <tr>
+              <th>#</th>
+              <th>Goles por partido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(goles, index) in golesporpartido">
+              <td>{{goles}}</td>
+              <td class="alnleft">{{index}}</td>
+
+            </tr>
+            </tbody>
+            </table>
+            </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="markadores=false">Cerrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+        </v-layout>
+      </template>
+      <!-- FIN VENTANA MODAL MARCADORES_MATCH -->
       <!-- INICIO VENTANA MODAL PRONOS X PARTIDO -->
       <template>
         <v-layout row justify-center>
@@ -285,9 +341,9 @@ export default {
     qps: false,
     modo: '',
     partidoactivo: null,
-    chartConfig(chart) {
+    /*chartConfig(chart) {
       chart.donutRatio(0.5)
-    },
+    },*/
     muestrapronospartido: false,
     banderas: true,
     pronopartido: null,
@@ -298,7 +354,10 @@ export default {
     //estadoQPS: [],
     partidosfechaQPS: null,
     partidosDIA: null,
-    partidia: null
+    partidia: null,
+    freQ: null,
+    markadores: false,
+    frecuencia: null
 
 
   }),
@@ -311,6 +370,19 @@ export default {
     source: String
   },
   methods: {
+    marcadoresFrecuentes(partido){
+      this.partidoactivo = partido
+      this.frecuencia = this.estadisticaPartido(partido).grupo;
+      this.comodines = this.estadisticaPartido(partido).comodines;
+      this.golesporpartido = this.estadisticaPartido(partido).sumagxp;
+      this.markadores=true;
+    },
+    OLDENmarcadoresFrecuentes(datos){
+      this.freQ = datos.grupo;
+      console.table(datos.grupo)
+      return datos;
+      //return datos;
+    },
     graficaPronos(loc, vis, emp){
       var salida = []
       var base = loc+vis+emp;
@@ -588,7 +660,7 @@ export default {
   },
   mounted() {
     //console.log("La fecha INICIAL es");
-    //console.log(this.lafecha());
+    console.log("FFF " + this.lafecha());
     //this.fechas_picker = '2018-06-14'
     
     this.fechas_picker = this.lafecha();

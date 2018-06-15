@@ -139,7 +139,7 @@ const FuncionesComunesPLG = {
 					// Muestra 2018 - 06 - 14
 					// Si no... muestra la fecha
 					var fechabase = '2018-06-14';
-					var fechaactual = moment().format('YYYY[-]MM[-]DD');
+					var fechaactual = moment().add(6, 'hours').format('YYYY[-]MM[-]DD');
 					var lafecha = '';
 					fechaactual < fechabase ? lafecha = fechabase : lafecha = fechaactual;
 					return lafecha;

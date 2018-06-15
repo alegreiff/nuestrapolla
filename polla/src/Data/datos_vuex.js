@@ -429,6 +429,7 @@ export const datos = new Vuex.Store({
 			var agrupado = _.cloneDeep(getters.consolidadoPronos)
 			agrupado = _.filter(agrupado, function(o) { return o.partido === partido;});
 			agrupado = _.filter(agrupado, function(o) { return o.m_loc >= 0 ; });
+			agrupado = _.orderBy(agrupado, ['m_loc'], ['asc']);
 			for(var i in agrupado){
 				
 					if(agrupado[i].m_loc < agrupado[i].m_vis ){
@@ -444,8 +445,18 @@ export const datos = new Vuex.Store({
 				
 			}
 			var result = _.countBy(agrupado, function(num) {
-					return num.m0 + ' - ' + num.m1;
+				var com = ''
+				if(num.comodin === 'SI') {
+					com = ' *'
+				}
+				
+					return num.m_loc + ' - ' + num.m_vis + com;
 			});
+			
+			//result = _.sortBy(result)
+			//var sresult = _.sortedUniq(result);
+
+			//result.sort();
 			var salida = new Object()
 			var goles = 0
 			var partidos = 0
@@ -465,19 +476,19 @@ export const datos = new Vuex.Store({
 					partidos++
 					goles+= agrupado[i].m_loc
 					goles+= agrupado[i].m_vis
-					if(agrupado[i].m_loc === agrupado[i].m_vis){
+					/*if(agrupado[i].m_loc === agrupado[i].m_vis){
 						empates++
 					}else{
 						victorias++
-					}
+					}*/
 				}
 			}
 			salida['sumagxp']=sumagxp
 			salida['grupo']=result
 			salida['prom']=goles / partidos
 			salida['goles']=goles
-			salida['empates']=empates
-			salida['victorias']=victorias
+			//salida['empates']=empates
+			//salida['victorias']=victorias
 			salida['partidos']=partidos
 			salida['comodines']=comodines
 			return salida
