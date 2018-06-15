@@ -84,7 +84,7 @@
             
             <pre> {{ datosAdicionalesPollero.primermundial }} </pre>  
             
-            <pre> {{ ( datosAdicionalesPollero.polleroamigo) }} </pre>  
+            <pre> {{ ( pa) }} </pre>  
             <pre> {{ (datosAdicionalesPollero.edad) }} </pre>
 
             
@@ -132,6 +132,7 @@ export default {
       usuariodetalles: false,
       datosOtrosPolleros: null,
       datosAdicionalesPollero: null,
+      pa: null,
       onClickFn: function(row, index){
         //this.cam();
         //usuariodetalles =!usuariodetalles;
@@ -164,8 +165,9 @@ export default {
         width: '20px'
       }, {
         label: 'PA',
+        sortable: true,
         tdClass: 'text-center',
-        width: '90px'
+        width: '20px'
       },{
         label: 'GCH',
         tdClass: 'text-center',
@@ -273,6 +275,7 @@ export default {
       //console.log(" <===============================> ")
       //console.table(this.polleros)
       this.datosAdicionalesPollero = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
+      this.pa = this.pollero_amigo(pollero);
     },
     pollero_amigo(pollero){
       
