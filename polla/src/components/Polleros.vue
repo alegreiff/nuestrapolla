@@ -1,8 +1,5 @@
 <template>
   <div>
-<!-- {{ nombrePollero }} - partidos procesados {{ partidosProcesados.length}} --- {{ puntosPollero.puntos }}
- <p v-if="puestoPollero"> Posición: {{ puestoPollero.pos }} </p> -->
-  
 <v-layout row wrap>      
 <v-flex xs12>
         <v-card color="blue-grey lighten-2">
@@ -41,6 +38,7 @@
     <td>{{ props.row.pos }}</td>
     <td @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
+    <td>{{ pollero_amigo(props.row) }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
     <td class="fancy">{{ props.row.DOBLE }}</td>
@@ -156,7 +154,8 @@ export default {
         //sortable: true,
         //filterable: true,
         width: '90px'
-      }, {
+      },
+       {
         label: 'PTS',
         tdClass: 'text-center',
         field: 'puntaje',
@@ -164,6 +163,10 @@ export default {
         type: 'number',
         width: '20px'
       }, {
+        label: 'PA',
+        tdClass: 'text-center',
+        width: '90px'
+      },{
         label: 'GCH',
         tdClass: 'text-center',
         field: 'GRANCHEPAZO',
@@ -248,7 +251,7 @@ export default {
       polleros: null,
     }
   },
-  computed: {...mapState(['horamostrable', 'configuracionPolla']), 
+  computed: {...mapState(['horamostrable', 'configuracionPolla','pollerosamigos']), 
   ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial']),
  
   },
@@ -270,8 +273,11 @@ export default {
       //console.log(" <===============================> ")
       //console.table(this.polleros)
       this.datosAdicionalesPollero = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
+    },
+    pollero_amigo(pollero){
       
-
+      var sale =  ((_.filter(this.polleros, {'id': pollero.id_jugador }))[0]).polleroamigo;
+      return (_.find(this.pollerosamigos, { 'nombre': sale})).sigla;
     },
     actualiza_posiciones () {
       this.$store.commit('updatePosiciones')
