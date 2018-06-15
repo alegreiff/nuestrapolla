@@ -273,7 +273,7 @@
             v-if="pronopartido">
             <v-card>
               <v-toolbar dark color="primary">
-                <v-btn icon @click="dialogoCierra()" dark>p
+                <v-btn icon @click="dialogoCierra()" dark>
                   <v-icon>close</v-icon>
                 </v-btn>
                 <v-spacer></v-spacer>
