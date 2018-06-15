@@ -40,7 +40,7 @@
       <v-flex lg8 md12 hidden-sm-and-down>
         <v-layout>
           <v-flex xs8 v-if="partidos_fecha && partidos_fecha_libres">
-            Partidos para hoy: {{ partidos_fecha.length }} Por jugarse: {{partidos_fecha_libres.length}}
+            Partidos fecha: {{ partidos_fecha.length }} Por jugarse: {{partidos_fecha_libres.length}}
             <v-btn @click='funcionQPS("DIOS")' color="secondary">
               QPS polla perfecta
               <v-icon right dark>highlight</v-icon>
