@@ -4,7 +4,7 @@
 <v-flex xs12>
         <v-card color="blue-grey lighten-2">
 <span v-if="ultimopartido"><b>Último partido procesado: </b>{{ultimopartido.LOCAL}} {{ultimopartido.lg}} - {{ultimopartido.vg}} {{ultimopartido.VISITANTE}}</span>      
-<v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones</v-btn>  
+<v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones : </v-btn>  
 
 <vue-good-table v-if="posicionesNumericas"
       title="Posiciones"
