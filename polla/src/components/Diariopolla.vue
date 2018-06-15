@@ -270,10 +270,10 @@
       <template>
         <v-layout row justify-center>
           <v-dialog v-model="muestrapronospartido" :fullscreen="$vuetify.breakpoint.width < 600 ? true: false" max-width="600" scrollable
-            v-if="pronopartido" persistent>
+            v-if="pronopartido">
             <v-card>
               <v-toolbar dark color="primary">
-                <v-btn icon @click="dialogoCierra()" dark>
+                <v-btn icon @click="dialogoCierra()" dark>p
                   <v-icon>close</v-icon>
                 </v-btn>
                 <v-spacer></v-spacer>
