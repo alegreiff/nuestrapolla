@@ -70,7 +70,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.2.4 Comparador de pronósticos',
+      infoversion: 'v.2.8 Comodines & acuarelas',
       vieneeljefe: false,
       clipped: true,
       drawer: false,

@@ -108,7 +108,6 @@
               <img :src="'/assets/flags/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario">
               <img :src="'/assets/band/'+calendario[partido.id].idloc + '.png'" :alt="calendario[partido.id].idloc" class="flags_diario"
                 v-if="banderas">
-                <!--<pie-chart :data="[[calendario[partido.id].local, pronos_partido(partido.id).loc], [calendario[partido.id].visitante, pronos_partido(partido.id).vis], ['Empate', pronos_partido(partido.id).emp]]" :legend="true" width="100%" height="120px" class="cartapolla"></pie-chart>-->
             </div>
             <div class="resultados" v-if="pronos_partido(partido.id)">
               <p class="res_superior"></p>
@@ -124,8 +123,6 @@
               <p class="marcadorDef_loc" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].lg}}</p>
               <p class="marcadorDef_vis" v-if="calendario[partido.id].procesado== 1">{{calendario[partido.id].vg}}</p>
               <p class="res_puntos" v-if="calendario[partido.id].procesado== 1">Puntos</p>
-              <!--<span>{{graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)}}</span>-->
-              
               <p class="res_pts" v-if="calendario[partido.id].procesado== 1">{{ pronos_partido(partido.id).mipuntos}}</p>
             </div>
             <div class="equipo_visitante">
@@ -136,7 +133,6 @@
                 v-if="banderas">
                 
             </div>
-            <!-- v-html="graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)"-->
             <div class="graficadiariopolla" v-if="pronos_partido(partido.id)">
               
               <v-progress-circular :value="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).l" :width="10" :size="80" :color="(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).cl">{{pronos_partido(partido.id).loc}}<br>{{(graficaPronos(pronos_partido(partido.id).loc, pronos_partido(partido.id).vis, pronos_partido(partido.id).emp)).l}}%</v-progress-circular>
@@ -154,8 +150,6 @@
               <v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" round color="primary" dark class="np_textodusha">
                 Ver {{ pronos_partido(partido.id).cuantos}} pronósticos
               </v-btn>
-              <!--{{ pronos_partido(partido.id).loc}} - {{ pronos_partido(partido.id).emp}} - {{ pronos_partido(partido.id).vis}} - {{ pronos_partido(partido.id).nulo
-              }} //Para mostrar los NULOS  -->
               <v-btn v-if="calendario[partido.id].procesado=== 0" @click="funcionQPS(partido.id)" small color="primary">
                 QPS {{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}
                 <v-icon right dark>highlight</v-icon>
@@ -163,10 +157,7 @@
               <v-btn @click="marcadoresFrecuentes(partido.id)" round color="primary" dark class="np_textodusha">
                 Comodines / marcadores
               </v-btn>
-               <!-- <pre> {{ OLDENmarcadoresFrecuentes(estadisticaPartido(calendario[partido.id].id))}} </pre> -->
-               <!--<p v-for="(pron, index) in marcadoresFrecuentes(estadisticaPartido(calendario[partido.id].id))">
-                 {{index}} - {{pron}}
-               </p>-->
+
             </div>
           </div>
         </div>
@@ -230,7 +221,6 @@
           <hr>
         </div>
       </v-flex>
-      <!-- INICIO VENTANA MODAL MARCADORES_MATCH -->
       <template>
         <v-layout row justify-center>
           <v-dialog v-model="markadores" max-width="500px">
@@ -239,8 +229,6 @@
             <span v-if="comodines">Marcadores ({{comodines}} comodines en juego)</span>
           </v-card-title>
           <v-card-text>
-            <!-- <pre v-if="frecuencia">{{frecuencia.grupo}}</pre> -->
-            
             <table class="tabla_np elevation-24 np_frecuentes" v-if="frecuencia">
         <thead>
             <tr>
@@ -279,8 +267,6 @@
       </v-dialog>
         </v-layout>
       </template>
-      <!-- FIN VENTANA MODAL MARCADORES_MATCH -->
-      <!-- INICIO VENTANA MODAL PRONOS X PARTIDO -->
       <template>
         <v-layout row justify-center>
           <v-dialog v-model="muestrapronospartido" :fullscreen="$vuetify.breakpoint.width < 600 ? true: false" max-width="600" scrollable
@@ -295,16 +281,10 @@
               <v-card-text>
                 <tablapronosporpartido :partidoPronos="pronopartido" :posiciones="posicionesNumericas" :partido="partidoactivo"></tablapronosporpartido>
               </v-card-text>
-              <!--<v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="green darken-1" flat @click="dialogoCierra()">Cerrar</v-btn>
-                        </v-card-actions>-->
             </v-card>
           </v-dialog>
         </v-layout>
       </template>
-      <!-- FIN VENTANA MODAL PRONOS X PARTIDO -->
-      <!-- INICIO VENTANA MODAL QPS GLOBAL-->
       <template>
         <v-layout row justify-center>
           <v-dialog v-model="qps" persistent fullscreen max-width="800">
@@ -315,7 +295,6 @@
                 </v-btn>
                 <v-spacer></v-spacer>
               </v-toolbar>
-              <!-- <v-card-title class="headline">¿Qué pasaría sí...?</v-card-title> -->
               <v-card-text>
                 <QPS :modo="modo" :partidosFecha="partidosfechaQPS" ref="elQPS"></QPS>
               </v-card-text>
@@ -323,7 +302,6 @@
           </v-dialog>
         </v-layout>
       </template>
-      <!-- FIN VENTANA MODAL QPS GLOBAL-->
     </v-layout>
   </v-container>
 </template>
@@ -332,18 +310,12 @@ import Vue from 'vue'
 import Flashcard from './flashcard'
 import tablapronosporpartido from './tablapronosporpartido'
 import { mapState, mapMutations, mapGetters} from 'vuex'
-//import jsPDF from 'jsPDF'
 import QPS from './snippets/QPS.vue'
-
-
 export default {
   data: () => ({
     qps: false,
     modo: '',
     partidoactivo: null,
-    /*chartConfig(chart) {
-      chart.donutRatio(0.5)
-    },*/
     muestrapronospartido: false,
     banderas: true,
     pronopartido: null,
@@ -351,7 +323,6 @@ export default {
     fechas_picker: null,
     allowedDates: ['2018-06-21', '2018-06-25'],
     feitas: [],
-    //estadoQPS: [],
     partidosfechaQPS: null,
     partidosDIA: null,
     partidia: null,
@@ -389,9 +360,6 @@ export default {
       var locP = ((loc * 100) / base).toFixed(2);
       var visP = ((vis * 100) / base).toFixed(2);
       var empP = ((emp * 100) / base).toFixed(2);
-      //var salida = '<table border ="2" class="np_tabla_resultados" ><tr><td width='+ locP +'%> </td> <td width=' +empP+ '%> </td> <td width=' +visP+ '%> </td></tr></table>';
-    //return (locP + ' ' + visP + ' ' +empP);
-    //var salida = '<v-progress-circular :value="60"></v-progress-circular><v-progress-circular :value="10"></v-progress-circular><v-progress-circular :value="30"></v-progress-circular>'
     var classLoc='';
     var classVis='';
     var classEmp='amber';
@@ -413,14 +381,9 @@ export default {
     salida.cl = classLoc
     salida.ce = classEmp
     salida.cv = classVis
-    //console.table(salida);
     return salida;
-    //return 'partidosDIA LG';
     },
-
-
     colorderesultado(resultado, partido){
-      //console.log("El resultado del partido " + partido + " es: " + this.pronos_partido(partido).miresultado)
       if(this.pronos_partido(partido).miresultado===resultado){
         return 'teal'
       }else{
@@ -443,7 +406,6 @@ export default {
       this.qps = true
     },
     cierraFuncionQPS(partidos){
-      //this.estadoQPS = []
       this.partidosfechaQPS = null
       this.qps = false
       this.$refs.elQPS.QPSDATA=null;
@@ -471,31 +433,22 @@ export default {
       return sale
     },
     pronos_partido(partido) {
-      //console.log("PARTITA = ")
-        //console.log(partido)
       if(this.partidia){
-        //var cotejo = parseInt(partido)
         var cotejo = partido
         var pronosticosInternos = _.filter(this.partidia, ['partido', cotejo])
         var cuantos = pronosticosInternos.length
-        //console.log("Cuantos pronos.....")
-        //console.log(pronosticosInternos.length)
         var salida = new Object()
         var loc = 0
         var vis = 0
         var emp = 0
         var com = 0
         var nulo = 0
-        //var jugadorId = parseInt(this.datosUsuarioWordpress.id)
-        //var jugadorId = this.datosUsuarioWordpress.id
         var jugadorId = this.polleroID
-        
         var mis_pronos = _.filter(pronosticosInternos, ['id_jugador', jugadorId])
         for (var i in pronosticosInternos) {
           if (pronosticosInternos[i].comodin == 'SI') {
             com++
           }
-
           if(((isNaN(pronosticosInternos[i].m_loc)) && (isNaN(pronosticosInternos[i].m_vis)))){
             nulo++
           }else{
@@ -507,7 +460,6 @@ export default {
               emp++
             }
           }
-          
         }
         salida['pronos'] = pronosticosInternos
         salida['cuantos'] = cuantos
@@ -532,7 +484,6 @@ export default {
             value: nulo
           }
         ]
-        //console.table(mis_pronos)
         if (mis_pronos.length === 1) {
           salida['mivis'] = mis_pronos[0].m_vis
           salida['miloc'] = mis_pronos[0].m_loc
@@ -542,12 +493,9 @@ export default {
           salida['miresultado'] = mis_pronos[0].resultado
         }
       }
-
-      
       return salida
     },
     dialogo(pronos, idpartido) {
-      //console.log("El partido activo es: " + idpartido) //555
       this.pronopartido = pronos
       this.muestrapronospartido = true
       this.partidoactivo = idpartido
@@ -559,8 +507,6 @@ export default {
       
     },
     resultadospartido(partido){
-      //console.log("El partido es... " + partido)
-      //this.resmatch = this.partidosProcesadosSencillo(partido);
       var res = this.partidosProcesadosSencillo(partido);
       var salida = new Object()
       salida['puntos'] = _.sumBy(res, 'puntos');
@@ -572,9 +518,6 @@ export default {
       salida['pailas'] = _.filter(res, function(o) { if (o.resultado==='COMODINBLANCO') return o }).length;
       salida['nulos'] = _.filter(res, function(o) { if (o.resultado==='NULO') return o }).length;
       return salida;
-      
-
-      
     },
     miniPronos(idpartidos){
       this.partidia = this.consolidadoPronosDia(idpartidos);
@@ -588,9 +531,7 @@ export default {
       }
       this.partidosDIA = partidos;
       this.miniPronos(this.partidosDIA)
-      
     }
-
   },
   computed: {
     ...mapState(['horamostrable', 'datosUsuarioWordpress', 'configuracionPolla', 'listaequipos', 'frasesculas', 'sedes']),
@@ -617,7 +558,6 @@ export default {
     mi_posicionesNumericas() {
       if (this.posicionesNumericas) {
         var tempo = _.filter(this.posicionesNumericas, ['id_jugador', this.polleroID]);
-        //console.table(tempo);
         return tempo[0];
       } else {
         return 0;
@@ -628,15 +568,11 @@ export default {
         this.lasfechas
         var resultado = _.filter(this.eventos, ['date', this.fechas_picker])
         resultado = _.orderBy(resultado, ['fechafull'], ['asc'])
-        //console.table(resultado)
-
-    
       var partidos = [];
       for(var i in resultado){
         partidos.push(resultado[i].id)
       }
       console.log("PARTIDOS " + partidos)
-      //this.miniPronos(this.partidosDIA);
       this.partidia = this.consolidadoPronosDia(partidos);
         return resultado
       }
@@ -659,17 +595,7 @@ export default {
 
   },
   mounted() {
-    //console.log("La fecha INICIAL es");
-    console.log("FFF " + this.lafecha());
-    //this.fechas_picker = '2018-06-14'
-    
     this.fechas_picker = this.lafecha();
-        
-
-    
   },
-  created() {
-
-  }
 } 
 </script>
