@@ -70,7 +70,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.2.8 Comodines & acuarelas',
+      infoversion: 'v.3.0 Comodines / Goles PP',
       vieneeljefe: false,
       clipped: true,
       drawer: false,

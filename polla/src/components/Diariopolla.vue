@@ -226,14 +226,14 @@
           <v-dialog v-model="markadores" max-width="500px">
         <v-card>
           <v-card-title>
-            <span v-if="comodines">Marcadores ({{comodines}} comodines en juego)</span>
+            <span v-if="comodines"> {{calendario[partidoactivo].local}} vs {{calendario[partidoactivo].visitante}} ({{comodines}} comodines en juego)</span>
           </v-card-title>
           <v-card-text>
             <table class="tabla_np elevation-24 np_frecuentes" v-if="frecuencia">
         <thead>
             <tr>
               <th>#</th>
-              <th>Marcadores</th>
+              <th>{{calendario[partidoactivo].local}} vs {{calendario[partidoactivo].visitante}}</th>
             </tr>
         </thead>
         <tbody>

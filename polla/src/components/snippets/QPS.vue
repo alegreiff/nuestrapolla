@@ -5,7 +5,6 @@
         <v-flex xs12> {{ mensajeactivo }}</v-flex>
         <v-flex xs3 v-if="modo !='DIOS'" v-for="(partido, index) in partidosQPS" :key="index" class="ahiteves">
           <v-btn small color="primary" small>{{calendario[partido.id].local}} - {{calendario[partido.id].visitante}}</v-btn>
-          <!--<v-btn @click="agregaComparado(partido.id, partido.boton, index)" small :color="partido.boton ? 'primary' : 'error'" block dark>{{calendario[partido.id].local}} vs {{calendario[partido.id].visitante}}</v-btn>-->
           <b-field :class="{'qps_comodin':partidosQPS[index].COM === 'SI'}">
             <b-input class="qps_input"
                 type="number"
@@ -69,16 +68,10 @@
     <td class="fancy">{{ props.row.BLANCOCONCOMODIN }}</td>
     <td class="fancy">{{ props.row.BLANCOSIMPLE }}</td>
     <td class="fancy">{{ props.row.USOCOM }}</td>
-    <!-- <td>{{ props.index }}</td> -->
   </template>
-
-
       </vue-good-table>
-
       </v-flex>
     </v-layout>
-
-    <!-- INICIO VENTANA MODAL QPS GLOBAL-->
     <template>
       <v-layout row justify-center>
         <v-dialog v-model="modalQPSinterno" max-width="800">
@@ -100,8 +93,6 @@
         </v-dialog>
       </v-layout>
     </template>
-    <!-- FIN VENTANA MODAL QPS GLOBAL-->
-
     </v-container>
 </template>
 
