@@ -3,16 +3,21 @@
 <!-- {{ nombrePollero }} - partidos procesados {{ partidosProcesados.length}} --- {{ puntosPollero.puntos }}
  <p v-if="puestoPollero"> Posición: {{ puestoPollero.pos }} </p> -->
   
-<v-layout row wrap>      
+<v-layout row wrap>
+<v-flex xs12>
+  <v-btn small @click="pa_activo=null">Todos</v-btn>
+  <v-btn v-for="pa in pollerosamigos" small @click="pa_activar(pa.sigla)">{{pa.sigla}}</v-btn>
+  </v-flex>      
 <v-flex xs12>
         <v-card color="blue-grey lighten-2">
+          {{pa_activo}} 
 <span v-if="ultimopartido"><b>Último partido procesado: </b>{{ultimopartido.LOCAL}} {{ultimopartido.lg}} - {{ultimopartido.vg}} {{ultimopartido.VISITANTE}}</span>      
 <v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones</v-btn>  
 
-<vue-good-table v-if="posicionesNumericas"
+<vue-good-table v-if="misposicionesNumericas"
       title="Posiciones"
       :columns="$vuetify.breakpoint.width > 800 ? columnas : columnasMoviles"
-      :rows="posicionesNumericas"
+      :rows="misposicionesNumericas"
       :lineNumbers="false"
       :globalSearch="true"
       globalSearchPlaceholder="Encuéntrate"
@@ -136,6 +141,7 @@ export default {
       datosOtrosPolleros: null,
       datosAdicionalesPollero: null,
       pa: null,
+      pa_activo: null,
       onClickFn: function(row, index){
         //this.cam();
         //usuariodetalles =!usuariodetalles;
@@ -256,8 +262,15 @@ export default {
       polleros: null,
     }
   },
-  computed: {...mapState(['horamostrable', 'configuracionPolla']), 
+  computed: {...mapState(['horamostrable', 'configuracionPolla', 'pollerosamigos']), 
   ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial']),
+  misposicionesNumericas(){
+if (this.pa_activo) {
+                return this.posicionesNumericas.filter((posiciones) => posiciones.pa === this.pa_activo)
+            } else {
+                return this.posicionesNumericas
+            }
+  }
  
   },
   methods:{
@@ -265,6 +278,9 @@ export default {
     escudo_FPC(equipo){
       var escudo =  this.escudoFPC(equipo)
       return escudo.escudo
+    },
+    pa_activar(pa){
+      this.pa_activo = pa
     },
     primer_Mundial(mundial){
       var mundial =  this.primerMundial(mundial)

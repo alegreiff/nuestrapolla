@@ -20,8 +20,8 @@ export const datos = new Vuex.Store({
 			{id: 134, 	sigla: 'MS', nombre: 'Miller Sánchez'},
 			{id: 88, 	sigla: 'AP', nombre: 'Alejandro Pardo'},
 			{id: 11, 	sigla: 'RR', nombre: 'Ricardo Ramírez'},
-			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'},
-			{id: 0, 	sigla: '##', nombre: 'OTRO'}
+			{id: 29, 	sigla: 'MC', nombre: 'Marcela Cortés'}
+			//{id: 0, 	sigla: '##', nombre: 'OTRO'}
 		],
 		/*
 		*/

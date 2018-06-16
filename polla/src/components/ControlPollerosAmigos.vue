@@ -220,7 +220,7 @@ export default {
                     }
                     return this.union_datos
                 }
-            }
+            } 
         },
         union_datos() {
             if (this.polleros) {
