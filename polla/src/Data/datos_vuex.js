@@ -510,7 +510,7 @@ export const datos = new Vuex.Store({
 			temp =  _.filter(temp, ['id_jugador', id])
 			return  _.orderBy(temp, [prono => prono.partido], ['asc']);
 		},
-		posicionesNumericas: (state) => {
+		posicionesNumericas: (state, getters) => {
 			_.each(state.posiciones, item => item.id_jugador = parseInt(item.id_jugador))
 			_.each(state.posiciones, item => item.puntaje = parseInt(item.puntaje))
 			_.each(state.posiciones, item => item.partidos = parseInt(item.partidos))
@@ -539,6 +539,9 @@ export const datos = new Vuex.Store({
 						state.posiciones[i].pos = state.posiciones[i - 1].pos;
 					}
 				}
+			
+			var tempo = _.filter(getters.allpolleros, {'id': parseInt(state.posiciones[i].id_jugador) })[0].polleroamigo;
+			state.posiciones[i].pa = _.find(state.pollerosamigos, { 'nombre': tempo}).sigla;
 			}
 			return state.posiciones;
 		},
