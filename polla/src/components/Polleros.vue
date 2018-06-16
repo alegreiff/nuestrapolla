@@ -6,11 +6,19 @@
 <v-layout row wrap>
 <v-flex xs12>
   <v-btn small @click="pa_activo=null">Todos</v-btn>
-  <v-btn v-for="pa in pollerosamigos" small @click="pa_activar(pa.sigla)">{{pa.sigla}}</v-btn>
+  <v-menu offset-y>
+      <v-btn slot="activator" color="primary" dark>Filtrar por pollero amigo</v-btn>
+      <v-list>
+        <v-list-tile v-for="(pa, index) in pollerosamigos" :key="index" @click="pa_activar(pa.sigla)">
+          <v-list-tile-title>{{ pa.sigla }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+  <span>{{pa_activo ? pa_activo : 'Todos' }}</span>
+  <!--<v-btn v-for="pa in pollerosamigos" small @click="pa_activar(pa.sigla)">{{pa.sigla}}</v-btn>-->
   </v-flex>      
 <v-flex xs12>
         <v-card color="blue-grey lighten-2">
-          {{pa_activo}} 
 <span v-if="ultimopartido"><b>Último partido procesado: </b>{{ultimopartido.LOCAL}} {{ultimopartido.lg}} - {{ultimopartido.vg}} {{ultimopartido.VISITANTE}}</span>      
 <v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones</v-btn>  
 
