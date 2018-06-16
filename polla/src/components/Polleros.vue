@@ -32,10 +32,11 @@
       nextText="Siguiente"
       prevText="Anterior"
       :responsive="true"
-      :paginate="true"
+      styleClass="table table-condensed"
+      
       rowsPerPageText="Polleros por página"
       styleClass="table condensed">
-
+<!-- :paginate="true" -->
 <template slot="table-column" slot-scope="props">
      <span v-if="props.column.field =='GRANCHEPAZO'" class="np_manito">
         <i class="material-icons">star_border</i> {{props.column.label}}
