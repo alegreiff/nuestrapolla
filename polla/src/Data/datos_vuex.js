@@ -511,6 +511,12 @@ export const datos = new Vuex.Store({
 			temp =  _.filter(temp, ['id_jugador', id])
 			return  _.orderBy(temp, [prono => prono.partido], ['asc']);
 		},
+		posicionesNumericasHallFama: (state, getters) =>{
+			var temp = _.cloneDeep(getters.posicionesNumericas)	
+			return temp;
+			
+
+		},
 		posicionesNumericas: (state, getters) => {
 			_.each(state.posiciones, item => item.id_jugador = parseInt(item.id_jugador))
 			_.each(state.posiciones, item => item.puntaje = parseInt(item.puntaje))
