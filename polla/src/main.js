@@ -10,7 +10,7 @@ import { mapState, mapMutations} from 'vuex'
 Vue.use(Buefy)
 Vue.use(require('vue-shortkey'))
 Vue.use(FuncionesComunesPLG)
-Vue.config.devtools = true //producción false desarrollo true
+Vue.config.devtools = false //producción false desarrollo true
 Vue.use(Vuetify, {
 	theme: {
 		primary: '#1976D2',
