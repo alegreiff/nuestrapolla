@@ -310,7 +310,7 @@ if (this.pa_activo) {
     el_genero(pollero){
       if(this.polleros){
         var tempo = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
-        var salida = tempo.genero ==='Pollero' ? '♀' : '♂';
+        var salida = tempo.genero ==='Pollero' ? '♂' : '♀';
         return salida
       }
       
