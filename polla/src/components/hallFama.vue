@@ -13,7 +13,7 @@
 <p v-for="(pa, index) in pollerosamigos" :key="index" v-if="pa.suma > 10">
     Mejor pollero de: {{pa.sigla}}
     <ul>
-        <li v-for="(benef, index) in mejorpollero(pa.sigla)" :key="index"> {{ benef.pollero }}  {{ plan(3, 10) }}</li>
+        <li v-for="(benef, index) in mejorpollero(pa.sigla)" :key="index"> {{ benef.pollero }}  {{ plan(3, (10/(mejorpollero(pa.sigla).length))) }}</li>
     </ul>
     </p>
 </v-flex>
