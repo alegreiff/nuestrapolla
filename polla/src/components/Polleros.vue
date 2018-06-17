@@ -53,7 +53,7 @@
   </template>    
   <template slot="table-row" scope="props" v-if="$vuetify.breakpoint.width > 800">
     <td>{{ props.row.pos }}</td>
-    <td @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }} <span class="np_genre_poll">{{el_genero(props.row)}}</span></td>
+    <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
     <td>{{ props.row.pa }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
@@ -310,7 +310,7 @@ if (this.pa_activo) {
     el_genero(pollero){
       if(this.polleros){
         var tempo = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
-        var salida = tempo.genero ==='Pollero' ? '♂' : '♀';
+        var salida = tempo.genero ==='Pollero' ? 'H' : 'M';
         return salida
       }
       
