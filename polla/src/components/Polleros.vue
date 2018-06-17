@@ -20,7 +20,8 @@
 <v-flex xs12>
         <v-card color="blue-grey lighten-2">
 <span v-if="ultimopartido"><b>Último partido procesado: </b>{{ultimopartido.LOCAL}} {{ultimopartido.lg}} - {{ultimopartido.vg}} {{ultimopartido.VISITANTE}}</span>      
-<v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones</v-btn>  
+<v-btn @click="actualiza_posiciones()" color="primary">Actualizar posiciones</v-btn> 
+<v-btn @click="muestraHall()" color="terciary">Hall provisional de la fama</v-btn>
 
 <vue-good-table v-if="misposicionesNumericas"
       title="Posiciones"
@@ -73,6 +74,28 @@
           
         </v-card>
       </v-flex>
+
+<v-dialog v-model="dialog3" max-width="400px">
+        <v-card>
+<div class="np_hallfama">
+<p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }} ({{ pollero.pos }})  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }}</p>
+<ul>
+    <li v-for="(pollero, index) in primeros" :key="index">Poller amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
+</ul>
+<p v-for="(pollero, index) in segundos" :key="index">2º: {{ pollero.pollero }}  ({{ pollero.pos }}) {{ plan(1, primeros.length) }}</p>
+<p v-for="(pollero, index) in terceros" :key="index">3º: {{ pollero.pollero }} ({{ pollero.pos }}){{ plan(2, terceros.length) }}</p>
+<p v-for="(pa, index) in pollerosamigos" :key="index" v-if="pa.suma > 10">
+    Mejor pollero de: {{pa.sigla}}
+    <ul>
+        <li v-for="(benef, index) in mejorpollero(pa.sigla)" :key="index"> {{ benef.pollero }} ({{ benef.pos }})  {{ plan(3, (10 * (mejorpollero(pa.sigla).length))) }}</li>
+    </ul>
+    </p>  
+</div>  
+        </v-card>
+      </v-dialog>
+
+
+
     <v-dialog v-model="usuariodetalles" max-width="600">
           <v-layout v-if="datosAdicionalesPollero" row wrap :class="'np_perfil'+datosAdicionalesPollero.genero">
            
@@ -146,6 +169,11 @@ export default {
   },
   data() {
     return {
+      dialog3: false,
+      posiciones: null,
+        primeros: null,
+        segundos: null,
+        terceros: null,
       usuariodetalles: false,
       datosOtrosPolleros: null,
       datosAdicionalesPollero: null,
@@ -273,8 +301,12 @@ export default {
       polleros: null,
     }
   },
-  computed: {...mapState(['horamostrable', 'configuracionPolla', 'pollerosamigos']), 
-  ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial']),
+  /*
+      ...mapState(['', 'plandepremios']),
+    ...mapGetters(['posicionesNumericasHallFama']),
+  */
+  computed: {...mapState(['horamostrable', 'configuracionPolla', 'pollerosamigos','plandepremios']), 
+  ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial', 'posicionesNumericasHallFama']),
   misposicionesNumericas(){
 if (this.pa_activo) {
                 return this.posicionesNumericas.filter((posiciones) => posiciones.pa === this.pa_activo)
@@ -285,7 +317,30 @@ if (this.pa_activo) {
  
   },
   methods:{
+    muestraHall(){
+    this.primeros = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 1)
+        this.segundos = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 2)
+        this.terceros = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 3)
+        for(var i in this.pollerosamigos){
+            var tempo = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pa === this.pollerosamigos[i].sigla)
+            this.pollerosamigos[i].suma = tempo.length
+        }
+    this.dialog3=!this.dialog3;
+    },
     ...mapMutations(['updatePosiciones', 'ultimopartidoprocesado']),
+          plan(porc, cuantos){
+          var tempo = ((this.plandepremios.porcentajes[porc] * (this.plandepremios.cuota * (100 - this.plandepremios.fee)) * this.posicionesNumericasHallFama.length)/100) / 100
+          let val = (tempo/cuantos).toFixed(0).replace('.', ',')
+        return '$' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      },
+mejorpollero(pa){
+    var tempo = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pa === pa)
+    var tempo1 = tempo.filter((pollero) => pollero.pos > 3)[0]
+    var pos = tempo1.pos
+    console.log(pos)
+    var tempo2 =  tempo.filter((pollero) => pollero.pos === pos)
+    return tempo2
+},
     escudo_FPC(equipo){
       var escudo =  this.escudoFPC(equipo)
       return escudo.escudo
@@ -324,6 +379,17 @@ if (this.pa_activo) {
   },
     mounted() {
     this.actualiza_posiciones();
+        if(this.posicionesNumericasHallFama){
+        this.primeros = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 1)
+        this.segundos = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 2)
+        this.terceros = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 3)
+    }
+    if(this.pollerosamigos && this.posicionesNumericasHallFama ){
+        for(var i in this.pollerosamigos){
+            var tempo = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pa === this.pollerosamigos[i].sigla)
+            this.pollerosamigos[i].suma = tempo.length
+        }
+    }
   },
   created() {
     axios.get(`/wp-json/lospolleros/v1/all/`).then(response => {
