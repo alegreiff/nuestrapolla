@@ -166,6 +166,7 @@ export default {
         field: 'pos',
         width: '20px',
         sortable: true,
+        type: 'number'
       },
       {
         label: 'Pollero',
