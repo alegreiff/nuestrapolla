@@ -164,7 +164,8 @@ export default {
         label: '# pos',
         tdClass: 'text-center',
         field: 'pos',
-        width: '20px'
+        width: '20px',
+        sortable: true,
       },
       {
         label: 'Pollero',
