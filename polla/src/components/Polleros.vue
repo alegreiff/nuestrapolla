@@ -79,13 +79,15 @@
 <v-dialog v-model="dialog3" max-width="400px">
         <v-card>
 <div class="np_hallfama">
+<span>Premios provisionales calculados sobre las posiciones actuales</span>
+<hr>
 <p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }}  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }}</p>
 <ul>
     <li v-for="(pollero, index) in primeros" :key="index">Pollero amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
 </ul>
 <p v-for="(pollero, index) in segundos" :key="index">2º: {{ pollero.pollero }}   {{ plan(1, primeros.length) }}</p>
 <p v-for="(pollero, index) in terceros" :key="index">3º: {{ pollero.pollero }} {{ plan(2, terceros.length) }}</p>
-<p>Mejores polleros X poller amigo</p>
+<p>Mejores polleros X pollero amigo</p>
 <p v-for="(pa, index) in pollerosamigos" :key="index" v-if="pa.suma > 10">
     
     <ul>
