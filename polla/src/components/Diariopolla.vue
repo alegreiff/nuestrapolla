@@ -504,6 +504,7 @@ export default {
       this.pronopartido = null
       this.partidoactivo = null
       this.muestrapronospartido = false
+      console.log(this.pronopartido + ' * ' + this.partidoactivo + ' ** ' + this.muestrapronospartido)
       
     },
     resultadospartido(partido){
