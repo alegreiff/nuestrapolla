@@ -79,16 +79,17 @@
 <v-dialog v-model="dialog3" max-width="400px">
         <v-card>
 <div class="np_hallfama">
-<p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }} ({{ pollero.pos }})  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }}</p>
+<p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }}  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }}</p>
 <ul>
     <li v-for="(pollero, index) in primeros" :key="index">Poller amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
 </ul>
-<p v-for="(pollero, index) in segundos" :key="index">2º: {{ pollero.pollero }}  ({{ pollero.pos }}) {{ plan(1, primeros.length) }}</p>
-<p v-for="(pollero, index) in terceros" :key="index">3º: {{ pollero.pollero }} ({{ pollero.pos }}){{ plan(2, terceros.length) }}</p>
+<p v-for="(pollero, index) in segundos" :key="index">2º: {{ pollero.pollero }}   {{ plan(1, primeros.length) }}</p>
+<p v-for="(pollero, index) in terceros" :key="index">3º: {{ pollero.pollero }} {{ plan(2, terceros.length) }}</p>
+<p>Mejores polleros X poller amigo</p>
 <p v-for="(pa, index) in pollerosamigos" :key="index" v-if="pa.suma > 10">
-    Mejor pollero de: {{pa.sigla}}
+    
     <ul>
-        <li v-for="(benef, index) in mejorpollero(pa.sigla)" :key="index"> {{ benef.pollero }} ({{ benef.pos }})  {{ plan(3, (10 * (mejorpollero(pa.sigla).length))) }}</li>
+        <li v-for="(benef, index) in mejorpollero(pa.sigla)" :key="index">[{{pa.sigla}}] --- {{ benef.pollero }} ({{ benef.pos }})  {{ plan(3, (10 * (mejorpollero(pa.sigla).length))) }}</li>
     </ul>
     </p>  
 </div>  
