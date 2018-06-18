@@ -81,7 +81,7 @@
 <div class="np_hallfama">
 <p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }}  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }}</p>
 <ul>
-    <li v-for="(pollero, index) in primeros" :key="index">Poller amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
+    <li v-for="(pollero, index) in primeros" :key="index">Pollero amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
 </ul>
 <p v-for="(pollero, index) in segundos" :key="index">2º: {{ pollero.pollero }}   {{ plan(1, primeros.length) }}</p>
 <p v-for="(pollero, index) in terceros" :key="index">3º: {{ pollero.pollero }} {{ plan(2, terceros.length) }}</p>
