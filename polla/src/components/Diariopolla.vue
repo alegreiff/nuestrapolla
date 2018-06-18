@@ -223,7 +223,7 @@
       </v-flex>
       <template>
         <v-layout row justify-center>
-          <v-dialog v-model="markadores" max-width="500px">
+          <v-dialog v-model="markadores" max-width="500px" v-if="partidoactivo">
         <v-card>
           <v-card-title>
             <span v-if="comodines"> {{calendario[partidoactivo].local}} vs {{calendario[partidoactivo].visitante}} ({{comodines}} comodines en juego)</span>
