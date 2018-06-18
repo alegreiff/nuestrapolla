@@ -64,7 +64,8 @@
     <td class="fancy">{{ props.row.BLANCOCONCOMODIN }}</td>
     <td class="fancy">{{ props.row.BLANCOSIMPLE }}</td>
     <td class="fancy">{{ props.row.USOCOM }}</td>
-    <td class="fancy">{{ props.row.NULO }}</td>
+    <!--<td class="fancy">{{ props.row.NULO }}</td>-->
+    <td class="fancy">{{ props.row.BLANCOCONCOMODIN + props.row.BLANCOSIMPLE }}</td>
     <!-- <td>{{ props.index }}</td> -->
   </template>
 

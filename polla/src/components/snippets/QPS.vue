@@ -40,7 +40,7 @@
       :responsive="true"
       :paginate="true"
       rowsPerPageText="Polleros por página"
-      :defaultSortBy="{field: 'puntaje', type: 'desc'}"
+      :defaultSortBy="{field: 'pos', type: 'asc'}"
       styleClass="table condensed">
 
 <template slot="table-column" slot-scope="props">
@@ -59,7 +59,7 @@
   </template>    
   <template slot="table-row" scope="props" v-if="$vuetify.breakpoint.width > 800">
     <td>{{ props.row.pos }}</td>
-    <td @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
+    <td @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }} </td>
     <td>{{ props.formattedRow.puntaje }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
@@ -121,7 +121,9 @@ export default {
         label: '# pos',
         tdClass: 'text-center',
         field: 'pos',
-        width: '20px'
+        width: '20px',
+        sortable: true,
+        type: 'number'
       },
       {
         label: 'Pollero',
@@ -137,7 +139,8 @@ export default {
         sortable: true,
         type: 'number',
         width: '20px'
-      }, {
+      },
+      {
         label: 'GCH',
         tdClass: 'text-center',
         field: 'GRANCHEPAZO',
@@ -184,6 +187,14 @@ export default {
         tdClass: 'text-center',
         field: 'USOCOM',
         sortable: true,
+        type: 'number',
+        width: '20px'
+        
+      },{
+        label: '--',
+        tdClass: 'text-center',
+        field: 'NULO',
+        sortable: false,
         type: 'number',
         width: '20px'
         

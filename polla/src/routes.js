@@ -9,7 +9,7 @@ import Clasificador from './components/ClasificaPartidos.vue'
 import Reglamento from './components/Reglamento.vue'
 import ControlPA from './components/ControlPollerosAmigos.vue'
 import inicioprov from './components/inicioprov.vue'
-import HallFama from './components/hallFama.vue'
+/*import HallFama from './components/hallFama.vue'*/
 
 
 
@@ -28,7 +28,7 @@ export const routes = [
 	{path: '/amigopollero', component: ControlPA},
 	//{path: '/provis', component: StartPolla},
 	{path: '/reglamento', component: Reglamento},
-	{path: '/hallfama', component: HallFama},
+	/*{path: '/hallfama', component: HallFama},*/
 	{path: '/nouser',
     beforeEnter(to, from, next) {
         window.location = "../"
