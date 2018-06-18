@@ -82,6 +82,7 @@
 <span>Premios provisionales calculados sobre las posiciones actuales</span>
 <hr>
 <p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }}  {{ plan(0, primeros.length) }} + {{ plan(5, primeros.length) }} (Líder de la fase de grupos)</p>
+
 <ul>
     <li v-for="(pollero, index) in primeros" :key="index">Pollero amigo (1º): {{ pollero.pa }} {{ plan(4, primeros.length) }}</li>
 </ul>
