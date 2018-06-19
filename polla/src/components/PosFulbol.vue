@@ -3,7 +3,7 @@
         <v-flex xs12>
             <v-card dark color="primary">
                 <v-card-text class="px-0">
-                    Reglamento Nuestra Polla Rusia 2018
+                    Posiciones por grupos y clasificados a octavos de final
                 </v-card-text>
             </v-card>
         </v-flex>
