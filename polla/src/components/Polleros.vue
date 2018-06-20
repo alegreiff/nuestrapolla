@@ -54,7 +54,7 @@
   </template>    
   <template slot="table-row" scope="props" v-if="$vuetify.breakpoint.width > 800">
     <td>
-    {{ props.row.pos }} <v-btn flat icon color="indigo" @click="mihistoria(props.row.id_jugador)">
+    {{ props.row.pos }} <v-btn flat icon color="indigo" @click="mihistoria(props.row.id_jugador, props.row.pollero)">
               <v-icon>star</v-icon>
             </v-btn>
      </td>
@@ -104,10 +104,10 @@
       </v-dialog>
 
 
-<v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero">
+<v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero && historipollero">
         <v-card>
           <v-card-title>
-            Partido a partido
+            <strong>{{ historipollero }}</strong> partido a partido
           </v-card-title>
           <v-card-text>
             <table class="tabla_np_historia">
@@ -116,7 +116,7 @@
                   
                   <td>
                     <img :style='"height:" + parseInt(dato.puntos)*10+"px;"' :src="'/assets/puntos.png'">
-                    {{ dato.puntos}}
+                    <span class="np_eldato">{{ dato.puntos}}</span>
                     
                     </td>
 
@@ -206,6 +206,7 @@ export default {
   data() {
     return {
       historiapollero: null,
+      historipollero: null,
       lahistoria: false,
       dialog3: false,
       posiciones: null,
@@ -355,7 +356,8 @@ if (this.pa_activo) {
  
   },
   methods:{
-    mihistoria(pollero){
+    mihistoria(pollero, nombrepollero){
+      this.historipollero = nombrepollero;
       this.historiapollero = null
       console.log(pollero + ' --------------------')
         axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero)
