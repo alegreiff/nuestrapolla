@@ -536,7 +536,7 @@ export default {
   },
   computed: {
     ...mapState(['horamostrable', 'datosUsuarioWordpress', 'configuracionPolla', 'listaequipos', 'frasesculas', 'sedes']),
-    ...mapGetters(['nombrePollero', 'partidosProcesados', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'polleroID', 'partidosProcesadosSencillo', 'consolidadoPronosDia', 'estadisticaPartido']),
+    ...mapGetters(['nombrePollero', 'puntosPollero', 'calendario', 'posicionesNumericas', 'fasePolla', 'polleroID', 'partidosProcesadosSencillo', 'consolidadoPronosDia', 'estadisticaPartido']),
     eventos() {
       var eventos = []
       if (this.calendario) {

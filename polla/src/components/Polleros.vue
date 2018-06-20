@@ -53,7 +53,11 @@
      </span>
   </template>    
   <template slot="table-row" scope="props" v-if="$vuetify.breakpoint.width > 800">
-    <td>{{ props.row.pos }}</td>
+    <td>
+    {{ props.row.pos }} <v-btn flat icon color="indigo" @click="mihistoria(props.row.id_jugador)">
+              <v-icon>star</v-icon>
+            </v-btn>
+     </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
     <td>{{ props.row.pa }}</td>
@@ -99,6 +103,33 @@
         </v-card>
       </v-dialog>
 
+
+<v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero">
+        <v-card>
+          <v-card-title>
+            Partido a partido
+          </v-card-title>
+          <v-card-text>
+            <table class="tabla_np_historia">
+              <tr>
+                <template v-for='(dato, index) in historiapollero'>
+                  
+                  <td>
+                    <img :style='"height:" + parseInt(dato.puntos)*10+"px;"' :src="'/assets/puntos.png'">
+                    {{ dato.puntos}}
+                    
+                    </td>
+
+                </template>
+              </tr>
+            </table>
+            
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" flat @click.stop="lahistoria=false">Cerrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
 
     <v-dialog v-model="usuariodetalles" max-width="600">
@@ -174,6 +205,8 @@ export default {
   },
   data() {
     return {
+      historiapollero: null,
+      lahistoria: false,
       dialog3: false,
       posiciones: null,
         primeros: null,
@@ -322,6 +355,18 @@ if (this.pa_activo) {
  
   },
   methods:{
+    mihistoria(pollero){
+      this.historiapollero = null
+      console.log(pollero + ' --------------------')
+        axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero)
+				.then(response => {
+					this.historiapollero = response.data
+				})
+				.catch(e => {
+					this.errors.push(e.message)
+        })
+        this.lahistoria = true
+    },
     muestraHall(){
     this.primeros = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 1)
         this.segundos = this.posicionesNumericasHallFama.filter((posiciones) => posiciones.pos === 2)
