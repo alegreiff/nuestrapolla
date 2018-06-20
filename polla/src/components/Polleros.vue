@@ -107,7 +107,7 @@
 <v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero && historipollero">
         <v-card>
           <v-card-title>
-            <strong>{{ historipollero }}</strong>  partido a partido
+            <strong>{{ historipollero }}</strong>  &nbsp; partido a partido
           </v-card-title>
           <v-card-text>
             <table class="tabla_np_historia">
