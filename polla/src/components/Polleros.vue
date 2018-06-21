@@ -54,7 +54,7 @@
   </template>    
   <template slot="table-row" scope="props" v-if="$vuetify.breakpoint.width > 800">
     <td>
-    {{ props.row.pos }} <v-btn flat icon color="indigo" @click="mihistoria(props.row.id_jugador, props.row.pollero)">
+    {{ props.row.pos }} <v-btn flat icon color="indigo" @click="mihistoria(props.row)">
               <v-icon>star</v-icon>
             </v-btn>
      </td>
@@ -107,9 +107,15 @@
 <v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero && historipollero">
         <v-card>
           <v-card-title>
-            <strong>{{ historipollero }}</strong>  &nbsp; partido a partido
+            <v-avatar class="green darken-4">{{historipollero.pos}}</v-avatar>
+              {{historipollero.puntaje}} Pts.
+            </v-chip> &nbsp;
+            <strong>{{ historipollero.pollero }}</strong>  &nbsp; [{{historipollero.partidos  }} partidos] 
+            <v-chip color="green" text-color="white">
+              
           </v-card-title>
           <v-card-text>
+            
             <table class="tabla_np_historia">
               <tr>
                 <template v-for='(dato, index) in historiapollero'>
@@ -117,6 +123,11 @@
                   <td>
                     <img :style='"height:" + parseInt(dato.puntos)*10+"px;"' :src="'/assets/puntos.png'">
                     <span class="np_eldato">{{ dato.puntos}}</span>
+                    <span class="np_eldato">
+                      <v-icon class="np_estrella_minimal" v-if="dato.res ==='CO' || dato.res ==='DO' || dato.res ==='FU' " >star</v-icon>
+                      <v-icon class="np_estrella_minimal" v-else>remove</v-icon>
+                      </span>
+                    <!-- {{ dato.res}} -->
                     
                     </td>
 
@@ -356,11 +367,12 @@ if (this.pa_activo) {
  
   },
   methods:{
-    mihistoria(pollero, nombrepollero){
-      this.historipollero = nombrepollero;
+    mihistoria(pollero){
+      //props.row.id_jugador, props.row.pollero
+      this.historipollero = pollero;
       this.historiapollero = null
       console.log(pollero + ' --------------------')
-        axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero)
+        axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero.id_jugador)
 				.then(response => {
 					this.historiapollero = response.data
 				})
