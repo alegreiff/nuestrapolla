@@ -107,11 +107,12 @@
 <v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero && historipollero">
         <v-card>
           <v-card-title>
+            <v-chip color="green" text-color="white">
             <v-avatar class="green darken-4">{{historipollero.pos}}</v-avatar>
               {{historipollero.puntaje}} Pts.
             </v-chip> &nbsp;
             <strong>{{ historipollero.pollero }}</strong>  &nbsp; [{{historipollero.partidos  }} partidos] 
-            <v-chip color="green" text-color="white">
+            
               
           </v-card-title>
           <v-card-text>
