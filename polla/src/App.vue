@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-navigation-drawer 
     :mini-variant="miniVariant" 
     :mobile-break-point="2600"
