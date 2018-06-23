@@ -70,7 +70,7 @@ import TiempoRestante from './components/TiempoRestante.vue'
 
   export default {
     data: () => ({
-      infoversion: 'v.3.0 Comodines / Goles PP',
+      infoversion: 'v.3.5 Posiciones X grupos',
       vieneeljefe: false,
       clipped: true,
       drawer: false,

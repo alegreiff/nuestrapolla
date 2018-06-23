@@ -37,7 +37,7 @@
                             <td>{{ eq.pp }}</td>
                             <td>{{ eq.gf }}</td>
                             <td>{{ eq.gc }}</td>
-                            <td>{{ parseInt(eq.gf) + parseInt(eq.gc) }}</td>
+                            <td>{{ parseInt(eq.gf) - parseInt(eq.gc) }}</td>
                             <td>{{ parseInt(eq.pg) * 3 + parseInt(eq.pe) }}</td>
                         </tr>
                     </tbody>
