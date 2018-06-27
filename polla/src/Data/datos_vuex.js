@@ -157,7 +157,7 @@ export const datos = new Vuex.Store({
 			{equipo: 'Unión Magdalena', escudo: 'union'}
 		],
 		configuracionPolla: [{
-		faseactiva: 'grupos',
+		faseactiva: 'octavos',
 			grupos: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
 				fechas: [{
 					fase: 'grupos',
@@ -254,6 +254,10 @@ export const datos = new Vuex.Store({
 			_.each(state.calendario, item => item.dtv = parseInt(item.dtv))
 			return state.calendario
 
+		},
+		calendarioparapronos:(state) => {
+			_.each(state.calendarioparapronos, item => item.procesado = parseInt(item.procesado))
+			return state.calendarioparapronos
 		},
 		consolidadoPronos: (state) => {
 			_.each(state.allpronos, item => item.id = parseInt(item.id))
