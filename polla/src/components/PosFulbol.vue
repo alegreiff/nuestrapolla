@@ -31,14 +31,14 @@
                                 <img :src="'/assets/band/'+eq.id + '.png'" :alt="eq.id" class="np_miniflag">
                             </td>
                             <td>{{ eq.equipo }}</td>
-                            <td>{{ parseInt(eq.pg) + parseInt(eq.pe) + parseInt(eq.pp)  }}</td>
+                            <td>{{ eq.pj  }}</td>
                             <td>{{ eq.pg }}</td>
                             <td>{{ eq.pe }}</td>
                             <td>{{ eq.pp }}</td>
                             <td>{{ eq.gf }}</td>
                             <td>{{ eq.gc }}</td>
-                            <td>{{ parseInt(eq.gf) - parseInt(eq.gc) }}</td>
-                            <td>{{ parseInt(eq.pg) * 3 + parseInt(eq.pe) }}</td>
+                            <td>{{ eq.dg }}</td>
+                            <td>{{ eq.pts }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -185,7 +185,7 @@
 
 </template>
 <script>
-import { mapState} from 'vuex'
+import { mapState, mapGetters} from 'vuex'
 export default {
   name: "Grupi",
   
@@ -204,7 +204,7 @@ export default {
       },
 		equipos_grupo (grupo) {
 			
-				var salida = _.filter(this.listaequipos, ['grupo', grupo])
+				var salida = _.filter(this.posequipos, ['grupo', grupo])
 				var salida = _.orderBy(salida, ['pts', 'dg', 'pg', 'gf', 'gc'], ['desc', 'desc', 'desc', 'desc', 'asc'])
 				for (var i in salida) {
 					if (i == 0) {
@@ -223,6 +223,7 @@ export default {
   },
   computed: {
     ...mapState(['listaequipos']),
+    ...mapGetters(['posequipos']),
     //...mapGetters(['valueequipos', 'calendario', 'polleroFavoritos', 'equipoFavoritoID', 'nombrePollero']),
   },
     watch: {

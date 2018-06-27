@@ -230,6 +230,21 @@ export const datos = new Vuex.Store({
 			_.each(state.allpolleros, item => item.pollero = item.pollero[0].toUpperCase() + item.pollero.slice(1))
 			return state.allpolleros
 		},
+		posequipos: (state) => {
+			var temp = _.cloneDeep(state.listaequipos);
+			_.each(temp, item => item.gc = parseInt(item.gc))
+			_.each(temp, item => item.gf = parseInt(item.gf))
+			_.each(temp, item => item.id = parseInt(item.id))
+			_.each(temp, item => item.pe = parseInt(item.pe))
+			_.each(temp, item => item.pg = parseInt(item.pg))
+			_.each(temp, item => item.pp = parseInt(item.pp))
+			_.each(temp, item => item.dg = parseInt(item.gf) - parseInt(item.gc))
+			_.each(temp, item => item.pts = parseInt(item.pg) * 3  + (parseInt(item.pp)))
+			_.each(temp, item => item.pts = parseInt(item.pg) + parseInt(item.pe) + parseInt(item.pp))
+
+			
+			return temp;
+		},
 		allpollerosHome: (state, getters) => {
 			var temp = _.cloneDeep(getters.allpolleros);
 			return temp
