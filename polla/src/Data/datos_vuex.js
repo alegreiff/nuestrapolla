@@ -157,7 +157,7 @@ export const datos = new Vuex.Store({
 			{equipo: 'Unión Magdalena', escudo: 'union'}
 		],
 		configuracionPolla: [{
-		faseactiva: 'octavos',
+		faseactiva: 'grupos',
 			grupos: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
 				fechas: [{
 					fase: 'grupos',
