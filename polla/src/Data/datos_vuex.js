@@ -239,7 +239,7 @@ export const datos = new Vuex.Store({
 			_.each(temp, item => item.pg = parseInt(item.pg))
 			_.each(temp, item => item.pp = parseInt(item.pp))
 			_.each(temp, item => item.dg = parseInt(item.gf) - parseInt(item.gc))
-			_.each(temp, item => item.pts = parseInt(item.pg) * 3  + (parseInt(item.pp)))
+			_.each(temp, item => item.pts = parseInt(item.pg) * 3  + (parseInt(item.pe)))
 			_.each(temp, item => item.pj = parseInt(item.pg) + parseInt(item.pe) + parseInt(item.pp))
 
 			
