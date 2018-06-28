@@ -1,5 +1,12 @@
 <template>
   <v-container fluid grid-list-md>
+    <v-layout>
+      <v-flex>
+        <v-btn :to="{path: '/pronos'}"  block color="primary">Cargar pronósticos para Octavos de final
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
+      </v-flex>
+    </v-layout>
     <v-layout row wrap>
       <v-flex lg4 md12 sm12 xs12 hidden-md-and-down>
         <v-btn @click="actualiza_info_polla()" color="primary">Actualizar</v-btn>

@@ -94,8 +94,8 @@
 										<v-avatar class="green darken-4">{{ golesGrupo.victorias }}</v-avatar>Victorias</v-chip>
 									<div class="pronos">
 										<div class="partidos">
-											<pre>{{ pronoactivo }}</pre>
-											<pre>{{ e_grupos }}</pre>
+											<!--<pre>{{ pronoactivo }}</pre>
+											<pre>{{ e_grupos }}</pre>-->
 											<template v-for="partido, index in partidos_grupo(tab.slice(-1))">
 												<!-- {{ tabla_posiciones }} -->
 												<div class="np_partido" :class="{'np_comodo': pronos[partido.id]['comodin']}">
@@ -146,7 +146,7 @@
 												</p>
 												<p v-else>{{ mensajeGuardado }}</p>
 											</div>
-											<pre>pronosgrupo: {{ pronosGrupo }}</pre>
+											<!--<pre>pronosgrupo: {{ pronosGrupo }}</pre>
 											<hr>
 											<pre>estadogrupo: {{ estadoGrupo }}</pre>
 											<hr>
@@ -154,7 +154,7 @@
 											<hr>
 											<pre>{{ e_grupos }}</pre>
 											<hr>
-											<pre>{{ active }}</pre>
+											<pre>{{ active }}</pre> -->
 										</div>
 										
 										</div>
@@ -257,15 +257,23 @@ export default {
 				var res = _.filter(this.pronosFinalesGrupo, ['grupo', this.active])
 				//var com = _.filter(res, ['procesado', 1])
 				
-				
-				var lg = _.sumBy(res, function (o) { return parseInt(o.mlocal) })
-				var vg = _.sumBy(res, function (o) { return parseInt(o.mvisit) })
+				for (var i in res) {
+					if(res[i].mlocal !==""){
+						res[i].mlocal = parseInt(res[i].mlocal);
+					}
+					if(res[i].mvisit !==""){
+						res[i].mvisit = parseInt(res[i].mvisit);
+					}
+					
+				}
+				var lg = _.sumBy(res, function (o) { return (o.mlocal) })
+				var vg = _.sumBy(res, function (o) { return (o.mvisit) })
 				// var em = _.sumBy(com, function(o) { return o.vg; });
-				console.log(res.length + ' RES Tamaño')
+				console.log(res.length + ' RES Tamaño LOC: ' + lg + 'VIS: ' + vg)
 				if(!!lg && !!vg ){
 				var empates = 0
 				for (var i in res) {
-					if (res[i].mlocal === res[i].mvisit) {
+					if ((res[i].mlocal === res[i].mvisit)) {
 						empates++
 					}
 				}
@@ -313,7 +321,7 @@ export default {
 			}
 			var salida = new Object();
 			salida['cuenta'] = pg + eg;
-			salida['mensaje'] = 'El grupo NO está listo para ser guardado.' + m1 + m2;
+			salida['mensaje'] = 'El pronóstico de '+ this.settingsfase.fase +' NO está listo para ser guardado.' + m1 + m2;
 			return salida;
 		},
 		pronosFinalesGrupo () {
@@ -421,7 +429,7 @@ export default {
 			})
 				.then(response => {
 					this.fraseespecial = this.lafrase()
-					this.mensaje_database = response.data + ' para el grupo ' + this.active
+					this.mensaje_database = response.data + ' para la fase de  ' + this.settingsfase.fase
 					this.dialog = true
 					this.actualiza_allpronos()
 					this.mensajeGuardado = 'Grupo guardado';
