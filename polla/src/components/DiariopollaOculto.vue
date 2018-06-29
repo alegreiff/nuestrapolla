@@ -153,7 +153,7 @@
               
             </div> -->
             <div class="comandos" v-if="pronos_partido(partido.id)">
-              ---
+              {{ pronos_partido(partido.id).cuantos}} pronósticos
 
             </div>
           </div>
