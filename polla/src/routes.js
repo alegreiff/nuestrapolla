@@ -1,5 +1,5 @@
 import Admin from './components/Admin.vue'
-import Diariopolla from './components/Diariopolla.vue'
+import Diariopolla from './components/DiariopollaOculto.vue'
 import StartPolla from './components/StartPolla.vue'
 import PronosMobile from './components/PronosMobile.vue'
 import Calendar from './components/Calendar.vue'
