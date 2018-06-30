@@ -420,6 +420,7 @@ export default {
 			//this.activaEstadoOpenClose()
 		},
 		guardaGrupo () {
+			return false
 			this.pronoactivo = false
 			//this.activaEstadoOpenClose()
 			axios.post(`/wp-json/insertargrupo/v1/all/`, {
