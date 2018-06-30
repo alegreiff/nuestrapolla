@@ -68,8 +68,8 @@
     <td class="fancy">{{ props.row.BLANCOCONCOMODIN }}</td>
     <td class="fancy">{{ props.row.BLANCOSIMPLE }}</td>
     <td class="fancy">{{ props.row.USOCOM }}</td>
-    <!--<td class="fancy">{{ props.row.NULO }}</td>-->
-    <td class="fancy">{{ props.row.BLANCOCONCOMODIN + props.row.BLANCOSIMPLE }}</td>
+    <td class="fancy">{{ props.row.NULO }}</td>
+    <!--<td class="fancy">{{ props.row.BLANCOCONCOMODIN + props.row.BLANCOSIMPLE }}</td>-->
     <!-- <td>{{ props.index }}</td> -->
   </template>
 
@@ -86,7 +86,7 @@
 <span>Premios provisionales calculados sobre las posiciones actuales</span>
 <hr>
 <h2>Giosier</h2>
-Ganador del premio a líder de la fase de grupos {{ plan(5, primeros.length) }} (Premio definitivo)
+Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
 <hr>
 <p v-for="(pollero, index) in primeros" :key="index">1º: {{ pollero.pollero }}  {{ plan(0, primeros.length) }}</p>
 
