@@ -321,7 +321,7 @@ export default {
         width: '20px'
         
       },{
-        label: '--',
+        label: 'NULO',
         tdClass: 'text-center',
         field: 'NULO',
         sortable: false,
