@@ -19,10 +19,10 @@
             <v-list-tile-content><v-list-tile-title>PDF Mis pronósticos</v-list-tile-title></v-list-tile-content>
         </v-list-tile>-->
         
-        <v-list-tile :to="{path: '/pronos'}">
+        <!--<v-list-tile :to="{path: '/pronos'}">
             <v-list-tile-action><v-icon>more_horiz</v-icon></v-list-tile-action>
             <v-list-tile-content><v-list-tile-title>Ingreso de marcadores</v-list-tile-title></v-list-tile-content>
-        </v-list-tile>
+        </v-list-tile>-->
 
         <v-list-tile :to="{path: '/calendario'}">
             <v-list-tile-action><v-icon>more_horiz</v-icon></v-list-tile-action>
