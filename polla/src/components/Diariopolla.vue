@@ -1,12 +1,5 @@
 <template>
   <v-container fluid grid-list-md>
-    <v-layout>
-      <v-flex>
-        <v-btn :to="{path: '/pronos'}"  block color="red">Cargar pronósticos para Octavos de final
-								<v-icon right dark>highlight</v-icon>
-							</v-btn>
-      </v-flex>
-    </v-layout>
     <v-layout row wrap>
       <v-flex lg4 md12 sm12 xs12 hidden-md-and-down>
         <v-btn @click="actualiza_info_polla()" color="primary">Actualizar</v-btn>
@@ -46,9 +39,6 @@
       </v-flex>
       <v-flex lg8 md12 hidden-sm-and-down>
         <v-layout>
-          <v-btn :to="{path: '/pronos'}"  block color="primary">Pronósticos aquí
-								<v-icon right dark>highlight</v-icon>
-							</v-btn>
           <v-flex xs8 v-if="partidos_fecha && partidos_fecha_libres">
             Partidos fecha: {{ partidos_fecha.length }} Por jugarse: {{partidos_fecha_libres.length}}
             <v-btn @click='funcionQPS("DIOS")' color="secondary">
@@ -314,11 +304,7 @@
       </template>
     </v-layout>
     <v-layout>
-      <v-flex>
-        <v-btn :to="{path: '/pronos'}"  block color="red">Cargar pronósticos para Octavos de final
-								<v-icon right dark>highlight</v-icon>
-							</v-btn>
-      </v-flex>
+
     </v-layout>
   </v-container>
 </template>
