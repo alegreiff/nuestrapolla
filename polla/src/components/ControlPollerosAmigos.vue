@@ -34,7 +34,7 @@
                     <template slot-scope="props">
                 
                 <b-table-column label="Pollero" centered width="150" sortable field="pollero">
-                    {{ (props.row.pollero) }}  
+                    {{ (props.row.tuira) }}  
                 </b-table-column>
                 <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<48 ? 'pronosROJOS' : 'pronosVERDES'">
                     <span>{{pronos_parciales_pollero(props.row.id)}}</span>

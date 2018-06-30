@@ -12,9 +12,9 @@
 				<v-flex xs12 md6 lg6>
 					<v-card color="pollarojo2" dark class="completacard">
 						<v-card-text class="text-xs-center">
-							<v-btn href="https://nuestrapolla.com/assets/nuestrapolla-fasedegrupos.pdf"  target="_blank" block color="primary">Descargar TODOS los pronósticos - Fase de grupos
+							<!--<v-btn href="https://nuestrapolla.com/assets/nuestrapolla-fasedegrupos.pdf"  target="_blank" block color="primary">Descargar TODOS los pronósticos - Fase de grupos
 								<v-icon right dark>highlight</v-icon>
-							</v-btn>
+							</v-btn>-->
 							<v-btn @click="pdftest()"  block color="terciary" v-if="(estatuspronos) === 0" >Descargar Mis pronósticos PDF
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
@@ -22,15 +22,15 @@
 							<p>Partidos para esta fase {{ fasePolla.partidos }}</p>
 							<p>Esta es una polla de 64 partidos. Única para todo el mundial</p>
 							<hr>
-							<p>Esta es una página de inicio provisional para polleros que necesiten modificar o crear marcadores. 
+							<!--<p>Esta es una página de inicio provisional para polleros que necesiten modificar o crear marcadores. </p>
 								<v-btn :to="{path: '/provis'}"  block color="primary">Ver toda la información de la polla
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
-
+							-->
 							<v-btn :to="{path: '/amigopollero'}"  block color="secondary">Enlace exclusivo para polleros amigos
 								<v-icon right dark>highlight</v-icon>
 							</v-btn>
-								 </p>
+								 
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -103,8 +103,10 @@ export default {
     ...mapGetters(['allpollerosHome', 'polleroID', 'nombrePollero','eltiempo', 'fasePolla','pronosticosPolleroActivo']),
     pronosPendientes(){
         if(this.fasePolla && this.pronosticosPolleroActivo){
-          var nulos = _.filter(this.pronosticosPolleroActivo, function(o) { if (isNaN(o.m_loc)) return o }).length;
-          return (parseInt(this.fasePolla.partidos) - (parseInt(this.pronosticosPolleroActivo.length))+ nulos);
+					var pron = _.filter(this.pronosticosPolleroActivo, function(o) {return o.partido > 48 });
+					var nulos = _.filter(pron, function(o) { if (isNaN(o.m_loc)) return o }).length;
+					console.log(this.fasePolla.partidos +" - "+ pron.length+ " --- " +nulos)
+          return (parseInt(this.fasePolla.partidos) - (parseInt(pron.length))+ nulos);
         }
       },
 
