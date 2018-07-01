@@ -126,8 +126,9 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
                   
                   <td>
                     <img :style='"height:" + parseInt(dato.puntos)*10+"px;"' :src="'/assets/puntos.png'">
-                    <span class="np_eldato">{{ dato.puntos}}</span>
-                    <span class="np_eldato">
+                    <span :class="clase_color_historia(dato.id_partido)" >{{ dato.puntos}}</span>
+                    
+                    <span :class="clase_color_historia(dato.id_partido)">
                       <v-icon class="np_estrella_minimal" v-if="dato.res ==='CO' || dato.res ==='DO' || dato.res ==='FU' " >star</v-icon>
                       <v-icon class="np_estrella_minimal" v-else>remove</v-icon>
                       </span>
@@ -371,6 +372,13 @@ if (this.pa_activo) {
  
   },
   methods:{
+    clase_color_historia(partido){
+      if(partido < 49){
+        return 'np_hist_grupos';
+      }else if(partido >48 && partido < 57){
+        return 'np_hist_octavos'
+      }
+    },
     mihistoria(pollero){
       //props.row.id_jugador, props.row.pollero
       this.historipollero = pollero;
@@ -378,7 +386,8 @@ if (this.pa_activo) {
       console.log(pollero + ' --------------------')
         axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero.id_jugador)
 				.then(response => {
-					this.historiapollero = response.data
+          var dato = _.sortBy(response.data, ['fecha']);
+					this.historiapollero = dato
 				})
 				.catch(e => {
 					this.errors.push(e.message)
