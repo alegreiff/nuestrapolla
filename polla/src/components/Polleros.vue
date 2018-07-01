@@ -107,7 +107,7 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
       </v-dialog>
 
 
-<v-dialog v-model="lahistoria" max-width="500px" v-if="historiapollero && historipollero">
+<v-dialog v-model="lahistoria" max-width="80%" v-if="historiapollero && historipollero">
         <v-card>
           <v-card-title>
             <v-chip color="green" text-color="white">
