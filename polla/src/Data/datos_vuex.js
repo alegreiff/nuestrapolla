@@ -548,6 +548,16 @@ export const datos = new Vuex.Store({
 			_.each(state.posiciones, item => item.BLANCOCONCOMODIN = parseInt(item.BLANCOCONCOMODIN))
 			_.each(state.posiciones, item => item.USOCOM = parseInt(item.USOCOM))
 			_.each(state.posiciones, item => item.NULO = parseInt(item.NULO))
+			_.each(state.posiciones, item => item.G1 = parseInt(item.G1))
+			_.each(state.posiciones, item => item.G2 = parseInt(item.G2))
+			_.each(state.posiciones, item => item.G3 = parseInt(item.G3))
+			_.each(state.posiciones, item => item.grupos = parseInt(item.grupos))
+			_.each(state.posiciones, item => item.octavos = parseInt(item.octavos))
+			_.each(state.posiciones, item => item.cuartos = parseInt(item.cuartos))
+			_.each(state.posiciones, item => item.semis = parseInt(item.semis))
+			_.each(state.posiciones, item => item.tercero = parseInt(item.tercero))
+			_.each(state.posiciones, item => item.final = parseInt(item.final))
+
 
 			for (var i in state.posiciones) {
 				state.posiciones[i].status = (state.posiciones[i].puntaje + '|' + state.posiciones[i].GRANCHEPAZO + '|' + state.posiciones[i].DOBLE + '|' + state.posiciones[i].EXACTO + '|' + state.posiciones[i].SENCILLO + '|' + state.posiciones[i].BLANCOSIMPLE + '|' + state.posiciones[i].BLANCOCONCOMODIN + '|' + state.posiciones[i].USOCOM + '|' + state.posiciones[i].NULO);

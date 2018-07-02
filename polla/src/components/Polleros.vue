@@ -60,6 +60,7 @@
      </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
+    <td>{{ props.row.octavos }}</td>
     <td>{{ props.row.pa }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
@@ -265,7 +266,15 @@ export default {
         sortable: true,
         type: 'number',
         width: '20px'
-      }, {
+      }, 
+      {
+        label: 'OCT',
+        tdClass: 'text-center',
+        field: 'octavos',
+        sortable: true,
+        type: 'number',
+        width: '20px'
+      },{
         label: 'PA',
         field:'pa',
         sortable: true,
@@ -382,7 +391,7 @@ if (this.pa_activo) {
     mihistoria(pollero){
       //props.row.id_jugador, props.row.pollero
       this.historipollero = pollero;
-      this.historiapollero = null
+      //      this.t6 = null
       console.log(pollero + ' --------------------')
         axios.get(`/wp-json/gethistoriauser/v1/all/` + pollero.id_jugador)
 				.then(response => {
