@@ -182,9 +182,9 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
 
             
             <pre> {{ datosAdicionalesPollero.genero }} </pre>  
-            <pre>Puntos en fase de grupos: {{ datosAdicionalesPollero.grupos }}</pre>
-            <pre>Puntos en fase de octavos: {{ datosAdicionalesPollero.octavos }}</pre>
-            <pre>Puntos en fase de cuartos: {{ datosAdicionalesPollero.cuartos }}</pre>
+            <pre>grupos: {{ datosOtrosPolleros.grupos }}</pre>
+            <pre>octavos: {{ datosOtrosPolleros.octavos }}</pre>
+            <pre>cuartos: {{ datosOtrosPolleros.cuartos }}</pre>
             
            
             </v-flex>
