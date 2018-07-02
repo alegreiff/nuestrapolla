@@ -60,7 +60,7 @@
      </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
-    <td>{{ props.row.octavos }}</td>
+    <td title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td>{{ props.row.pa }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
