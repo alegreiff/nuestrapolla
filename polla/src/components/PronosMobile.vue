@@ -227,6 +227,10 @@ export default {
 
 					return ['8']
 					//console.log('estamos en octavos')
+				} else if(this.configuracionPolla[0].faseactiva === 'cuartos'){
+					this.settingsfase = this.configuracionPolla[0]['fechas'][2]
+					this.pronoactivo = false
+					return ['4']
 				} else {
 					//console.log('estamos en fase de grupos')
 					this.e_grupos['A'] = false
@@ -420,7 +424,7 @@ export default {
 			//this.activaEstadoOpenClose()
 		},
 		guardaGrupo () {
-			return false
+			//return false
 			this.pronoactivo = false
 			//this.activaEstadoOpenClose()
 			axios.post(`/wp-json/insertargrupo/v1/all/`, {

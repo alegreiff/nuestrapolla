@@ -37,6 +37,12 @@
         </v-card>
         <v-select v-bind:items="feitas" v-model="fechas_picker" label="Seleccione la fecha" single-line bottom></v-select>
       </v-flex>
+      <v-flex xs12>
+          <v-btn :to="{path: '/pronos'}"  block color="primary">Marcadores para cuartos de final. Aquí
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
+
+      </v-flex>
       <v-flex lg8 md12 hidden-sm-and-down>
         <v-layout>
           <v-flex xs8 v-if="partidos_fecha && partidos_fecha_libres">
