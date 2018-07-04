@@ -3,6 +3,12 @@
     <v-layout row wrap>
       <v-flex lg4 md12 sm12 xs12 hidden-md-and-down>
         <v-btn @click="actualiza_info_polla()" color="primary">Actualizar</v-btn>
+        <v-flex xs12>
+          <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para cuartos de final. Aquí
+								<v-icon right dark>highlight</v-icon>
+							</v-btn>
+
+      </v-flex>
         <v-date-picker class="np_datepicker elevation-10" :first-day-of-week="1" locale="es-sp" no-title v-model="fechas_picker"
           :allowed-dates="feitas">
         </v-date-picker>
@@ -37,12 +43,7 @@
         </v-card>
         <v-select v-bind:items="feitas" v-model="fechas_picker" label="Seleccione la fecha" single-line bottom></v-select>
       </v-flex>
-      <v-flex xs12>
-          <v-btn :to="{path: '/pronos'}"  block color="primary">Marcadores para cuartos de final. Aquí
-								<v-icon right dark>highlight</v-icon>
-							</v-btn>
-
-      </v-flex>
+      
       <v-flex lg8 md12 hidden-sm-and-down>
         <v-layout>
           <v-flex xs8 v-if="partidos_fecha && partidos_fecha_libres">
@@ -185,7 +186,7 @@
                   <!--<v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" block dark color="primary" class="">
                     Ver todos los pronósticos
                   </v-btn>-->
-                  {{ pronos_partido(partido.id).cuantos}}
+                  
                 </div>
                 <v-layout v-if="pronos_partido(partido.id)">
                   <v-flex xs2>
