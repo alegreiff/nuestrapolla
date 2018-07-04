@@ -149,7 +149,7 @@
               
             </div> 
             <div class="comandos" v-if="pronos_partido(partido.id)">
-              <v-chip color="green" text-color="white">
+              <!--<v-chip color="green" text-color="white">
                 <v-avatar class="green darken-4">{{ calendario[partido.id].grupo }}</v-avatar>
                 Grupo
               </v-chip>
@@ -162,8 +162,8 @@
               </v-btn>
               <v-btn @click="marcadoresFrecuentes(partido.id)" round color="primary" dark class="np_textodusha">
                 Comodines / marcadores
-              </v-btn>
-
+              </v-btn>-->
+              {{ pronos_partido(partido.id).cuantos}}
             </div>
           </div>
         </div>
@@ -182,9 +182,10 @@
                   </p>
                 </div>
                 <div class="ma-4">
-                  <v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" block dark color="primary" class="">
+                  <!--<v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" block dark color="primary" class="">
                     Ver todos los pronósticos
-                  </v-btn>
+                  </v-btn>-->
+                  {{ pronos_partido(partido.id).cuantos}}
                 </div>
                 <v-layout v-if="pronos_partido(partido.id)">
                   <v-flex xs2>
