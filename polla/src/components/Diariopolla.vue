@@ -4,9 +4,9 @@
       <v-flex lg4 md12 sm12 xs12 hidden-md-and-down>
         <v-btn @click="actualiza_info_polla()" color="primary">Actualizar</v-btn>
         <v-flex xs12>
-          <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para cuartos de final. Aquí
+          <!--<v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para cuartos de final. Aquí
 								<v-icon right dark>highlight</v-icon>
-							</v-btn>
+							</v-btn>-->
 
       </v-flex>
         <v-date-picker class="np_datepicker elevation-10" :first-day-of-week="1" locale="es-sp" no-title v-model="fechas_picker"
