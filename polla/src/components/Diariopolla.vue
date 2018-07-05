@@ -150,7 +150,7 @@
               
             </div> 
             <div class="comandos" v-if="pronos_partido(partido.id)">
-              <v-chip color="green" text-color="white">
+              <!--<v-chip color="green" text-color="white">
                 <v-avatar class="green darken-4">{{ calendario[partido.id].grupo }}</v-avatar>
                 Grupo
               </v-chip>
@@ -163,7 +163,7 @@
               </v-btn>
               <v-btn @click="marcadoresFrecuentes(partido.id)" round color="primary" dark class="np_textodusha">
                 Comodines / marcadores
-              </v-btn>
+              </v-btn>-->
               {{ pronos_partido(partido.id).cuantos}}
             </div>
           </div>
