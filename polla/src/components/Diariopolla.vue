@@ -183,9 +183,9 @@
                   </p>
                 </div>
                 <div class="ma-4">
-                  <!--<v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" block dark color="primary" class="">
+                  <v-btn @click="dialogo(pronos_partido(partido.id).pronos, partido.id)" block dark color="primary" class="">
                     Ver todos los pronósticos
-                  </v-btn>-->
+                  </v-btn>
                   
                 </div>
                 <v-layout v-if="pronos_partido(partido.id)">
