@@ -60,6 +60,7 @@
      </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td>{{ props.formattedRow.puntaje }}</td>
+    <td title="Puntos obtenidos en fase de grupos">{{ props.row.grupos }}</td>
     <td title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td title="Puntos obtenidos en cuartos de final">{{ props.row.cuartos }}</td>
     <td>{{ props.row.pa }}</td>
@@ -272,14 +273,22 @@ export default {
         width: '20px'
       }, 
       {
-        label: 'OCT',
+        label: 'G',
+        tdClass: 'text-center',
+        field: 'grupos',
+        sortable: true,
+        type: 'number',
+        width: '20px'
+      },
+      {
+        label: 'O',
         tdClass: 'text-center',
         field: 'octavos',
         sortable: true,
         type: 'number',
         width: '20px'
       },{
-        label: 'CUA',
+        label: 'C',
         tdClass: 'text-center',
         field: 'cuartos',
         sortable: true,
