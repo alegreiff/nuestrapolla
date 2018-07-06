@@ -59,7 +59,7 @@
             </v-btn>
      </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
-    <td>{{ props.formattedRow.puntaje }}</td>
+    <td class="puntines">{{ props.formattedRow.puntaje }}</td>
     <td class="minipuntines" title="Puntos obtenidos en fase de grupos">{{ props.row.grupos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en cuartos de final">{{ props.row.cuartos }}</td>
