@@ -1,5 +1,5 @@
 import Admin from './components/Admin.vue'
-//import Diariopolla from './components/Diariopolla.vue'
+import Diariopollaxxx from './components/Diariopolla.vue'
 import Diariopolla from './components/DiariopollaCarga.vue'
 //import StartPolla from './components/StartPolla.vue'
 import PronosMobile from './components/PronosMobile.vue'
@@ -18,6 +18,7 @@ import posicionesEquipos from './components/posFulbol.vue'
 
 export const routes = [
 	{path: '/', component: Diariopolla},
+	{path: '/kaizer', component: Diariopollaxxx},
 	{path: '/pdfs', component: inicioprov},
 	{path: '/pronos', component: PronosMobile},
 	{path: '/calendario', component: Calendar},
