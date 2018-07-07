@@ -33,7 +33,7 @@
 										<v-layout class="text-xs-center">
 											<v-flex xs1>
 												<div class="__com">
-													<v-checkbox class="mov_np_check" v-model="pronos[partido.id]['comodin']" :disabled="pronosGrupo>1 && pronos[partido.id]['comodin']== false||pronoactivo==false">
+													<v-checkbox class="mov_np_check" v-model="pronos[partido.id]['comodin']" :disabled="pronosGrupo>0 && pronos[partido.id]['comodin']== false||pronoactivo==false">
 													</v-checkbox>
 												</div>
 											</v-flex>
@@ -100,7 +100,7 @@
 												<!-- {{ tabla_posiciones }} -->
 												<div class="np_partido" :class="{'np_comodo': pronos[partido.id]['comodin']}">
 													<div v-if="pronoactivo==true" class="npcom">
-														<v-checkbox class="np_check" label="¿Comodín?" v-model="pronos[partido.id]['comodin']" :disabled="pronosGrupo>1 && pronos[partido.id]['comodin']== false||pronoactivo==false">
+														<v-checkbox class="np_check" label="¿Comodín?" v-model="pronos[partido.id]['comodin']" :disabled="pronosGrupo>0 && pronos[partido.id]['comodin']== false||pronoactivo==false">
 														</v-checkbox>
 													</div>
 													<div v-else class="npcom" :class="{'vacio':pronos[partido.id]['comodin'] }">
@@ -231,6 +231,12 @@ export default {
 					this.settingsfase = this.configuracionPolla[0]['fechas'][2]
 					this.pronoactivo = false
 					return ['4']
+				
+				} else if(this.configuracionPolla[0].faseactiva === 'semifinales'){
+					this.settingsfase = this.configuracionPolla[0]['fechas'][3]
+					this.pronoactivo = false
+					return ['2']
+				//
 				} else {
 					//console.log('estamos en fase de grupos')
 					this.e_grupos['A'] = false
@@ -424,7 +430,7 @@ export default {
 			//this.activaEstadoOpenClose()
 		},
 		guardaGrupo () {
-			return false
+			//return false
 			this.pronoactivo = false
 			//this.activaEstadoOpenClose()
 			axios.post(`/wp-json/insertargrupo/v1/all/`, {

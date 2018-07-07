@@ -406,7 +406,7 @@ if (this.pa_activo) {
         return 'np_hist_grupos';
       }else if(partido >48 && partido < 57){
         return 'np_hist_octavos'
-      }else if(partido >56 && partido < 60){
+      }else if(partido >56 && partido < 61){
         return 'np_hist_cuartos'
       }
     },
