@@ -36,7 +36,7 @@
                 <b-table-column label="Pollero" centered width="150" sortable field="pollero">
                     {{ (props.row.pollero) }}   --- {{ props.row.tuira}}
                 </b-table-column>
-                <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<60 ? 'pronosROJOS' : 'pronosVERDES'">
+                <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<62 ? 'pronosROJOS' : 'pronosVERDES'">
                     <span>{{pronos_parciales_pollero(props.row.id)}}</span>
                 </b-table-column>
                 <b-table-column label="¿Pagó?" centered width="30" sortable field="pago" :class="props.row.pago==0 ? 'pronosROJOS' : 'pronosVERDES'">
