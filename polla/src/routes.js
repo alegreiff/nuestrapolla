@@ -20,7 +20,7 @@ export const routes = [
 	{path: '/', component: Diariopolla},
 	//{path: '/kaizer', component: Diariopollaxxx},
 	{path: '/pdfs', component: inicioprov},
-	{path: '/pronos', component: PronosMobile},
+	//{path: '/pronos', component: PronosMobile},
 	{path: '/calendario', component: Calendar},
 	{path: '/polladmin', component: Admin},
 	{path: '/posiciones', component: Polleros},
