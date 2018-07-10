@@ -223,11 +223,17 @@
                     <span class="np_movil_puntos" v-if="calendario[partido.id].procesado== 1">{{ pronos_partido(partido.id).mipuntos}}</span>
                   </v-flex>
                 </v-layout>
+                
+                  
+                
               </div>
             </v-card-text>
           </v-card>
           <hr>
         </div>
+      </v-flex>
+      <v-flex xs12>
+          <h3 class="noolvide">No olvide que los marcadores para los dos partidos finales deben inscribirse entre el 11 de julio 4:00 p.m. y el 13 de julio 3:00 p.m.</h3>
       </v-flex>
       <template>
         <v-layout row justify-center>

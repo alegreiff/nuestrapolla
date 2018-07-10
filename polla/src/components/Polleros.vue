@@ -408,6 +408,9 @@ if (this.pa_activo) {
         return 'np_hist_octavos'
       }else if(partido >56 && partido < 61){
         return 'np_hist_cuartos'
+      }else if(partido >60 && partido < 63){
+        return 'np_hist_semis'
+
       }
     },
     mihistoria(pollero){
