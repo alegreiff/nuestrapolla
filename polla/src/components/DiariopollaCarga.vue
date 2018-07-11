@@ -4,7 +4,7 @@
       <v-flex lg4 md12 sm12 xs12 hidden-md-and-down>
         <v-btn @click="actualiza_info_polla()" color="primary">Actualizar</v-btn>
         <v-flex xs12>
-          <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para semifinales. Aquí
+          <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para FINALES. Aquí
 								<v-icon right dark>highlight</v-icon>
           </v-btn>
 
@@ -156,8 +156,13 @@
           </div>
         </div>
       </v-flex>
+      <v-flex xs-12>
+        <v-btn :to="{path: '/pronos'}"  block color="yellow">Marcadores para FINALES. Aquí
+								<v-icon right dark>highlight</v-icon>
+          </v-btn>
+      </v-flex>
       <v-flex xs12 hidden-md-and-up>
-        <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para semifinales. Aquí
+        <v-btn :to="{path: '/pronos'}"  block color="red">Marcadores para FINALES. Aquí
 								<v-icon right dark>highlight</v-icon>
           </v-btn>
         <div v-for="partido in partidos_fecha" :key="partido.id">
