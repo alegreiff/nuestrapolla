@@ -236,7 +236,10 @@ export default {
 					this.settingsfase = this.configuracionPolla[0]['fechas'][3]
 					this.pronoactivo = false
 					return ['2']
-				//
+				} else if(this.configuracionPolla[0].faseactiva === 'finales'){
+					this.settingsfase = this.configuracionPolla[0]['fechas'][4]
+					this.pronoactivo = false
+					return ['1']
 				} else {
 					//console.log('estamos en fase de grupos')
 					this.e_grupos['A'] = false
@@ -430,7 +433,7 @@ export default {
 			//this.activaEstadoOpenClose()
 		},
 		guardaGrupo () {
-			return false
+			//return false
 			this.pronoactivo = false
 			//this.activaEstadoOpenClose()
 			axios.post(`/wp-json/insertargrupo/v1/all/`, {

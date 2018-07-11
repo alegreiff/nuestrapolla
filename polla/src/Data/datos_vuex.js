@@ -157,7 +157,7 @@ export const datos = new Vuex.Store({
 			{equipo: 'Unión Magdalena', escudo: 'union'}
 		],
 		configuracionPolla: [{
-		faseactiva: 'semifinales',
+		faseactiva: 'finales',
 			grupos: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
 				fechas: [{
 					fase: 'grupos',
