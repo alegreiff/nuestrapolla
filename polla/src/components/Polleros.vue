@@ -188,6 +188,7 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
             <pre>grupos: {{ datosOtrosPolleros.grupos }}</pre>
             <pre>octavos: {{ datosOtrosPolleros.octavos }}</pre>
             <pre>cuartos: {{ datosOtrosPolleros.cuartos }}</pre>
+            <pre>cuartos: {{ datosOtrosPolleros.semis }}</pre>
             
            
             </v-flex>
@@ -289,16 +290,16 @@ export default {
         type: 'number',
         width: '20px'
       },{
-        label: 'O',
+        label: 'C',
         tdClass: 'text-center',
-        field: 'semis',
+        field: 'cuartos',
         sortable: true,
         type: 'number',
         width: '20px'
       },{
-        label: 'C',
+        label: 'S',
         tdClass: 'text-center',
-        field: 'cuartos',
+        field: 'semis',
         sortable: true,
         type: 'number',
         width: '20px'
