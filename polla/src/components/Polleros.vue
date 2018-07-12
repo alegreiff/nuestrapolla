@@ -60,6 +60,11 @@
      </td>
     <td :class="el_genero(props.row)==='H' ? 'macho' : 'hembra'" @click="cam(props.row)" class="np_pollero_tablapos">{{ props.row.pollero }}</td>
     <td class="puntines">{{ props.formattedRow.puntaje }}</td>
+    <td class="puntines"> 
+      <img :src="'/assets/band/'+los_favoritos(props.row, 0) + '.png'" class="np_banderafavoritos"> &nbsp;
+      <img :src="'/assets/band/'+los_favoritos(props.row, 1) + '.png'" class="np_banderafavoritos">
+      </td>
+    
     <td class="minipuntines" title="Puntos obtenidos en fase de grupos">{{ props.row.grupos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en cuartos de final">{{ props.row.cuartos }}</td>
@@ -273,6 +278,14 @@ export default {
         sortable: true,
         type: 'number',
         width: '20px'
+      },
+      {
+        label: 'Favoritos',
+        tdClass: 'text-center',
+        
+        
+        
+        width: '90px'
       }, 
       {
         label: 'G',
@@ -399,7 +412,7 @@ export default {
     ...mapGetters(['posicionesNumericasHallFama']),
   */
   computed: {...mapState(['horamostrable', 'configuracionPolla', 'pollerosamigos','plandepremios']), 
-  ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial', 'posicionesNumericasHallFama']),
+  ...mapGetters(['nombrePollero', 'puntosPollero', 'posicionesNumericas', 'escudoFPC', 'ultimopartido', 'primerMundial', 'posicionesNumericasHallFama', 'equipoFavoritoID']),
   misposicionesNumericas(){
 if (this.pa_activo) {
                 return this.posicionesNumericas.filter((posiciones) => posiciones.pa === this.pa_activo)
@@ -410,6 +423,9 @@ if (this.pa_activo) {
  
   },
   methods:{
+    favoritoEquipo(equipo){
+      return this.equipoFavoritoID(equipo)
+    },
     clase_color_historia(partido){
       if(partido < 49){
         return 'np_hist_grupos';
@@ -482,6 +498,19 @@ mejorpollero(pa){
       //console.table(this.polleros)
       this.datosAdicionalesPollero = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
       this.pa = pollero.pa; //junio 17
+    },
+    los_favoritos(pollero, id){
+      if(this.polleros){
+        var tempo = (_.filter(this.polleros, {'id': pollero.id_jugador }))[0];
+        //var salida = tempo.genero ==='Pollero' ? 'H' : 'M';
+        var favoritos = tempo.favoritos
+        
+        return this.favoritoEquipo(favoritos[id]);
+        // + ' - ' + this.favoritoEquipo(favoritos[1])
+        //return salida
+      }
+      
+      //return ' s'
     },
     el_genero(pollero){
       if(this.polleros){
