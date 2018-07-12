@@ -63,6 +63,7 @@
     <td class="minipuntines" title="Puntos obtenidos en fase de grupos">{{ props.row.grupos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en cuartos de final">{{ props.row.cuartos }}</td>
+    <td class="minipuntines" title="Puntos obtenidos en semifinales">{{ props.row.semis }}</td>
     <td>{{ props.row.pa }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
@@ -288,6 +289,13 @@ export default {
         type: 'number',
         width: '20px'
       },{
+        label: 'O',
+        tdClass: 'text-center',
+        field: 'semis',
+        sortable: true,
+        type: 'number',
+        width: '20px'
+      },{
         label: 'C',
         tdClass: 'text-center',
         field: 'cuartos',
@@ -410,7 +418,8 @@ if (this.pa_activo) {
         return 'np_hist_cuartos'
       }else if(partido >60 && partido < 63){
         return 'np_hist_semis'
-
+      }else if(partido >62 && partido < 65){
+        return 'np_hist_final'
       }
     },
     mihistoria(pollero){
