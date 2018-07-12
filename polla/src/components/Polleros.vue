@@ -282,10 +282,8 @@ export default {
       {
         label: 'Favoritos',
         tdClass: 'text-center',
-        
-        
-        
-        width: '90px'
+        sortable: false,
+        width: '60px'
       }, 
       {
         label: 'G',
