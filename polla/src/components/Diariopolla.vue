@@ -168,6 +168,7 @@
             </div>
           </div>
         </div>
+        <h3 class="noolvide">Mil gracias por su participación en Nuestra Polla</h3>
       </v-flex>
       <v-flex xs12 hidden-md-and-up>
         <div v-for="partido in partidos_fecha" :key="partido.id">
@@ -231,9 +232,6 @@
           </v-card>
           <hr>
         </div>
-      </v-flex>
-      <v-flex xs12>
-          <h3 class="noolvide">No olvide que los marcadores para los dos partidos finales deben inscribirse entre el 11 de julio 4:00 p.m. y el 13 de julio 3:00 p.m.</h3>
       </v-flex>
       <template>
         <v-layout row justify-center>
