@@ -284,6 +284,17 @@ export const datos = new Vuex.Store({
 			_.each(state.allpronos, item => item.puntos = parseInt(item.puntos))
 			return state.allpronos
 		},
+		consolidadoPronosFinal: (state) => {
+			_.each(state.allpronos, item => item.id = parseInt(item.id))
+			_.each(state.allpronos, item => item.cambios = parseInt(item.cambios))
+			_.each(state.allpronos, item => item.id_jugador = parseInt(item.id_jugador))
+			_.each(state.allpronos, item => item.m_loc = parseInt(item.m_loc))
+			_.each(state.allpronos, item => item.m_vis = parseInt(item.m_vis))
+			_.each(state.allpronos, item => item.partido = parseInt(item.partido))
+			_.each(state.allpronos, item => item.puntos = parseInt(item.puntos))
+			 
+			return  _.filter(state.allpronos, function(o) { return o.partido > 62; });
+		},
 		consolidadoPronosDia: (state) => (partidos) => {
 			_.each(state.allpronos, item => item.id = parseInt(item.id))
 			_.each(state.allpronos, item => item.cambios = parseInt(item.cambios))

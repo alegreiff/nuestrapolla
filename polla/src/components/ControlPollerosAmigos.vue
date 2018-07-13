@@ -36,7 +36,7 @@
                 <b-table-column label="Pollero" centered width="150" sortable field="pollero">
                     {{ (props.row.pollero) }}   --- {{ props.row.tuira}}
                 </b-table-column>
-                <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<64 ? 'pronosROJOS' : 'pronosVERDES'">
+                <b-table-column label="Pronos" centered width="30" :class="pronos_parciales_pollero(props.row.id)<2 ? 'pronosROJOS' : 'pronosVERDES'">
                     <span>{{pronos_parciales_pollero(props.row.id)}}</span>
                 </b-table-column>
                 <b-table-column label="¿Pagó?" centered width="30" sortable field="pago" :class="props.row.pago==0 ? 'pronosROJOS' : 'pronosVERDES'">
@@ -161,7 +161,9 @@ export default {
     methods: {
         pronos_parciales_pollero(pollero){
 		
-		var tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+        var tempo = _.filter(this.consolidadoPronosFinal, { 'id_jugador': pollero});
+        //tempo = _.filter(this.consolidadoPronos, { 'id_jugador': pollero});
+        //tempo = _.filter(tempo, function(o) { return o.partido > 62; });
 		
 		return tempo.length;
 		},
@@ -194,7 +196,7 @@ export default {
     },
     computed: {
         ...mapState(['horamostrable', 'frasesculas', 'pollerosamigos']),
-        ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronos', 'polleroID', ]),
+        ...mapGetters(['allpollerosHome', 'nombrePollero', 'fasePolla', 'consolidadoPronosFinal', 'polleroID', ]),
         amigospolleros() {
 
             if (this.pollerosamigos) {
