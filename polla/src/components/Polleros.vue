@@ -69,6 +69,7 @@
     <td class="minipuntines" title="Puntos obtenidos en octavos de final">{{ props.row.octavos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en cuartos de final">{{ props.row.cuartos }}</td>
     <td class="minipuntines" title="Puntos obtenidos en semifinales">{{ props.row.semis }}</td>
+    <td class="minipuntines" title="Puntos obtenidos en los dos partidos finales">{{ props.row.finish  }}</td>
     <td>{{ props.row.pa }}</td>
     <td class="fancy">{{ props.row.GRANCHEPAZO }}</td>
     <td class="fancy">{{ props.row.EXACTO }}</td>
@@ -194,6 +195,7 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
             <pre>octavos: {{ datosOtrosPolleros.octavos }}</pre>
             <pre>cuartos: {{ datosOtrosPolleros.cuartos }}</pre>
             <pre>semifinales: {{ datosOtrosPolleros.semis }}</pre>
+            <pre>semifinales: {{ datosOtrosPolleros.finish }}</pre>
             
            
             </v-flex>
@@ -311,6 +313,13 @@ export default {
         label: 'S',
         tdClass: 'text-center',
         field: 'semis',
+        sortable: true,
+        type: 'number',
+        width: '20px'
+      },{
+        label: 'F',
+        tdClass: 'text-center',
+        field: 'finish',
         sortable: true,
         type: 'number',
         width: '20px'

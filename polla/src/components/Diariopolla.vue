@@ -168,7 +168,6 @@
             </div>
           </div>
         </div>
-        <h3 class="noolvide">Mil gracias por su participación en Nuestra Polla</h3>
       </v-flex>
       <v-flex xs12 hidden-md-and-up>
         <div v-for="partido in partidos_fecha" :key="partido.id">
@@ -233,6 +232,7 @@
           <hr>
         </div>
       </v-flex>
+
       <template>
         <v-layout row justify-center>
           <v-dialog v-model="markadores" max-width="500px" v-if="partidoactivo">

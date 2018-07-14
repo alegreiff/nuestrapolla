@@ -568,6 +568,7 @@ export const datos = new Vuex.Store({
 			_.each(state.posiciones, item => item.semis = parseInt(item.semis))
 			_.each(state.posiciones, item => item.tercero = parseInt(item.tercero))
 			_.each(state.posiciones, item => item.final = parseInt(item.final))
+			_.each(state.posiciones, item => item.finish = parseInt(item.final + item.tercero))
 
 
 			for (var i in state.posiciones) {
