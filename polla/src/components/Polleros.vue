@@ -195,7 +195,7 @@ Ganador del premio a líder de la fase de grupos $936.000 (Premio definitivo)
             <pre>octavos: {{ datosOtrosPolleros.octavos }}</pre>
             <pre>cuartos: {{ datosOtrosPolleros.cuartos }}</pre>
             <pre>semifinales: {{ datosOtrosPolleros.semis }}</pre>
-            <pre>semifinales: {{ datosOtrosPolleros.finish }}</pre>
+            <pre>dos finales : {{ datosOtrosPolleros.finish }}</pre>
             
            
             </v-flex>
